@@ -4,9 +4,11 @@
 #include <gui_generated/screen1_screen/Screen1ViewBase.hpp>
 #include <touchgfx/Color.hpp>
 #include <images/BitmapDatabase.hpp>
+#include <texts/TextKeysAndLanguages.hpp>
 
 Screen1ViewBase::Screen1ViewBase() :
-    buttonCallback(this, &Screen1ViewBase::buttonCallbackHandler)
+    buttonCallback(this, &Screen1ViewBase::buttonCallbackHandler),
+    frameCountInteraction2Interval(0)
 {
     __background.setPosition(0, 0, 480, 800);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
@@ -20,6 +22,14 @@ Screen1ViewBase::Screen1ViewBase() :
     button1.setBitmaps(touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BUTTON_REGULAR_HEIGHT_50_MEDIUM_ROUNDED_NORMAL_ID), touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BUTTON_REGULAR_HEIGHT_50_MEDIUM_ROUNDED_PRESSED_ID));
     button1.setAction(buttonCallback);
     add(button1);
+
+    textArea1.setPosition(138, 126, 204, 31);
+    textArea1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textArea1.setLinespacing(0);
+    Unicode::snprintf(textArea1Buffer, TEXTAREA1_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_CYEC).getText());
+    textArea1.setWildcard(textArea1Buffer);
+    textArea1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_RKCB));
+    add(textArea1);
 }
 
 Screen1ViewBase::~Screen1ViewBase()
@@ -40,5 +50,18 @@ void Screen1ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
         //When button1 clicked change screen to Screen2
         //Go to Screen2 with no screen transition
         application().gotoScreen2ScreenNoTransition();
+    }
+}
+
+void Screen1ViewBase::handleTickEvent()
+{
+    frameCountInteraction2Interval++;
+    if(frameCountInteraction2Interval == TICK_INTERACTION2_INTERVAL)
+    {
+        //Interaction2
+        //When every N tick call virtual function
+        //Call function1
+        function1();
+        frameCountInteraction2Interval = 0;
     }
 }

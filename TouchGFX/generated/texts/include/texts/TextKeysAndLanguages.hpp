@@ -12,6 +12,8 @@ enum LANGUAGES
 
 enum TEXTS
 {
+    T___SINGLEUSE_CYEC,
+    T___SINGLEUSE_RKCB,
     NUMBER_OF_TEXT_KEYS
 };
 

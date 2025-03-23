@@ -25,6 +25,21 @@
             "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_pressed.png",
             "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_normal.png",
             "Preset": "alternate_theme\\presets\\button\\regular\\height_50\\medium_rounded_normal.json"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea1",
+            "X": 138,
+            "Y": 126,
+            "Width": 204,
+            "Height": 31,
+            "TextId": "__SingleUse_RKCB",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_CYEC",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
           }
         ],
         "Interactions": [
@@ -38,6 +53,17 @@
               "Type": "ActionGotoScreen",
               "ScreenTransitionType": "ScreenTransitionNone",
               "ActionComponent": "Screen2"
+            }
+          },
+          {
+            "InteractionName": "Interaction2",
+            "Trigger": {
+              "Type": "TriggerOnEveryTick",
+              "TickCount": 60
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "function1"
             }
           }
         ]
