@@ -10,29 +10,183 @@
             "Width": 480,
             "Height": 800,
             "Color": {
-              "Red": 135,
-              "Green": 74,
-              "Blue": 74
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
             }
           },
           {
-            "Type": "Button",
-            "Name": "button1",
-            "X": 120,
-            "Y": 655,
+            "Type": "TextArea",
+            "Name": "total",
+            "X": 240,
+            "Y": 232,
             "Width": 240,
-            "Height": 50,
-            "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_pressed.png",
-            "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_normal.png",
-            "Preset": "alternate_theme\\presets\\button\\regular\\height_50\\medium_rounded_normal.json"
+            "Height": 62,
+            "TextId": "__SingleUse_60TL",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_5XM3",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
           },
           {
             "Type": "TextArea",
-            "Name": "textArea1",
-            "X": 138,
-            "Y": 126,
-            "Width": 204,
-            "Height": 31,
+            "Name": "session",
+            "X": 240,
+            "Y": 137,
+            "Width": 240,
+            "Height": 62,
+            "TextId": "__SingleUse_GBLF",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_SBY5",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "speed",
+            "X": 240,
+            "Y": 50,
+            "Width": 240,
+            "Height": 33,
+            "TextId": "__SingleUse_TWF3",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_7C5Q",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "bpsError",
+            "X": 11,
+            "Y": 751,
+            "Width": 275,
+            "Height": 29,
+            "TextId": "__SingleUse_K8F2",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_19ON",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "motor",
+            "X": 11,
+            "Y": 703,
+            "Width": 275,
+            "Height": 32,
+            "TextId": "__SingleUse_RHTA",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_SJL0",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "powerAux",
+            "X": 11,
+            "Y": 650,
+            "Width": 275,
+            "Height": 39,
+            "TextId": "__SingleUse_2J9V",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_N3FC",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "cellTemp",
+            "X": 11,
+            "Y": 598,
+            "Width": 275,
+            "Height": 30,
+            "TextId": "__SingleUse_U3RT",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_QWO4",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "cellVolt",
+            "X": 11,
+            "Y": 547,
+            "Width": 275,
+            "Height": 35,
+            "TextId": "__SingleUse_K7ZJ",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_0XTX",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "solarPhoto",
+            "X": 11,
+            "Y": 501,
+            "Width": 275,
+            "Height": 36,
+            "TextId": "__SingleUse_YIF1",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_J8IU",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "solarVolt",
+            "X": 11,
+            "Y": 454,
+            "Width": 275,
+            "Height": 47,
+            "TextId": "__SingleUse_C2TF",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_3LDK",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "solarTemp",
+            "X": 11,
+            "Y": 408,
+            "Width": 275,
+            "Height": 46,
+            "TextId": "__SingleUse_F2LO",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_W31T",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "solarCurr",
+            "X": 11,
+            "Y": 356,
+            "Width": 275,
+            "Height": 52,
             "TextId": "__SingleUse_RKCB",
             "TextRotation": "0",
             "Wildcard1": {
@@ -40,71 +194,41 @@
               "UseBuffer": true,
               "BufferSize": 10
             }
+          },
+          {
+            "Type": "DigitalClock",
+            "Name": "digitalClock1",
+            "X": 169,
+            "Width": 142,
+            "Height": 25,
+            "TextId": "__SingleUse_T481",
+            "DisplaySeconds": true,
+            "DisplayLeadingZeroForHourIndicator": true,
+            "UseAmPm": true,
+            "InitialHour": 10
           }
         ],
         "Interactions": [
           {
             "InteractionName": "Interaction1",
             "Trigger": {
-              "Type": "TriggerClicked",
-              "TriggerComponent": "button1"
+              "Type": "TriggerClicked"
             },
             "Action": {
               "Type": "ActionGotoScreen",
               "ScreenTransitionType": "ScreenTransitionNone",
-              "ActionComponent": "Screen2"
+              "ActionComponent": "Screen1"
             }
           },
           {
             "InteractionName": "Interaction2",
             "Trigger": {
               "Type": "TriggerOnEveryTick",
-              "TickCount": 60
+              "TickCount": 1
             },
             "Action": {
               "Type": "ActionCustom",
               "FunctionName": "function1"
-            }
-          }
-        ]
-      },
-      {
-        "Name": "Screen2",
-        "Components": [
-          {
-            "Type": "Box",
-            "Name": "box1",
-            "Width": 480,
-            "Height": 800,
-            "Color": {
-              "Red": 73,
-              "Green": 133,
-              "Blue": 87
-            }
-          },
-          {
-            "Type": "Button",
-            "Name": "button1",
-            "X": 120,
-            "Y": 655,
-            "Width": 240,
-            "Height": 50,
-            "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_pressed.png",
-            "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_normal.png",
-            "Preset": "alternate_theme\\presets\\button\\regular\\height_50\\medium_rounded_normal.json"
-          }
-        ],
-        "Interactions": [
-          {
-            "InteractionName": "Interaction1",
-            "Trigger": {
-              "Type": "TriggerClicked",
-              "TriggerComponent": "button1"
-            },
-            "Action": {
-              "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionNone",
-              "ActionComponent": "Screen1"
             }
           }
         ]

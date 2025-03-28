@@ -8,8 +8,8 @@
 #include <mvp/View.hpp>
 #include <gui/screen1_screen/Screen1Presenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
-#include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <touchgfx/containers/clock/DigitalClock.hpp>
 
 class Screen1ViewBase : public touchgfx::View<Screen1Presenter>
 {
@@ -37,32 +37,49 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::Box box1;
-    touchgfx::Button button1;
-    touchgfx::TextAreaWithOneWildcard textArea1;
+    touchgfx::TextAreaWithOneWildcard total;
+    touchgfx::TextAreaWithOneWildcard session;
+    touchgfx::TextAreaWithOneWildcard speed;
+    touchgfx::TextAreaWithOneWildcard bpsError;
+    touchgfx::TextAreaWithOneWildcard motor;
+    touchgfx::TextAreaWithOneWildcard powerAux;
+    touchgfx::TextAreaWithOneWildcard cellTemp;
+    touchgfx::TextAreaWithOneWildcard cellVolt;
+    touchgfx::TextAreaWithOneWildcard solarPhoto;
+    touchgfx::TextAreaWithOneWildcard solarVolt;
+    touchgfx::TextAreaWithOneWildcard solarTemp;
+    touchgfx::TextAreaWithOneWildcard solarCurr;
+    touchgfx::DigitalClock digitalClock1;
 
     /*
      * Wildcard Buffers
      */
-    static const uint16_t TEXTAREA1_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textArea1Buffer[TEXTAREA1_SIZE];
+    static const uint16_t TOTAL_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar totalBuffer[TOTAL_SIZE];
+    static const uint16_t SESSION_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar sessionBuffer[SESSION_SIZE];
+    static const uint16_t SPEED_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar speedBuffer[SPEED_SIZE];
+    static const uint16_t BPSERROR_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar bpsErrorBuffer[BPSERROR_SIZE];
+    static const uint16_t MOTOR_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar motorBuffer[MOTOR_SIZE];
+    static const uint16_t POWERAUX_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar powerAuxBuffer[POWERAUX_SIZE];
+    static const uint16_t CELLTEMP_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar cellTempBuffer[CELLTEMP_SIZE];
+    static const uint16_t CELLVOLT_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar cellVoltBuffer[CELLVOLT_SIZE];
+    static const uint16_t SOLARPHOTO_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar solarPhotoBuffer[SOLARPHOTO_SIZE];
+    static const uint16_t SOLARVOLT_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar solarVoltBuffer[SOLARVOLT_SIZE];
+    static const uint16_t SOLARTEMP_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar solarTempBuffer[SOLARTEMP_SIZE];
+    static const uint16_t SOLARCURR_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar solarCurrBuffer[SOLARCURR_SIZE];
 
 private:
-
-    /*
-     * Callback Declarations
-     */
-    touchgfx::Callback<Screen1ViewBase, const touchgfx::AbstractButton&> buttonCallback;
-
-    /*
-     * Callback Handler Declarations
-     */
-    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
-
-    /*
-     * Tick Counter Declarations
-     */
-    static const uint32_t TICK_INTERACTION2_INTERVAL = 60;
-    uint32_t frameCountInteraction2Interval;
 
 };
 

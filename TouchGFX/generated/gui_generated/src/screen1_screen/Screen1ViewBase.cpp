@@ -3,33 +3,121 @@
 /*********************************************************************************/
 #include <gui_generated/screen1_screen/Screen1ViewBase.hpp>
 #include <touchgfx/Color.hpp>
-#include <images/BitmapDatabase.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
 
-Screen1ViewBase::Screen1ViewBase() :
-    buttonCallback(this, &Screen1ViewBase::buttonCallbackHandler),
-    frameCountInteraction2Interval(0)
+Screen1ViewBase::Screen1ViewBase()
 {
     __background.setPosition(0, 0, 480, 800);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     add(__background);
 
     box1.setPosition(0, 0, 480, 800);
-    box1.setColor(touchgfx::Color::getColorFromRGB(135, 74, 74));
+    box1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     add(box1);
 
-    button1.setXY(120, 655);
-    button1.setBitmaps(touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BUTTON_REGULAR_HEIGHT_50_MEDIUM_ROUNDED_NORMAL_ID), touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BUTTON_REGULAR_HEIGHT_50_MEDIUM_ROUNDED_PRESSED_ID));
-    button1.setAction(buttonCallback);
-    add(button1);
+    total.setPosition(240, 232, 240, 62);
+    total.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    total.setLinespacing(0);
+    Unicode::snprintf(totalBuffer, TOTAL_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_5XM3).getText());
+    total.setWildcard(totalBuffer);
+    total.setTypedText(touchgfx::TypedText(T___SINGLEUSE_60TL));
+    add(total);
 
-    textArea1.setPosition(138, 126, 204, 31);
-    textArea1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    textArea1.setLinespacing(0);
-    Unicode::snprintf(textArea1Buffer, TEXTAREA1_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_CYEC).getText());
-    textArea1.setWildcard(textArea1Buffer);
-    textArea1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_RKCB));
-    add(textArea1);
+    session.setPosition(240, 137, 240, 62);
+    session.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    session.setLinespacing(0);
+    Unicode::snprintf(sessionBuffer, SESSION_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_SBY5).getText());
+    session.setWildcard(sessionBuffer);
+    session.setTypedText(touchgfx::TypedText(T___SINGLEUSE_GBLF));
+    add(session);
+
+    speed.setPosition(240, 50, 240, 33);
+    speed.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    speed.setLinespacing(0);
+    Unicode::snprintf(speedBuffer, SPEED_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_7C5Q).getText());
+    speed.setWildcard(speedBuffer);
+    speed.setTypedText(touchgfx::TypedText(T___SINGLEUSE_TWF3));
+    add(speed);
+
+    bpsError.setPosition(11, 751, 275, 29);
+    bpsError.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    bpsError.setLinespacing(0);
+    Unicode::snprintf(bpsErrorBuffer, BPSERROR_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_19ON).getText());
+    bpsError.setWildcard(bpsErrorBuffer);
+    bpsError.setTypedText(touchgfx::TypedText(T___SINGLEUSE_K8F2));
+    add(bpsError);
+
+    motor.setPosition(11, 703, 275, 32);
+    motor.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    motor.setLinespacing(0);
+    Unicode::snprintf(motorBuffer, MOTOR_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_SJL0).getText());
+    motor.setWildcard(motorBuffer);
+    motor.setTypedText(touchgfx::TypedText(T___SINGLEUSE_RHTA));
+    add(motor);
+
+    powerAux.setPosition(11, 650, 275, 39);
+    powerAux.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    powerAux.setLinespacing(0);
+    Unicode::snprintf(powerAuxBuffer, POWERAUX_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_N3FC).getText());
+    powerAux.setWildcard(powerAuxBuffer);
+    powerAux.setTypedText(touchgfx::TypedText(T___SINGLEUSE_2J9V));
+    add(powerAux);
+
+    cellTemp.setPosition(11, 598, 275, 30);
+    cellTemp.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    cellTemp.setLinespacing(0);
+    Unicode::snprintf(cellTempBuffer, CELLTEMP_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_QWO4).getText());
+    cellTemp.setWildcard(cellTempBuffer);
+    cellTemp.setTypedText(touchgfx::TypedText(T___SINGLEUSE_U3RT));
+    add(cellTemp);
+
+    cellVolt.setPosition(11, 547, 275, 35);
+    cellVolt.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    cellVolt.setLinespacing(0);
+    Unicode::snprintf(cellVoltBuffer, CELLVOLT_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_0XTX).getText());
+    cellVolt.setWildcard(cellVoltBuffer);
+    cellVolt.setTypedText(touchgfx::TypedText(T___SINGLEUSE_K7ZJ));
+    add(cellVolt);
+
+    solarPhoto.setPosition(11, 501, 275, 36);
+    solarPhoto.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    solarPhoto.setLinespacing(0);
+    Unicode::snprintf(solarPhotoBuffer, SOLARPHOTO_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_J8IU).getText());
+    solarPhoto.setWildcard(solarPhotoBuffer);
+    solarPhoto.setTypedText(touchgfx::TypedText(T___SINGLEUSE_YIF1));
+    add(solarPhoto);
+
+    solarVolt.setPosition(11, 454, 275, 47);
+    solarVolt.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    solarVolt.setLinespacing(0);
+    Unicode::snprintf(solarVoltBuffer, SOLARVOLT_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_3LDK).getText());
+    solarVolt.setWildcard(solarVoltBuffer);
+    solarVolt.setTypedText(touchgfx::TypedText(T___SINGLEUSE_C2TF));
+    add(solarVolt);
+
+    solarTemp.setPosition(11, 408, 275, 46);
+    solarTemp.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    solarTemp.setLinespacing(0);
+    Unicode::snprintf(solarTempBuffer, SOLARTEMP_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_W31T).getText());
+    solarTemp.setWildcard(solarTempBuffer);
+    solarTemp.setTypedText(touchgfx::TypedText(T___SINGLEUSE_F2LO));
+    add(solarTemp);
+
+    solarCurr.setPosition(11, 356, 275, 52);
+    solarCurr.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    solarCurr.setLinespacing(0);
+    Unicode::snprintf(solarCurrBuffer, SOLARCURR_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_CYEC).getText());
+    solarCurr.setWildcard(solarCurrBuffer);
+    solarCurr.setTypedText(touchgfx::TypedText(T___SINGLEUSE_RKCB));
+    add(solarCurr);
+
+    digitalClock1.setPosition(169, 0, 142, 25);
+    digitalClock1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    digitalClock1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_T481));
+    digitalClock1.displayLeadingZeroForHourIndicator(true);
+    digitalClock1.setDisplayMode(touchgfx::DigitalClock::DISPLAY_12_HOUR);
+    digitalClock1.setTime12Hour(10, 0, 0, true);
+    add(digitalClock1);
 }
 
 Screen1ViewBase::~Screen1ViewBase()
@@ -42,26 +130,10 @@ void Screen1ViewBase::setupScreen()
 
 }
 
-void Screen1ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
-{
-    if (&src == &button1)
-    {
-        //Interaction1
-        //When button1 clicked change screen to Screen2
-        //Go to Screen2 with no screen transition
-        application().gotoScreen2ScreenNoTransition();
-    }
-}
-
 void Screen1ViewBase::handleTickEvent()
 {
-    frameCountInteraction2Interval++;
-    if(frameCountInteraction2Interval == TICK_INTERACTION2_INTERVAL)
-    {
-        //Interaction2
-        //When every N tick call virtual function
-        //Call function1
-        function1();
-        frameCountInteraction2Interval = 0;
-    }
+    //Interaction2
+    //When every N tick call virtual function
+    //Call function1
+    function1();
 }

@@ -6,16 +6,85 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_7C5Q" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_TWF3" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Speed: &lt;value&gt; mph</Translation>
+      </Text>
+      <Text Id="__SingleUse_5XM3" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_60TL" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Total Dist: &#10;           &lt;value&gt; miles</Translation>
+      </Text>
+      <Text Id="__SingleUse_SBY5" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_GBLF" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Session Dist: &#10;           &lt;value&gt; miles</Translation>
+      </Text>
+      <Text Id="__SingleUse_19ON" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_K8F2" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">BPS Error: &lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_SJL0" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_RHTA" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">MotorController: &lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_N3FC" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_2J9V" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">PowerAuxError: &lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_QWO4" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_U3RT" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">BPSCellTemp: &lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_0XTX" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_K7ZJ" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">BPSCellVoltage: &lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_J8IU" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_YIF1" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Solar Photo: &lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_3LDK" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_C2TF" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Solar Voltage: &lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_W31T" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_F2LO" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Solar Temp: &lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_T481" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">&lt;&gt;</Translation>
+      </Text>
       <Text Id="__SingleUse_CYEC" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">0</Translation>
       </Text>
       <Text Id="__SingleUse_RKCB" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">Value: &lt;value&gt;</Translation>
+        <Translation Language="GB">Solar Current: &lt;value&gt;</Translation>
       </Text>
     </TextGroup>
   </Texts>
   <Typographies>
-    <Typography Id="Default" Font="verdana.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="0123456789." WildcardCharacterRanges="0x20-0x7E" />
+    <Typography Id="Default" Font="verdana.ttf" Size="23" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="0123456789." WidgetWildcardCharacters="0123456789 :APM" WildcardCharacterRanges="0x20-0x7E" />
     <Typography Id="Large" Font="verdana.ttf" Size="40" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
     <Typography Id="Small" Font="verdana.ttf" Size="10" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
   </Typographies>
