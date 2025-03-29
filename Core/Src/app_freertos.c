@@ -22,7 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "wheelboard_can.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -42,7 +42,12 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN Variables */
-
+osThreadId_t sendHeartbeatTaskHandle;
+const osThreadAttr_t sendHeartbeatTask_attributes = {
+  .name = "sendHeartBeatTask",
+  .priority = osPriorityNormal,
+  .stack_size = 128 * 4
+};
 /* USER CODE END Variables */
 /* Definitions for defaultTask */
 osThreadId_t defaultTaskHandle;
@@ -61,10 +66,25 @@ const osThreadAttr_t TouchGFXTask_attributes = {
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
-
+void sendHeartBeatTask(void *argument);
 /* USER CODE END FunctionPrototypes */
 
 /* USER CODE BEGIN 5 */
+void sendHeartBeatTask(void *argument)
+{
+    const TickType_t xPeriod = pdMS_TO_TICKS( 1 * 1000 );
+    TickType_t xLastWakeTime = xTaskGetTickCount();
+
+    for (;;)
+    {
+        // Your periodic function call
+        send_can_message();
+
+        // Wait for the next cycle
+        vTaskDelayUntil(&xLastWakeTime, xPeriod);
+    }
+}
+
 void vApplicationMallocFailedHook(void)
 {
    /* vApplicationMallocFailedHook() will only be called if
@@ -137,6 +157,7 @@ void MX_FREERTOS_Init(void) {
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
+  sendHeartbeatTaskHandle = osThreadNew(sendHeartBeatTask, NULL, &sendHeartbeatTask_attributes);
   /* USER CODE END RTOS_THREADS */
 
   /* USER CODE BEGIN RTOS_EVENTS */
