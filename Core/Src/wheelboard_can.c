@@ -1,5 +1,6 @@
 #include "fdcan.h"
 #include "wheelboard_can.h"
+#include "dashboard_can.h"
 #include <stdint.h>
 
 FDCAN_RxHeaderTypeDef 	RxHeader;
@@ -78,4 +79,19 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan1, uint32_t RxFifo0ITs
       Error_Handler();
     }
   }
+}
+
+void sendDashBoardTask()
+{
+  rivanna3_dashboard_commands_t dashboard_can;
+
+  dashboard_can.hazards = 0; 
+  dashboard_can.left_turn_signal = 0; 
+  dashboard_can.right_turn_signal = 0; 
+  dashboard_can.regen_en = 0; 
+  dashboard_can.cruise_inc = 0; 
+  dashboard_can.cruise_en = 0;
+  dashboard_can.cruise_dec = 0;
+
+  rivanna3_dashboard_commands_pack(TxData->data, &dashboard_can, 8);
 }
