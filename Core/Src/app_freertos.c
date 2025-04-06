@@ -75,6 +75,10 @@ void sendHeartBeatTask(void *argument)
     const TickType_t xPeriod = pdMS_TO_TICKS( 1 * 1000 );
     TickType_t xLastWakeTime = xTaskGetTickCount();
 
+    for(int i=0; i<8; ++i) {
+      TxData[i] = i;
+    }
+
     for (;;)
     {
         // Your periodic function call
