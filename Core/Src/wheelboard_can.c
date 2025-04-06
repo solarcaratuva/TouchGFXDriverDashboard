@@ -83,7 +83,7 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan1, uint32_t RxFifo0ITs
 
 void sendDashBoardTask()
 {
-  rivanna3_dashboard_commands_t dashboard_can;
+  struct rivanna3_dashboard_commands_t dashboard_can;
 
   dashboard_can.hazards = 0; 
   dashboard_can.left_turn_signal = 0; 

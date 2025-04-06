@@ -1,5 +1,53 @@
 #include "dashboard_can.h"
 
+static inline uint8_t pack_left_shift_u8(
+    uint8_t value,
+    uint8_t shift,
+    uint8_t mask)
+{
+    return (uint8_t)((uint8_t)(value << shift) & mask);
+}
+
+static inline uint8_t pack_left_shift_u16(
+    uint16_t value,
+    uint8_t shift,
+    uint8_t mask)
+{
+    return (uint8_t)((uint8_t)(value << shift) & mask);
+}
+
+static inline uint8_t pack_right_shift_u16(
+    uint16_t value,
+    uint8_t shift,
+    uint8_t mask)
+{
+    return (uint8_t)((uint8_t)(value >> shift) & mask);
+}
+
+static inline uint16_t unpack_left_shift_u16(
+    uint8_t value,
+    uint8_t shift,
+    uint8_t mask)
+{
+    return (uint16_t)((uint16_t)(value & mask) << shift);
+}
+
+static inline uint8_t unpack_right_shift_u8(
+    uint8_t value,
+    uint8_t shift,
+    uint8_t mask)
+{
+    return (uint8_t)((uint8_t)(value & mask) >> shift);
+}
+
+static inline uint16_t unpack_right_shift_u16(
+    uint8_t value,
+    uint8_t shift,
+    uint8_t mask)
+{
+    return (uint16_t)((uint16_t)(value & mask) >> shift);
+}
+
 int rivanna3_dashboard_commands_pack(
     uint8_t *dst_p,
     const struct rivanna3_dashboard_commands_t *src_p,

@@ -1,6 +1,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <stddef.h>
+#include <string.h> // could be moved to dashboard_can.h
 
 #ifndef EINVAL
 #    define EINVAL 22
