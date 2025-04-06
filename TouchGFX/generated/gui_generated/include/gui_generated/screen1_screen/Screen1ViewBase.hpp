@@ -8,8 +8,11 @@
 #include <mvp/View.hpp>
 #include <gui/screen1_screen/Screen1Presenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
+#include <touchgfx/widgets/BoxWithBorder.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
-#include <touchgfx/containers/clock/DigitalClock.hpp>
+#include <touchgfx/widgets/canvas/Line.hpp>
+#include <touchgfx/widgets/canvas/PainterRGB888.hpp>
+#include <touchgfx/widgets/canvas/Shape.hpp>
 
 class Screen1ViewBase : public touchgfx::View<Screen1Presenter>
 {
@@ -37,6 +40,10 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::Box box1;
+    touchgfx::BoxWithBorder boxWithBorder1;
+    touchgfx::BoxWithBorder boxWithBorder1_1;
+    touchgfx::BoxWithBorder boxWithBorder1_1_1;
+    touchgfx::BoxWithBorder boxWithBorder1_1_1_1;
     touchgfx::TextAreaWithOneWildcard total;
     touchgfx::TextAreaWithOneWildcard session;
     touchgfx::TextAreaWithOneWildcard speed;
@@ -49,7 +56,14 @@ protected:
     touchgfx::TextAreaWithOneWildcard solarVolt;
     touchgfx::TextAreaWithOneWildcard solarTemp;
     touchgfx::TextAreaWithOneWildcard solarCurr;
-    touchgfx::DigitalClock digitalClock1;
+    touchgfx::Line line1;
+    touchgfx::PainterRGB888 line1Painter;
+    touchgfx::Line line1_1;
+    touchgfx::PainterRGB888 line1_1Painter;
+    touchgfx::Shape<3> shape1_2;
+    touchgfx::PainterRGB888 shape1_2Painter;
+    touchgfx::Shape<3> shape1_2_1;
+    touchgfx::PainterRGB888 shape1_2_1Painter;
 
     /*
      * Wildcard Buffers
@@ -80,6 +94,12 @@ protected:
     touchgfx::Unicode::UnicodeChar solarCurrBuffer[SOLARCURR_SIZE];
 
 private:
+
+    /*
+     * Canvas Buffer Size
+     */
+    static const uint32_t CANVAS_BUFFER_SIZE = 7200;
+    uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
 
 };
 

@@ -3,10 +3,12 @@
     "Screens": [
       {
         "Name": "Screen1",
+        "CanvasBufferSize": 7200,
         "Components": [
           {
             "Type": "Box",
             "Name": "box1",
+            "X": -1,
             "Width": 480,
             "Height": 800,
             "Color": {
@@ -16,12 +18,65 @@
             }
           },
           {
+            "Type": "BoxWithBorder",
+            "Name": "boxWithBorder1",
+            "Y": 73,
+            "Width": 480,
+            "Height": 177,
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "BorderSize": 5
+          },
+          {
+            "Type": "BoxWithBorder",
+            "Name": "boxWithBorder1_1",
+            "Y": 240,
+            "Width": 480,
+            "Height": 218,
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "BorderSize": 5
+          },
+          {
+            "Type": "BoxWithBorder",
+            "Name": "boxWithBorder1_1_1",
+            "Y": 449,
+            "Width": 480,
+            "Height": 218,
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "BorderSize": 5
+          },
+          {
+            "Type": "BoxWithBorder",
+            "Name": "boxWithBorder1_1_1_1",
+            "X": 1,
+            "Y": 659,
+            "Width": 480,
+            "Height": 141,
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "BorderSize": 5
+          },
+          {
             "Type": "TextArea",
             "Name": "total",
-            "X": 240,
-            "Y": 232,
-            "Width": 240,
-            "Height": 62,
+            "X": 29,
+            "Y": 144,
+            "Width": 452,
+            "Height": 47,
             "TextId": "__SingleUse_60TL",
             "TextRotation": "0",
             "Wildcard1": {
@@ -33,10 +88,10 @@
           {
             "Type": "TextArea",
             "Name": "session",
-            "X": 240,
-            "Y": 137,
-            "Width": 240,
-            "Height": 62,
+            "X": 28,
+            "Y": 191,
+            "Width": 452,
+            "Height": 49,
             "TextId": "__SingleUse_GBLF",
             "TextRotation": "0",
             "Wildcard1": {
@@ -48,10 +103,10 @@
           {
             "Type": "TextArea",
             "Name": "speed",
-            "X": 240,
-            "Y": 50,
-            "Width": 240,
-            "Height": 33,
+            "X": 28,
+            "Y": 98,
+            "Width": 451,
+            "Height": 46,
             "TextId": "__SingleUse_TWF3",
             "TextRotation": "0",
             "Wildcard1": {
@@ -63,10 +118,10 @@
           {
             "Type": "TextArea",
             "Name": "bpsError",
-            "X": 11,
-            "Y": 751,
-            "Width": 275,
-            "Height": 29,
+            "X": 28,
+            "Y": 580,
+            "Width": 452,
+            "Height": 45,
             "TextId": "__SingleUse_K8F2",
             "TextRotation": "0",
             "Wildcard1": {
@@ -78,10 +133,10 @@
           {
             "Type": "TextArea",
             "Name": "motor",
-            "X": 11,
-            "Y": 703,
-            "Width": 275,
-            "Height": 32,
+            "X": 28,
+            "Y": 729,
+            "Width": 452,
+            "Height": 44,
             "TextId": "__SingleUse_RHTA",
             "TextRotation": "0",
             "Wildcard1": {
@@ -93,10 +148,10 @@
           {
             "Type": "TextArea",
             "Name": "powerAux",
-            "X": 11,
-            "Y": 650,
-            "Width": 275,
-            "Height": 39,
+            "X": 28,
+            "Y": 685,
+            "Width": 452,
+            "Height": 44,
             "TextId": "__SingleUse_2J9V",
             "TextRotation": "0",
             "Wildcard1": {
@@ -108,10 +163,10 @@
           {
             "Type": "TextArea",
             "Name": "cellTemp",
-            "X": 11,
-            "Y": 598,
-            "Width": 275,
-            "Height": 30,
+            "X": 29,
+            "Y": 536,
+            "Width": 451,
+            "Height": 44,
             "TextId": "__SingleUse_U3RT",
             "TextRotation": "0",
             "Wildcard1": {
@@ -123,10 +178,10 @@
           {
             "Type": "TextArea",
             "Name": "cellVolt",
-            "X": 11,
-            "Y": 547,
-            "Width": 275,
-            "Height": 35,
+            "X": 29,
+            "Y": 491,
+            "Width": 451,
+            "Height": 45,
             "TextId": "__SingleUse_K7ZJ",
             "TextRotation": "0",
             "Wildcard1": {
@@ -138,10 +193,10 @@
           {
             "Type": "TextArea",
             "Name": "solarPhoto",
-            "X": 11,
-            "Y": 501,
-            "Width": 275,
-            "Height": 36,
+            "X": 29,
+            "Y": 391,
+            "Width": 451,
+            "Height": 44,
             "TextId": "__SingleUse_YIF1",
             "TextRotation": "0",
             "Wildcard1": {
@@ -153,10 +208,10 @@
           {
             "Type": "TextArea",
             "Name": "solarVolt",
-            "X": 11,
-            "Y": 454,
-            "Width": 275,
-            "Height": 47,
+            "X": 28,
+            "Y": 340,
+            "Width": 452,
+            "Height": 51,
             "TextId": "__SingleUse_C2TF",
             "TextRotation": "0",
             "Wildcard1": {
@@ -168,9 +223,9 @@
           {
             "Type": "TextArea",
             "Name": "solarTemp",
-            "X": 11,
-            "Y": 408,
-            "Width": 275,
+            "X": 28,
+            "Y": 294,
+            "Width": 453,
             "Height": 46,
             "TextId": "__SingleUse_F2LO",
             "TextRotation": "0",
@@ -183,10 +238,10 @@
           {
             "Type": "TextArea",
             "Name": "solarCurr",
-            "X": 11,
-            "Y": 356,
-            "Width": 275,
-            "Height": 52,
+            "X": 28,
+            "Y": 250,
+            "Width": 452,
+            "Height": 44,
             "TextId": "__SingleUse_RKCB",
             "TextRotation": "0",
             "Wildcard1": {
@@ -196,16 +251,74 @@
             }
           },
           {
-            "Type": "DigitalClock",
-            "Name": "digitalClock1",
-            "X": 169,
-            "Width": 142,
-            "Height": 25,
-            "TextId": "__SingleUse_T481",
-            "DisplaySeconds": true,
-            "DisplayLeadingZeroForHourIndicator": true,
-            "UseAmPm": true,
-            "InitialHour": 10
+            "Type": "Line",
+            "Name": "line1",
+            "X": 35,
+            "Y": 16,
+            "Width": 140,
+            "Height": 50,
+            "StartY": 20.0,
+            "EndX": 100.0,
+            "EndY": 20.0,
+            "LineWidth": 20.0,
+            "LineEndingStyle": "Round"
+          },
+          {
+            "Type": "Line",
+            "Name": "line1_1",
+            "X": 331,
+            "Y": 16,
+            "Width": 122,
+            "Height": 50,
+            "StartX": 120.0,
+            "StartY": 20.0,
+            "EndX": 10.0,
+            "EndY": 20.0,
+            "LineWidth": 20.0,
+            "LineEndingStyle": "Round"
+          },
+          {
+            "Type": "Shape",
+            "Name": "shape1_2",
+            "X": 399,
+            "Width": 88,
+            "Height": 77,
+            "Points": [
+              {
+                "X": 35.0
+              },
+              {
+                "X": 35.0,
+                "Y": 75.0
+              },
+              {
+                "X": 75.0,
+                "Y": 35.0
+              }
+            ],
+            "XScale": 1.0,
+            "YScale": 1.0
+          },
+          {
+            "Type": "Shape",
+            "Name": "shape1_2_1",
+            "X": 1,
+            "Width": 68,
+            "Height": 112,
+            "Points": [
+              {
+                "X": 40.0
+              },
+              {
+                "X": 40.0,
+                "Y": 75.0
+              },
+              {
+                "Y": 35.0
+              }
+            ],
+            "XScale": 1.0,
+            "YScale": 1.0
           }
         ],
         "Interactions": [

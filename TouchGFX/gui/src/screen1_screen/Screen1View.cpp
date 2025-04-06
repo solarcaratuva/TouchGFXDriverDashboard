@@ -1,8 +1,14 @@
 #include <gui/screen1_screen/Screen1View.hpp>
+#include <touchgfx/Color.hpp>
 
 Screen1View::Screen1View()
 {
-
+    line1.setPainter(line1Painter);
+    line1_1.setPainter(line1_1Painter);
+    shape1_2.setPainter(shape1_2Painter);
+    shape1_2_1.setPainter(shape1_2_1Painter);
+    //R: 240, G:212, B: 0
+ 
 }
 
 void Screen1View::setupScreen()
@@ -29,8 +35,20 @@ void Screen1View::tearDownScreen()
 
 void Screen1View::function1()
 {
-    count += 0.01;
+    count += .01;
+    //Need to make if(**can message saying left-blinker is active**)
+    // {
+    //     line1Painter.setColor(touchgfx::Color::getColorFromRGB(240, 212, 0));
+    //     shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(240, 212, 0));
+    // }
+    //Need to make if(**can message saying right-blinker is active**)
+    // {
+    //     line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(240, 212, 0));
+    //     shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(240, 212, 0));
+    // }
+
     Unicode::snprintfFloat(solarCurrBuffer, SOLARCURR_SIZE, "%.2f", count);
+    //Example of changing text color: solarCurr.setColor(touchgfx::Color::getColorFromRGB(0, 0, 255));
     Unicode::snprintfFloat(solarTempBuffer, SOLARTEMP_SIZE, "%.2f", count);
     Unicode::snprintfFloat(solarVoltBuffer, SOLARVOLT_SIZE, "%.2f", count);
     Unicode::snprintfFloat(solarPhotoBuffer, SOLARPHOTO_SIZE, "%.2f", count);
