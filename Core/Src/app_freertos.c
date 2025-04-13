@@ -45,7 +45,7 @@
 osThreadId_t sendHeartbeatTaskHandle;
 const osThreadAttr_t sendHeartbeatTask_attributes = {
   .name = "sendHeartBeatTask",
-  .priority = osPriorityNormal,
+  .priority = (osPriority_t) osPriorityNormal,
   .stack_size = 128 * 4
 };
 /* USER CODE END Variables */
@@ -76,7 +76,7 @@ void sendHeartBeatTask(void *argument)
     TickType_t xLastWakeTime = xTaskGetTickCount();
 
     for(int i=0; i<8; ++i) {
-      TxData[i] = i;
+      TxData[i] = (char) i;
     }
 
     for (;;)
