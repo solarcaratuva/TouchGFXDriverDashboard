@@ -14,6 +14,9 @@ public:
     }
 
     void tick();
+
+    bool isRightTurnSignal();
+    bool isLeftTurnSignal();
 protected:
     ModelListener* modelListener;
 };

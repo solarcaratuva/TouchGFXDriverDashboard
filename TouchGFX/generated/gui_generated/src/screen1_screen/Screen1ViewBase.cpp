@@ -172,7 +172,7 @@ Screen1ViewBase::Screen1ViewBase()
     shape1_2_1.setAngle(0.0f);
     shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     shape1_2_1.setPainter(shape1_2_1Painter);
-    const touchgfx::AbstractShape::ShapePoint<float> shape1_2_1Points[3] = { { 40.0f, 0.0f }, { 40.0f, 75.0f }, { -0.0f, 35.0f } };
+    const touchgfx::AbstractShape::ShapePoint<float> shape1_2_1Points[3] = { { 40.0f, 0.0f }, { 40.0f, 75.0f }, { 0.0f, 35.0f } };
     shape1_2_1.setShape(shape1_2_1Points);
     add(shape1_2_1);
 }

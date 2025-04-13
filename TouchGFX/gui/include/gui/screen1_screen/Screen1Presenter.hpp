@@ -27,6 +27,10 @@ public:
 
     virtual void function1();
 
+    bool getRightTurnSignal();
+
+    bool getLeftTurnSignal();
+
     virtual ~Screen1Presenter() {}
 
 private:

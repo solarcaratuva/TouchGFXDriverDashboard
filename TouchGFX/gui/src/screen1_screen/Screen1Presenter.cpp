@@ -21,3 +21,11 @@ void Screen1Presenter::function1()
 {
     
 }
+
+bool Screen1Presenter::getRightTurnSignal() {
+    return model->isRightTurnSignal();
+}
+
+bool Screen1Presenter::getLeftTurnSignal() {
+    return model->isLeftTurnSignal();  // Or whatever model function you're using
+}

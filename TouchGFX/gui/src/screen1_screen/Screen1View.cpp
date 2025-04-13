@@ -33,22 +33,26 @@ void Screen1View::tearDownScreen()
     Screen1ViewBase::tearDownScreen();
 }
 
+bool switchPressed = false;
+
 void Screen1View::function1()
 {
     count += .01;
-    //Need to make if(**can message saying left-blinker is active**)
-    // {
-    //     line1Painter.setColor(touchgfx::Color::getColorFromRGB(240, 212, 0));
-    //     shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(240, 212, 0));
-    // }
-    //Need to make if(**can message saying right-blinker is active**)
-    // {
-    //     line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(240, 212, 0));
-    //     shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(240, 212, 0));
-    // }
+    bool isRight = presenter->getRightTurnSignal();
+    bool isLeft = presenter->getLeftTurnSignal();
+    if(isLeft == true)
+    {
+         line1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
+         shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
+    }
+    if(isRight == true)
+    {
+         line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
+         shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
+    }
 
     Unicode::snprintfFloat(solarCurrBuffer, SOLARCURR_SIZE, "%.2f", count);
-    //Example of changing text color: solarCurr.setColor(touchgfx::Color::getColorFromRGB(0, 0, 255));
+    //Example of changing text color: solarCurr.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
     Unicode::snprintfFloat(solarTempBuffer, SOLARTEMP_SIZE, "%.2f", count);
     Unicode::snprintfFloat(solarVoltBuffer, SOLARVOLT_SIZE, "%.2f", count);
     Unicode::snprintfFloat(solarPhotoBuffer, SOLARPHOTO_SIZE, "%.2f", count);
