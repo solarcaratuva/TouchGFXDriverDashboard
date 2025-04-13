@@ -18,16 +18,16 @@ bool Model::isRightTurnSignal() {
 }
 
 bool Model::isLeftTurnSignal() {
-    return true;
+    return false;
 }
 #else
 #include "main.h"
 
 bool Model::isRightTurnSignal() {
-    return HAL_GPIO_ReadPin(GPIOG, GPIO_PIN_9);
+    return (HAL_GPIO_ReadPin(GPIOG, GPIO_PIN_9) == GPIO_PIN_SET);
 }
 
 bool Model::isLeftTurnSignal() {
-    return HAL_GPIO_ReadPin(GPIOG, GPIO_PIN_10);
+    return (HAL_GPIO_ReadPin(GPIOG, GPIO_PIN_10) == GPIO_PIN_SET);
 }
 #endif
