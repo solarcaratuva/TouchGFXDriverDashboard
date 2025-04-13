@@ -93,5 +93,5 @@ void sendDashBoardTask()
   dashboard_can.cruise_en = 0;
   dashboard_can.cruise_dec = 0;
 
-  rivanna3_dashboard_commands_pack(TxData->data, &dashboard_can, 8);
+  rivanna3_dashboard_commands_pack(TxData, &dashboard_can, 8);
 }

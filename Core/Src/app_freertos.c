@@ -23,6 +23,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "wheelboard_can.h"
+#include "heartbeat_can.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -75,10 +76,16 @@ void sendHeartBeatTask(void *argument)
     const TickType_t xPeriod = pdMS_TO_TICKS( 1 * 1000 );
     TickType_t xLastWakeTime = xTaskGetTickCount();
 
+    struct rivanna3_heart_beat_t heartbeat_can;
+
+    heartbeat_can.from_telemetry_board = 1; 
+    heartbeat_can.from_wheel_board = 0;
+    heartbeat_can.from_power_board = 0;
+
     for (;;)
     {
         // Your periodic function call
-        send_can_message();
+        rivanna3_heart_beat_pack(TxData, &heartbeat_can, 8);// removed ->data from TxData
 
         // Wait for the next cycle
         vTaskDelayUntil(&xLastWakeTime, xPeriod);
