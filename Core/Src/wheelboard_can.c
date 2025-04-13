@@ -13,7 +13,7 @@ void FDCAN_Config(void)
   FDCAN_FilterTypeDef sFilterConfig;
 
   /* Configure Rx filter */
-  sFilterConfig.IdType 			= FDCAN_EXTENDED_ID;
+  sFilterConfig.IdType 			= FDCAN_STANDARD_ID;
   sFilterConfig.FilterIndex 	= 0;
   sFilterConfig.FilterType 		= FDCAN_FILTER_MASK;
   sFilterConfig.FilterConfig 	= FDCAN_FILTER_TO_RXFIFO0;
@@ -40,8 +40,8 @@ void FDCAN_Config(void)
   }
 
   /* Prepare Tx Header */
-  TxHeader.Identifier 			= 0x19F21101;
-  TxHeader.IdType 				= FDCAN_EXTENDED_ID;
+  TxHeader.Identifier 			= 12;
+  TxHeader.IdType 				= FDCAN_STANDARD_ID;
   TxHeader.TxFrameType 			= FDCAN_DATA_FRAME;
   TxHeader.DataLength 			= FDCAN_DLC_BYTES_8;
   TxHeader.ErrorStateIndicator 	= FDCAN_ESI_ACTIVE;
