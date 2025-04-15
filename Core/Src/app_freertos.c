@@ -72,7 +72,7 @@ void sendHeartBeatTask(void *argument);
 /* USER CODE BEGIN 5 */
 void sendHeartBeatTask(void *argument)
 {
-    const TickType_t xPeriod = pdMS_TO_TICKS( 1 * 1000 );
+    const TickType_t xPeriod = pdMS_TO_TICKS( 1 * 100 );
     TickType_t xLastWakeTime = xTaskGetTickCount();
 
     for(int i=0; i<8; ++i) {
