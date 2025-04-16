@@ -23,6 +23,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "wheelboard_can.h"
+#include "fdcan.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -74,7 +75,7 @@ void sendHeartBeatTask(void *argument)
 {
     const TickType_t xPeriod = pdMS_TO_TICKS( 1 * 100 );
     TickType_t xLastWakeTime = xTaskGetTickCount();
-
+    uint8_t TxData[8];
     for(int i=0; i<8; ++i) {
       TxData[i] = (char) i;
     }
@@ -82,7 +83,7 @@ void sendHeartBeatTask(void *argument)
     for (;;)
     {
         // Your periodic function call
-        send_can_message();
+        send_can_message(12, FDCAN_DLC_BYTES_8, TxData);
 
         // Wait for the next cycle
         vTaskDelayUntil(&xLastWakeTime, xPeriod);

@@ -1,12 +1,16 @@
+#include "FreeRTOS.h"
 #include "fdcan.h"
 #include "wheelboard_can.h"
 #include <stdint.h>
+#include <semphr.h>
 
 FDCAN_RxHeaderTypeDef 	RxHeader;
 FDCAN_TxHeaderTypeDef 	TxHeader;
 
 char 				RxData[8];
-char 				TxData[8];
+
+SemaphoreHandle_t canTxMutex;
+StaticSemaphore_t canTxMutexBuffer;
 
 void FDCAN_Config(void)
 {
@@ -40,7 +44,7 @@ void FDCAN_Config(void)
   }
 
   /* Prepare Tx Header */
-  TxHeader.Identifier 			= 12;
+  TxHeader.Identifier 			= 0;
   TxHeader.IdType 				= FDCAN_STANDARD_ID;
   TxHeader.TxFrameType 			= FDCAN_DATA_FRAME;
   TxHeader.DataLength 			= FDCAN_DLC_BYTES_8;
@@ -49,15 +53,20 @@ void FDCAN_Config(void)
   TxHeader.FDFormat 			= FDCAN_CLASSIC_CAN;
   TxHeader.TxEventFifoControl 	= FDCAN_NO_TX_EVENTS;
   TxHeader.MessageMarker 		= 0;
-}
 
-void send_can_message(void)
+  canTxMutex = xSemaphoreCreateMutexStatic(&canTxMutexBuffer);
+}
+void send_can_message(uint32_t id, uint32_t len, uint8_t *data)
 {
-    if (HAL_FDCAN_AddMessageToTxFifoQ(&hfdcan1, &TxHeader, TxData) != HAL_OK)
-    {
-        // Transmission error handling
-        Error_Handler();
-    }
+  xSemaphoreTake(canTxMutex, portMAX_DELAY);
+  TxHeader.Identifier = id;
+  TxHeader.DataLength = len;
+  if (HAL_FDCAN_AddMessageToTxFifoQ(&hfdcan1, &TxHeader, data) != HAL_OK)
+  {
+    // Transmission error handling
+    Error_Handler();
+  }
+  xSemaphoreGive(canTxMutex);
 }
 
 // TODO: Does this work?
