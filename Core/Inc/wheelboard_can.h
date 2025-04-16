@@ -8,9 +8,6 @@ extern "C" {
 #include <stdint.h>
 #include "fdcan.h"
 
-extern FDCAN_RxHeaderTypeDef 	RxHeader;
-extern char 				RxData[8];
-
 void FDCAN_Config(void);
 
 // len must be part of the group FDCAN_data_length_code found in stm32u5xx_hal_fdcan.h

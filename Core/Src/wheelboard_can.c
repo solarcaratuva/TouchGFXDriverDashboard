@@ -4,11 +4,10 @@
 #include <stdint.h>
 #include <semphr.h>
 
-FDCAN_RxHeaderTypeDef 	RxHeader;
-FDCAN_TxHeaderTypeDef 	TxHeader;
+FDCAN_RxHeaderTypeDef RxHeader;
+uint8_t RxData[8];
 
-char 				RxData[8];
-
+FDCAN_TxHeaderTypeDef TxHeader;
 SemaphoreHandle_t canTxMutex;
 StaticSemaphore_t canTxMutexBuffer;
 
@@ -85,6 +84,14 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan1, uint32_t RxFifo0ITs
     {
       /* Notification Error */
       Error_Handler();
+    }
+
+    switch(RxHeader.Identifier) {
+      case 4:
+        // toggle PB_1
+        break;
+      default:
+        break;
     }
   }
 }
