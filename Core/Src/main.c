@@ -372,3 +372,23 @@ void assert_failed(uint8_t *file, uint32_t line)
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
+
+// void MX_GPIO_Init(void)
+// {
+//     GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+//     // Enable clock for GPIOG (used for PG9 and PG10)
+//     __HAL_RCC_GPIOG_CLK_ENABLE();
+
+//     // Configure PG9 (Right Turn Signal)
+//     GPIO_InitStruct.Pin = GPIO_PIN_9;
+//     GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+//     GPIO_InitStruct.Pull = GPIO_PULLUP; // Use pull-up if button connects to GND
+//     HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);
+
+//     // Configure PG10 (Left Turn Signal)
+//     GPIO_InitStruct.Pin = GPIO_PIN_10;
+//     GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+//     GPIO_InitStruct.Pull = GPIO_PULLUP; // Use pull-up if button connects to GND
+//     HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);
+// }

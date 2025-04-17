@@ -80,6 +80,11 @@ void Error_Handler(void);
 #define R_INT_GPIO_Port GPIOC
 
 /* USER CODE BEGIN Private defines */
+#define USR_BTN_2_Pin GPIO_PIN_9
+#define USR_BTN_2_GPIO_Port GPIOG
+
+#define USR_BTN_3_Pin GPIO_PIN_10
+#define USR_BTN_3_GPIO_Port GPIOG
 
 /* USER CODE END Private defines */
 

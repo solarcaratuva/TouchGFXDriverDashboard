@@ -178,6 +178,18 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(R_INT_GPIO_Port, &GPIO_InitStruct);
 
+      /*Configure GPIO pin : PG9 */
+  // GPIO_InitStruct.Pin = USR_BTN_2_Pin;
+  // GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  // GPIO_InitStruct.Pull = GPIO_PULLDOWN; // or GPIO_NOPULL / GPIO_PULLDOWN
+  // HAL_GPIO_Init(USR_BTN_2_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PG10 */
+  GPIO_InitStruct.Pin = USR_BTN_3_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  HAL_GPIO_Init(USR_BTN_3_GPIO_Port, &GPIO_InitStruct);
+
 }
 
 /* USER CODE BEGIN 2 */
