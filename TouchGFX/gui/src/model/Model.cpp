@@ -24,10 +24,10 @@ bool Model::isLeftTurnSignal() {
 #include "main.h"
 
 bool Model::isRightTurnSignal() {
-    return (HAL_GPIO_ReadPin(GPIOG, GPIO_PIN_9) == GPIO_PIN_SET);
+    return (HAL_GPIO_ReadPin(USR_BTN_2_GPIO_Port, USR_BTN_2_Pin) != GPIO_PIN_SET);
 }
 
 bool Model::isLeftTurnSignal() {
-    return (HAL_GPIO_ReadPin(USR_BTN_3_GPIO_Port, USR_BTN_3_Pin) == GPIO_PIN_RESET);
+    return (HAL_GPIO_ReadPin(USR_BTN_3_GPIO_Port, USR_BTN_3_Pin) != GPIO_PIN_RESET);
 }
 #endif
