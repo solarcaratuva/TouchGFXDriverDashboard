@@ -21,6 +21,7 @@ void FDCAN_Config(void)
   sFilterConfig.FilterType 		= FDCAN_FILTER_MASK;
   sFilterConfig.FilterConfig 	= FDCAN_FILTER_TO_RXFIFO0;
   sFilterConfig.FilterID1 		= 0x00000000;
+  sFilterConfig.FilterID2 		= 0x0;
 
   if (HAL_FDCAN_ConfigFilter(&hfdcan1, &sFilterConfig) != HAL_OK)
   {
@@ -35,12 +36,12 @@ void FDCAN_Config(void)
     Error_Handler();
   }
 
-  // Enables CAN callback
-  if (HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0) != HAL_OK)
-  {
-    /* Notification Error */
-    Error_Handler();
-  }
+  // // Enables CAN callback
+  // if (HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0) != HAL_OK)
+  // {
+  //   /* Notification Error */
+  //   Error_Handler();
+  // }
 
   /* Prepare Tx Header */
   TxHeader.Identifier 			= 0;
@@ -53,11 +54,11 @@ void FDCAN_Config(void)
   TxHeader.TxEventFifoControl 	= FDCAN_NO_TX_EVENTS;
   TxHeader.MessageMarker 		= 0;
 
-  canTxMutex = xSemaphoreCreateMutexStatic(&canTxMutexBuffer);
+  // canTxMutex = xSemaphoreCreateMutexStatic(&canTxMutexBuffer);
 }
 void send_can_message(uint32_t id, uint32_t len, uint8_t *data)
 {
-  xSemaphoreTake(canTxMutex, portMAX_DELAY);
+  // xSemaphoreTake(canTxMutex, portMAX_DELAY);
   TxHeader.Identifier = id;
   TxHeader.DataLength = len;
   if (HAL_FDCAN_AddMessageToTxFifoQ(&hfdcan1, &TxHeader, data) != HAL_OK)
@@ -65,33 +66,33 @@ void send_can_message(uint32_t id, uint32_t len, uint8_t *data)
     // Transmission error handling
     Error_Handler();
   }
-  xSemaphoreGive(canTxMutex);
+  // xSemaphoreGive(canTxMutex);
 }
 
-// TODO: Does this work?
-void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan1, uint32_t RxFifo0ITs)
-{
-  if((RxFifo0ITs & FDCAN_IT_RX_FIFO0_NEW_MESSAGE) != RESET)
-  {
-    /* Retreive Rx messages from RX FIFO0 */
-    if (HAL_FDCAN_GetRxMessage(hfdcan1, FDCAN_RX_FIFO0, &RxHeader, RxData) != HAL_OK)
-    {
-    /* Reception Error */
-    Error_Handler();
-    }
+// // TODO: Does this work?
+// void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan1, uint32_t RxFifo0ITs)
+// {
+//   if((RxFifo0ITs & FDCAN_IT_RX_FIFO0_NEW_MESSAGE) != RESET)
+//   {
+//     /* Retreive Rx messages from RX FIFO0 */
+//     if (HAL_FDCAN_GetRxMessage(hfdcan1, FDCAN_RX_FIFO0, &RxHeader, RxData) != HAL_OK)
+//     {
+//     /* Reception Error */
+//     Error_Handler();
+//     }
 
-    if (HAL_FDCAN_ActivateNotification(hfdcan1, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0) != HAL_OK)
-    {
-      /* Notification Error */
-      Error_Handler();
-    }
+//     if (HAL_FDCAN_ActivateNotification(hfdcan1, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0) != HAL_OK)
+//     {
+//       /* Notification Error */
+//       Error_Handler();
+//     }
 
-    switch(RxHeader.Identifier) {
-      case 4:
-        // toggle PB_1
-        break;
-      default:
-        break;
-    }
-  }
-}
+//     switch(RxHeader.Identifier) {
+//       case 4:
+//         // toggle PB_1
+//         break;
+//       default:
+//         break;
+//     }
+//   }
+// }

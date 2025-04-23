@@ -76,7 +76,40 @@ static void SystemPower_Config(void);
 void MX_FREERTOS_Init(void);
 static void MX_NVIC_Init(void);
 /* USER CODE BEGIN PFP */
+FDCAN_RxHeaderTypeDef RxHeader;
+uint8_t RxData[8];
 
+// TODO: Does this work?
+void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan1, uint32_t RxFifo0ITs)
+{
+  if((RxFifo0ITs & FDCAN_IT_RX_FIFO0_NEW_MESSAGE) != RESET)
+  {
+    /* Retreive Rx messages from RX FIFO0 */
+    if (HAL_FDCAN_GetRxMessage(hfdcan1, FDCAN_RX_FIFO0, &RxHeader, RxData) != HAL_OK)
+    {
+    /* Reception Error */
+    Error_Handler();
+    }
+
+    if (HAL_FDCAN_ActivateNotification(hfdcan1, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0) != HAL_OK)
+    {
+      /* Notification Error */
+      Error_Handler();
+    }
+    uint8_t TxData[8];
+    for(int i=0; i<8; ++i) {
+      TxData[i] = (char) i;
+    }
+    send_can_message(13, FDCAN_DLC_BYTES_8, TxData);
+    // switch(RxHeader.Identifier) {
+    //   case 4:
+    //     // toggle PB_1
+    //     break;
+    //   default:
+    //     break;
+    // }
+  }
+}
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -170,13 +203,13 @@ int main(void)
   /* USER CODE END 2 */
 
   /* Init scheduler */
-  osKernelInitialize();
+  // osKernelInitialize();
 
   /* Call init function for freertos objects (in cmsis_os2.c) */
-  MX_FREERTOS_Init();
+  // MX_FREERTOS_Init();
 
   /* Start scheduler */
-  osKernelStart();
+  // osKernelStart();
 
   /* We should never get here as control is now taken by the scheduler */
 
@@ -184,8 +217,36 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    uint32_t pending = HAL_FDCAN_GetRxFifoFillLevel(
+      &hfdcan1, 
+      FDCAN_RX_FIFO0
+    );
+    if (pending > 0) {
+    // There’s at least one message waiting…
+    // FDCAN_RxHeaderTypeDef   rxHdr;
+    // uint8_t                 rxData[8];
+    if (HAL_FDCAN_GetRxMessage(
+    &hfdcan1, 
+    FDCAN_RX_FIFO0, 
+    &RxHeader, 
+    RxData
+    ) == HAL_OK)
+    {
+      uint8_t TxData[8];
+    for(int i=0; i<8; ++i) {
+      TxData[i] = (char) i;
+    }
+    if(RxHeader.Identifier == 4) {
+    send_can_message(13, FDCAN_DLC_BYTES_8, TxData);
+    }
+    // process rxHdr.ID, rxData[], etc.
+    // FDCAN_RxHeaderTypeDef RxHeader;
+    // uint8_t RxData[8];
+    
+    }
+  }
     /* USER CODE END WHILE */
-
+    HAL_Delay(10);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

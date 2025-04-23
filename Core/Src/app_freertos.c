@@ -83,7 +83,7 @@ void sendHeartBeatTask(void *argument)
     for (;;)
     {
         // Your periodic function call
-        send_can_message(12, FDCAN_DLC_BYTES_8, TxData);
+        // send_can_message(13, FDCAN_DLC_BYTES_8, TxData);
 
         // Wait for the next cycle
         vTaskDelayUntil(&xLastWakeTime, xPeriod);
