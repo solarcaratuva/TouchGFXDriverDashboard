@@ -237,7 +237,15 @@ int main(void)
       TxData[i] = (char) i;
     }
     if(RxHeader.Identifier == 4) {
-    send_can_message(13, FDCAN_DLC_BYTES_8, TxData);
+      int ok = 1;
+      for(char i=0; i<8; ++i) {
+        if(RxData[i] != (char)i) {
+          ok = 0;
+        }
+      }
+      if(ok){
+        send_can_message(13, FDCAN_DLC_BYTES_8, TxData);
+      }
     }
     // process rxHdr.ID, rxData[], etc.
     // FDCAN_RxHeaderTypeDef RxHeader;
