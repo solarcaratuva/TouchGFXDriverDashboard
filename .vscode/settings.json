@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "wheelboard_can.h": "c"
+        "wheelboard_can.h": "c",
+        "freertos.h": "c"
     }
 }
