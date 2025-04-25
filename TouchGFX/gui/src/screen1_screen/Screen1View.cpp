@@ -1,6 +1,7 @@
 #include <gui/screen1_screen/Screen1View.hpp>
 #include <touchgfx/Color.hpp>
 #include "fdcan.h"
+#include "dashboard_can.h"
 
 Screen1View::Screen1View()
 {
@@ -27,6 +28,7 @@ void Screen1View::setupScreen()
     speed.setWildcard(speedBuffer);
     session.setWildcard(sessionBuffer);
     total.setWildcard(totalBuffer);
+    
 }
 
 void Screen1View::tearDownScreen()
@@ -38,6 +40,32 @@ bool switchPressed = false;
 
 void Screen1View::function1()
 {
+    FDCAN_RxHeaderTypeDef RxHeader;
+    uint8_t RxData[8];
+    uint32_t pending = HAL_FDCAN_GetRxFifoFillLevel(
+        &hfdcan1, 
+        FDCAN_RX_FIFO0
+      );
+      if (pending > 0) 
+      {
+        // There’s at least one message waiting…
+        // FDCAN_RxHeaderTypeDef   rxHdr;
+        // uint8_t                 rxData[8];
+        if (HAL_FDCAN_GetRxMessage(
+        &hfdcan1, 
+        FDCAN_RX_FIFO0, 
+        &RxHeader, 
+        RxData
+        ) == HAL_OK)
+        {
+            if(RxHeader.Identifier == RIVANNA3_DASHBOARD_COMMANDS_FRAME_ID)
+            {
+                struct rivanna3_dashboard_commands_t data;
+                rivanna3_dashboard_commands_unpack(&data, RxData, 8);
+                Unicode::snprintfFloat(totalBuffer, TOTAL_SIZE, "%i", data.hazards);
+            }
+        }
+    }
     count += .01;
     bool isRight = presenter->getRightTurnSignal();
     bool isLeft = presenter->getLeftTurnSignal();
@@ -74,7 +102,6 @@ void Screen1View::function1()
     Unicode::snprintfFloat(bpsErrorBuffer, BPSERROR_SIZE, "%.2f", count);
     Unicode::snprintfFloat(speedBuffer, SPEED_SIZE, "%.2f", count);
     Unicode::snprintfFloat(sessionBuffer, SESSION_SIZE, "%.2f", count);
-    Unicode::snprintfFloat(totalBuffer, TOTAL_SIZE, "%.2f", count);
     solarCurr.invalidate();
     solarTemp.invalidate();
     solarVolt.invalidate();

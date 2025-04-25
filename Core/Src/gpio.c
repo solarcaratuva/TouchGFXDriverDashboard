@@ -147,10 +147,10 @@ void MX_GPIO_Init(void)
   HAL_GPIO_Init(CTP_INT_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : PA9 */
-  GPIO_InitStruct.Pin = GPIO_PIN_9;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+  // GPIO_InitStruct.Pin = GPIO_PIN_9;
+  // GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  // GPIO_InitStruct.Pull = GPIO_NOPULL;
+  // HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PGPin PGPin */
   GPIO_InitStruct.Pin = USB_PWR_EN_Pin|R_CS_Pin;
