@@ -343,6 +343,22 @@
               "Type": "ActionCustom",
               "FunctionName": "function1"
             }
+          },
+          {
+            "InteractionName": "Interaction3",
+            "Trigger": {
+              "Type": "TriggerPhysicalButtonClicked",
+              "ButtonKey": 25
+            },
+            "Action": {
+              "Type": "ActionSetShapeColor",
+              "Color": {
+                "Red": 61,
+                "Green": 217,
+                "Blue": 26
+              },
+              "ActionComponent": "shape1_2"
+            }
           }
         ]
       }

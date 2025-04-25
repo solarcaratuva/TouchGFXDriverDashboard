@@ -1,5 +1,6 @@
 #include <gui/screen1_screen/Screen1View.hpp>
 #include <touchgfx/Color.hpp>
+#include "fdcan.h"
 
 Screen1View::Screen1View()
 {
