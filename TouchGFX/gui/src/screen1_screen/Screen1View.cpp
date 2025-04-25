@@ -1,5 +1,6 @@
 #include <gui/screen1_screen/Screen1View.hpp>
 #include <touchgfx/Color.hpp>
+#include "fdcan.h"
 
 Screen1View::Screen1View()
 {
@@ -45,10 +46,20 @@ void Screen1View::function1()
          line1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
          shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
     }
+    else
+    {
+        line1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+        shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    }
     if(isRight == true)
     {
          line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
          shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
+    }
+    else
+    {
+        line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+        shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     }
 
     Unicode::snprintfFloat(solarCurrBuffer, SOLARCURR_SIZE, "%.2f", count);
@@ -76,4 +87,8 @@ void Screen1View::function1()
     speed.invalidate();
     session.invalidate();
     total.invalidate();
+    line1.invalidate();
+    line1_1.invalidate();
+    shape1_2_1.invalidate();
+    shape1_2.invalidate();
 }

@@ -194,3 +194,16 @@ void Screen1ViewBase::handleTickEvent()
     //Call function1
     function1();
 }
+
+void Screen1ViewBase::handleKeyEvent(uint8_t key)
+{
+    if(25 == key)
+    {
+        //Interaction3
+        //When hardware button 25 clicked change color of shape1_2
+        //Set RGB color R:61, G:217, B:26 on shape1_2
+        shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(61, 217, 26));
+        shape1_2.invalidate();
+    
+    }
+}
