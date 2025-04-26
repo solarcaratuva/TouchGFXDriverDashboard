@@ -54,11 +54,11 @@ void FDCAN_Config(void)
   TxHeader.TxEventFifoControl 	= FDCAN_NO_TX_EVENTS;
   TxHeader.MessageMarker 		= 0;
 
-  // canTxMutex = xSemaphoreCreateMutexStatic(&canTxMutexBuffer);
+  canTxMutex = xSemaphoreCreateMutexStatic(&canTxMutexBuffer);
 }
 void send_can_message(uint32_t id, uint32_t len, uint8_t *data)
 {
-  // xSemaphoreTake(canTxMutex, portMAX_DELAY);
+  xSemaphoreTake(canTxMutex, portMAX_DELAY);
   TxHeader.Identifier = id;
   TxHeader.DataLength = len;
   if (HAL_FDCAN_AddMessageToTxFifoQ(&hfdcan1, &TxHeader, data) != HAL_OK)
@@ -66,7 +66,7 @@ void send_can_message(uint32_t id, uint32_t len, uint8_t *data)
     // Transmission error handling
     Error_Handler();
   }
-  // xSemaphoreGive(canTxMutex);
+  xSemaphoreGive(canTxMutex);
 }
 
 // // TODO: Does this work?
