@@ -24,6 +24,7 @@
 /* USER CODE BEGIN Includes */
 #include "wheelboard_can.h"
 #include "heartbeat_can.h"
+#include "data_queues.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -43,13 +44,22 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN Variables */
-
+ReceivedCanData_t receivedCanData;
+FDCAN_RxHeaderTypeDef RxHeader;
+uint8_t RxData[8];
 /* USER CODE END Variables */
 /* Definitions for defaultTask */
 osThreadId_t sendHeartbeatTaskHandle;
 const osThreadAttr_t sendHeartbeatTask_attributes = {
   .name = "sendHeartBeatTask",
-  .priority = (osPriority_t) osPriorityNormal,
+  .priority = (osPriority_t) osPriorityHigh,
+  .stack_size = 128 * 4
+};
+
+osThreadId_t receiveCanTaskHandle;
+const osThreadAttr_t receiveCanTask_attributes = {
+  .name = "receiveCanTask",
+  .priority = (osPriority_t) osPriorityHigh1,
   .stack_size = 128 * 4
 };
 
@@ -63,34 +73,54 @@ const osThreadAttr_t TouchGFXTask_attributes = {
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
-
+void sendHeartBeatTask(void *argument);
+void receiveCanTask(void *argument);
 /* USER CODE END FunctionPrototypes */
 
 /* USER CODE BEGIN 5 */
 void sendHeartBeatTask(void *argument)
 {
-    uint8_t TxData[8];
+  uint8_t TxData[8];
 
-    const TickType_t xPeriod = pdMS_TO_TICKS(100);
+  const TickType_t xPeriod = pdMS_TO_TICKS(100);
 
-    struct rivanna3_heart_beat_t heartbeat_can;
+  struct rivanna3_heart_beat_t heartbeat_can;
 
-    heartbeat_can.from_telemetry_board = 1; 
-    heartbeat_can.from_wheel_board = 0;
-    heartbeat_can.from_power_board = 0;
+  heartbeat_can.from_telemetry_board = 1; 
+  heartbeat_can.from_wheel_board = 0;
+  heartbeat_can.from_power_board = 0;
 
-    rivanna3_heart_beat_pack(TxData, &heartbeat_can, 8);// removed ->data from TxData
+  rivanna3_heart_beat_pack(TxData, &heartbeat_can, 8);// removed ->data from TxData
 
-    TickType_t xLastWakeTime = xTaskGetTickCount();
+  TickType_t xLastWakeTime = xTaskGetTickCount();
 
-    for (;;)
-    {
-        // Your periodic function call
-        send_can_message(RIVANNA3_HEART_BEAT_FRAME_ID, RIVANNA3_HEART_BEAT_LENGTH, TxData);
+  for (;;)
+  {
+      // Your periodic function call
+      send_can_message(RIVANNA3_HEART_BEAT_FRAME_ID, RIVANNA3_HEART_BEAT_LENGTH, TxData);
 
-        // Wait for the next cycle
-        vTaskDelayUntil(&xLastWakeTime, xPeriod);
+      // Wait for the next cycle
+      vTaskDelayUntil(&xLastWakeTime, xPeriod);
+  }
+}
+
+void receiveCanTask(void *argument) {
+  const TickType_t xPeriod = pdMS_TO_TICKS(100);
+  TickType_t xLastWakeTime = xTaskGetTickCount();
+
+  for(;;) {
+    uint32_t pending = HAL_FDCAN_GetRxFifoFillLevel(&hfdcan1, FDCAN_RX_FIFO0);
+    uint32_t pendingSaved = pending;
+    while(pending > 0) {
+      if (HAL_FDCAN_GetRxMessage(&hfdcan1, FDCAN_RX_FIFO0, &RxHeader, RxData) == HAL_OK) {
+        
+      }
+      --pending;
     }
+    receivedCanData.test = pendingSaved;
+    xQueueOverwrite(canReceivedQueue, &receivedCanData);
+    vTaskDelayUntil(&xLastWakeTime, xPeriod);
+  }
 }
 
 void vApplicationMallocFailedHook(void)
@@ -157,8 +187,11 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
   /* USER CODE END RTOS_QUEUES */
-  /* creation of defaultTask */
+  /* creation of heartBeatTask */
   sendHeartbeatTaskHandle = osThreadNew(sendHeartBeatTask, NULL, &sendHeartbeatTask_attributes);
+
+  /* creation of receiveCanTask */
+  receiveCanTaskHandle = osThreadNew(receiveCanTask, NULL, &receiveCanTask_attributes);
 
   /* creation of TouchGFXTask */
   TouchGFXTaskHandle = osThreadNew(TouchGFX_Task, NULL, &TouchGFXTask_attributes);
@@ -171,23 +204,6 @@ void MX_FREERTOS_Init(void) {
   /* add events, ... */
   /* USER CODE END RTOS_EVENTS */
 
-}
-/* USER CODE BEGIN Header_StartDefaultTask */
-/**
-* @brief Function implementing the defaultTask thread.
-* @param argument: Not used
-* @retval None
-*/
-/* USER CODE END Header_StartDefaultTask */
-void StartDefaultTask(void *argument)
-{
-  /* USER CODE BEGIN defaultTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
-  /* USER CODE END defaultTask */
 }
 
 /* Private application code --------------------------------------------------*/

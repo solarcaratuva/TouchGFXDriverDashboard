@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "stdint.h": "c",
-        "stm32u5xx_hal_fdcan.h": "c"
+        "stm32u5xx_hal_fdcan.h": "c",
+        "wheelboard_can.h": "c",
+        "app_freertos.h": "c"
     }
 }

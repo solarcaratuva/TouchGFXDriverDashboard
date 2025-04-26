@@ -4,9 +4,6 @@
 #include <stdint.h>
 #include <semphr.h>
 
-FDCAN_RxHeaderTypeDef RxHeader;
-uint8_t RxData[8];
-
 FDCAN_TxHeaderTypeDef TxHeader;
 SemaphoreHandle_t canTxMutex;
 StaticSemaphore_t canTxMutexBuffer;

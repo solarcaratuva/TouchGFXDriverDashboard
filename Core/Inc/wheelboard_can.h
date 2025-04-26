@@ -1,5 +1,5 @@
-#ifndef __WHEELBOARD_CAN_H__
-#define __WHEELBOARD_CAN_H__
+#ifndef WHEELBOARD_CAN_H__
+#define WHEELBOARD_CAN_H__
 
 #ifdef __cplusplus
 extern "C" {
@@ -18,4 +18,4 @@ void send_can_message(uint32_t id, uint32_t len, uint8_t *data);
 }
 #endif
 
-#endif /* __WHEELBOARD_CAN_H__ */
+#endif /* WHEELBOARD_CAN_H__ */
