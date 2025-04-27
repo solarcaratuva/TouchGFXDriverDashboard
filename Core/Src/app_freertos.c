@@ -113,7 +113,7 @@ void sendHeartBeatTask(void *argument)
 
 // THESE MUST BE REPLACED ONCE WE KNOW PIN (Button) FOR CHARGING MODE
 #define ChargingMode_Pin GPIO_PIN_12
-#define ChargingMode_Port GPIOZ
+#define ChargingMode_Port GPIOF
 
 void sendChargingModeTask(void *argument)
 {
