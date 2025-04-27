@@ -599,3 +599,56 @@
      return (value <= 1u);
  }
  
+int rivanna3_charging_mode_pack(
+    uint8_t *dst_p,
+    const struct rivanna3_charging_mode_t *src_p,
+    size_t size)
+{
+    if (size < 1u) {
+        return (-EINVAL);
+    }
+
+    memset(&dst_p[0], 0, 1);
+
+    dst_p[0] |= pack_left_shift_u8(src_p->charging_mode_enable, 0u, 0x01u);
+
+    return (1);
+}
+
+int rivanna3_charging_mode_unpack(
+    struct rivanna3_charging_mode_t *dst_p,
+    const uint8_t *src_p,
+    size_t size)
+{
+    if (size < 1u) {
+        return (-EINVAL);
+    }
+
+    dst_p->charging_mode_enable = unpack_right_shift_u8(src_p[0], 0u, 0x01u);
+
+    return (0);
+}
+
+int rivanna3_charging_mode_init(struct rivanna3_charging_mode_t *msg_p)
+{
+    if (msg_p == NULL) return -1;
+
+    memset(msg_p, 0, sizeof(struct rivanna3_charging_mode_t));
+
+    return 0;
+}
+
+uint8_t rivanna3_charging_mode_charging_mode_enable_encode(double value)
+{
+    return (uint8_t)(value);
+}
+
+double rivanna3_charging_mode_charging_mode_enable_decode(uint8_t value)
+{
+    return ((double)value);
+}
+
+bool rivanna3_charging_mode_charging_mode_enable_is_in_range(uint8_t value)
+{
+    return (value <= 1u);
+}
