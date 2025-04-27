@@ -35,7 +35,7 @@
             "Name": "boxWithBorder1_1",
             "Y": 240,
             "Width": 480,
-            "Height": 218,
+            "Height": 274,
             "Color": {
               "Red": 255,
               "Green": 255,
@@ -46,9 +46,9 @@
           {
             "Type": "BoxWithBorder",
             "Name": "boxWithBorder1_1_1",
-            "Y": 449,
+            "Y": 508,
             "Width": 480,
-            "Height": 218,
+            "Height": 159,
             "Color": {
               "Red": 255,
               "Green": 255,
@@ -118,8 +118,8 @@
           {
             "Type": "TextArea",
             "Name": "bpsError",
-            "X": 28,
-            "Y": 580,
+            "X": 30,
+            "Y": 614,
             "Width": 452,
             "Height": 45,
             "TextId": "__SingleUse_K8F2",
@@ -163,8 +163,8 @@
           {
             "Type": "TextArea",
             "Name": "cellTemp",
-            "X": 29,
-            "Y": 536,
+            "X": 30,
+            "Y": 570,
             "Width": 451,
             "Height": 44,
             "TextId": "__SingleUse_U3RT",
@@ -178,8 +178,8 @@
           {
             "Type": "TextArea",
             "Name": "cellVolt",
-            "X": 29,
-            "Y": 491,
+            "X": 30,
+            "Y": 525,
             "Width": 451,
             "Height": 45,
             "TextId": "__SingleUse_K7ZJ",
@@ -193,8 +193,8 @@
           {
             "Type": "TextArea",
             "Name": "solarPhoto",
-            "X": 29,
-            "Y": 391,
+            "X": 30,
+            "Y": 363,
             "Width": 451,
             "Height": 44,
             "TextId": "__SingleUse_YIF1",
@@ -207,9 +207,54 @@
           },
           {
             "Type": "TextArea",
+            "Name": "cruiseSpeed",
+            "X": 31,
+            "Y": 400,
+            "Width": 451,
+            "Height": 44,
+            "TextId": "__SingleUse_O4X1",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_19XW",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "regenBreaking",
+            "X": 29,
+            "Y": 430,
+            "Width": 451,
+            "Height": 44,
+            "TextId": "__SingleUse_Y8XR",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_JON3",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "throttlePedal",
+            "X": 31,
+            "Y": 464,
+            "Width": 451,
+            "Height": 44,
+            "TextId": "__SingleUse_SJTS",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_KGCS",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
             "Name": "solarVolt",
             "X": 28,
-            "Y": 340,
+            "Y": 326,
             "Width": 452,
             "Height": 51,
             "TextId": "__SingleUse_C2TF",
@@ -223,8 +268,8 @@
           {
             "Type": "TextArea",
             "Name": "solarTemp",
-            "X": 28,
-            "Y": 294,
+            "X": 30,
+            "Y": 288,
             "Width": 453,
             "Height": 46,
             "TextId": "__SingleUse_F2LO",
@@ -238,7 +283,7 @@
           {
             "Type": "TextArea",
             "Name": "solarCurr",
-            "X": 28,
+            "X": 30,
             "Y": 250,
             "Width": 452,
             "Height": 44,

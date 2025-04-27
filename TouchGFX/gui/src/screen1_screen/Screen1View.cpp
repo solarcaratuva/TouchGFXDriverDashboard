@@ -27,7 +27,9 @@ void Screen1View::setupScreen()
     speed.setWildcard(speedBuffer);
     session.setWildcard(sessionBuffer);
     total.setWildcard(totalBuffer);
-    
+    cruiseSpeed.setWildcard(cruiseSpeedBuffer);
+    regenBreaking.setWildcard(regenBreakingBuffer);
+    throttlePedal.setWildcard(throttlePedalBuffer);
 }
 
 void Screen1View::tearDownScreen()
@@ -84,6 +86,9 @@ void Screen1View::function1()
     Unicode::snprintfFloat(bpsErrorBuffer, BPSERROR_SIZE, "%.2f", count);
     Unicode::snprintfFloat(speedBuffer, SPEED_SIZE, "%.2f", count);
     Unicode::snprintfFloat(sessionBuffer, SESSION_SIZE, "%.2f", count);
+    Unicode::snprintfFloat(cruiseSpeedBuffer, CRUISESPEED_SIZE, "%.2f", count);
+    Unicode::snprintfFloat(regenBreakingBuffer, REGENBREAKING_SIZE, "%.2f", count);
+    Unicode::snprintfFloat(throttlePedalBuffer, THROTTLEPEDAL_SIZE, "%.2f", count);
     solarCurr.invalidate();
     solarTemp.invalidate();
     solarVolt.invalidate();
@@ -100,4 +105,7 @@ void Screen1View::function1()
     line1_1.invalidate();
     shape1_2_1.invalidate();
     shape1_2.invalidate();
+    cruiseSpeed.invalidate();
+    regenBreaking.invalidate();
+    throttlePedal.invalidate();
 }
