@@ -39,14 +39,39 @@ void Screen1View::tearDownScreen()
 
 ReceivedCanData_t receivedCanData;
 bool switchPressed = false;
+int packVolt = 0;
+int packCurr = 0;
+int rpm = 0;
+int braking = 0;
+int regen = 0;
+int manual = 0;
+int cruise = 0;
+int brakeP = 0;
+int throttle = 0;
+int cruiseS = 0;
+int regenD = 0;
+int throttleP = 0;
+int mController = 0;
 
 void Screen1View::function1()
 {
     if( xQueueReceive(canReceivedQueue, &receivedCanData, (TickType_t)0 ) == pdTRUE ) {
         count = receivedCanData.motor_controller_power_status.battery_voltage;
+        packVolt = receivedCanData.bps_pack_information.pack_voltage;
+        packCurr = receivedCanData.bps_pack_information.pack_current;
+        rpm = receivedCanData.motor_controller_power_status.motor_rpm;
+        braking = receivedCanData.motor_commands.braking;
+        regen = receivedCanData.motor_commands.regen_braking;
+        manual = receivedCanData.motor_commands.manual_drive;
+        cruise = receivedCanData.motor_commands.cruise_drive;
+        brakeP = receivedCanData.motor_commands.brake_pedal;
+        throttle = receivedCanData.motor_commands.throttle;
+        cruiseS = receivedCanData.motor_commands.cruise_speed;
+        regenD = receivedCanData.motor_commands.regen_drive;
+        throttleP = receivedCanData.motor_commands.throttle_pedal;
     }
     // count += .01;
-    bool isRight = presenter->getRightTurnSignal();
+    bool isRight = presenter->getRightTurnSignal(); 
     bool isLeft = presenter->getLeftTurnSignal();
     if(isLeft == true)
     {
@@ -69,21 +94,22 @@ void Screen1View::function1()
         shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     }
 
-    Unicode::snprintfFloat(solarCurrBuffer, SOLARCURR_SIZE, "%.2f", count);
+    Unicode::snprintfFloat(solarCurrBuffer, SOLARCURR_SIZE, "%.2f", manual);
     //Example of changing text color: solarCurr.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
-    Unicode::snprintfFloat(solarTempBuffer, SOLARTEMP_SIZE, "%.2f", count);
-    Unicode::snprintfFloat(solarVoltBuffer, SOLARVOLT_SIZE, "%.2f", count);
-    Unicode::snprintfFloat(solarPhotoBuffer, SOLARPHOTO_SIZE, "%.2f", count);
-    Unicode::snprintfFloat(cellVoltBuffer, CELLVOLT_SIZE, "%.2f", count);
-    Unicode::snprintfFloat(cellTempBuffer, CELLTEMP_SIZE, "%.2f", count);
+    Unicode::snprintfFloat(solarTempBuffer, SOLARTEMP_SIZE, "%.2f", cruise);
+    Unicode::snprintfFloat(solarVoltBuffer, SOLARVOLT_SIZE, "%.2f", brakeP);
+    Unicode::snprintfFloat(solarPhotoBuffer, SOLARPHOTO_SIZE, "%.2f", throttle);
+    Unicode::snprintfFloat(cellVoltBuffer, CELLVOLT_SIZE, "%.2f", packVolt);
+    Unicode::snprintfFloat(cellTempBuffer, CELLTEMP_SIZE, "%.2f", packCurr);
     Unicode::snprintfFloat(powerAuxBuffer, POWERAUX_SIZE, "%.2f", count);
     Unicode::snprintfFloat(motorBuffer, MOTOR_SIZE, "%.2f", count);
     Unicode::snprintfFloat(bpsErrorBuffer, BPSERROR_SIZE, "%.2f", count);
-    Unicode::snprintfFloat(speedBuffer, SPEED_SIZE, "%.2f", count);
-    Unicode::snprintfFloat(sessionBuffer, SESSION_SIZE, "%.2f", count);
-    Unicode::snprintfFloat(cruiseSpeedBuffer, CRUISESPEED_SIZE, "%.2f", count);
-    Unicode::snprintfFloat(regenBreakingBuffer, REGENBREAKING_SIZE, "%.2f", count);
-    Unicode::snprintfFloat(throttlePedalBuffer, THROTTLEPEDAL_SIZE, "%.2f", count);
+    Unicode::snprintfFloat(speedBuffer, SPEED_SIZE, "%.2f", rpm);
+    Unicode::snprintfFloat(sessionBuffer, SESSION_SIZE, "%.2f", regenD);
+    Unicode::snprintfFloat(cruiseSpeedBuffer, CRUISESPEED_SIZE, "%.2f", cruiseS);
+    Unicode::snprintfFloat(regenBreakingBuffer, REGENBREAKING_SIZE, "%.2f", regen);
+    Unicode::snprintfFloat(throttlePedalBuffer, THROTTLEPEDAL_SIZE, "%.2f", braking);
+    Unicode::snprintfFloat(totalBuffer, TOTAL_SIZE, "%.2f", throttleP);
     solarCurr.invalidate();
     solarTemp.invalidate();
     solarVolt.invalidate();
