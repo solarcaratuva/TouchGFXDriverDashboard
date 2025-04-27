@@ -100,7 +100,7 @@
  #define RIVANNA3_HEARTBEAT_FROM_POWER_BOARD_NAME "FromPowerBoard"
  #define RIVANNA3_HEARTBEAT_FROM_TELEMETRY_BOARD_NAME "FromTelemetryBoard"
  #define RIVANNA3_CHARGING_MODE_CHARGING_MODE_ENABLE_NAME "ChargingModeEnable"
- 
+
  /**
   * Signals in message AuxBatteryStatus.
   *
@@ -275,6 +275,20 @@
       */
      uint8_t from_telemetry_board;
  };
+
+ /**
+ * Signals in message ChargingMode.
+ *
+ * All signal values are as on the CAN bus.
+ */
+struct rivanna3_charging_mode_t {
+    /**
+     * Range: -
+     * Scale: 1
+     * Offset: 0
+     */
+    uint8_t charging_mode_enable;
+};
  
  /**
   * Pack message AuxBatteryStatus.

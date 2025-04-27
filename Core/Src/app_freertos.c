@@ -56,6 +56,13 @@ const osThreadAttr_t sendHeartbeatTask_attributes = {
   .stack_size = 128 * 4
 };
 
+osThreadId_t sendChargingModeTaskHandle;
+const osThreadAttr_t sendChargingModeTask_attributes = {
+  .name = "sendChargingMode",
+  .priority = (osPriority_t) osPriorityHigh,
+  .stack_size = 128 * 4
+};
+
 osThreadId_t receiveCanTaskHandle;
 const osThreadAttr_t receiveCanTask_attributes = {
   .name = "receiveCanTask",
@@ -90,7 +97,7 @@ void sendHeartBeatTask(void *argument)
   heartbeat_can.from_wheel_board = 0;
   heartbeat_can.from_power_board = 0;
 
-  rivanna3_heartbeat_pack(TxData, &heartbeat_can, 8);// removed ->data from TxData
+  rivanna3_heartbeat_pack(TxData, &heartbeat_can, RIVANNA3_HEARTBEAT_LENGTH);// removed ->data from TxData
 
   TickType_t xLastWakeTime = xTaskGetTickCount();
 
@@ -98,6 +105,36 @@ void sendHeartBeatTask(void *argument)
   {
       // Your periodic function call
       send_can_message(RIVANNA3_HEARTBEAT_FRAME_ID, RIVANNA3_HEARTBEAT_LENGTH, TxData);
+
+      // Wait for the next cycle
+      vTaskDelayUntil(&xLastWakeTime, xPeriod);
+  }
+}
+
+// THESE MUST BE REPLACED ONCE WE KNOW PIN (Button) FOR CHARGING MODE
+#define ChargingMode_Pin GPIO_PIN_12
+#define ChargingMode_Port GPIOF
+
+void sendChargingModeTask(void *argument)
+{
+  uint8_t TxData[8];
+
+  const TickType_t xPeriod = pdMS_TO_TICKS(100);
+
+  struct rivanna3_charging_mode_t chargingmode_can;
+
+  chargingmode_can.charging_mode_enable = 1; 
+
+  rivanna3_charging_mode_pack(TxData, &chargingmode_can, RIVANNA3_CHARGING_MODE_LENGTH);// removed ->data from TxData
+
+  TickType_t xLastWakeTime = xTaskGetTickCount();
+
+  for (;;)
+  {
+    if (HAL_GPIO_ReadPin(ChargingMode_Port,ChargingMode_Pin)) {
+      // Your periodic function call
+      send_can_message(RIVANNA3_CHARGING_MODE_FRAME_ID, RIVANNA3_CHARGING_MODE_LENGTH, TxData);
+    }
 
       // Wait for the next cycle
       vTaskDelayUntil(&xLastWakeTime, xPeriod);
@@ -188,6 +225,9 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE END RTOS_QUEUES */
   /* creation of heartBeatTask */
   sendHeartbeatTaskHandle = osThreadNew(sendHeartBeatTask, NULL, &sendHeartbeatTask_attributes);
+
+  /* creation of ChargingModeTask */
+  sendChargingModeTaskHandle = osThreadNew(sendChargingModeTask, NULL, &sendChargingModeTask_attributes);
 
   /* creation of receiveCanTask */
   receiveCanTaskHandle = osThreadNew(receiveCanTask, NULL, &receiveCanTask_attributes);
