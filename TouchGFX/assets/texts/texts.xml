@@ -10,7 +10,7 @@
         <Translation Language="GB">0</Translation>
       </Text>
       <Text Id="__SingleUse_TWF3" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">Speed: &lt;value&gt; mph</Translation>
+        <Translation Language="GB">Motor RPM: &lt;value&gt; mph</Translation>
       </Text>
       <Text Id="__SingleUse_5XM3" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">0</Translation>
@@ -46,13 +46,13 @@
         <Translation Language="GB">0</Translation>
       </Text>
       <Text Id="__SingleUse_U3RT" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">BPSCellTemp: &lt;value&gt;</Translation>
+        <Translation Language="GB">BPSPackCurrent: &lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_0XTX" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">0</Translation>
       </Text>
       <Text Id="__SingleUse_K7ZJ" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">BPSCellVoltage: &lt;value&gt;</Translation>
+        <Translation Language="GB">BPSPackVoltage: &lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_J8IU" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">0</Translation>
