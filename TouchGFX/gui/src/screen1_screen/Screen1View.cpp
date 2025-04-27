@@ -27,9 +27,9 @@ void Screen1View::setupScreen()
     speed.setWildcard(speedBuffer);
     session.setWildcard(sessionBuffer);
     total.setWildcard(totalBuffer);
-    cruiseSpeed.setWildCard(cruiseSpeedBuffer);
-    regenBreaking.setWildCard(regenBreakingBuffer);
-    throttlePedal.setWildCard(throttlePedalBuffer);
+    cruiseSpeed.setWildcard(cruiseSpeedBuffer);
+    regenBreaking.setWildcard(regenBreakingBuffer);
+    throttlePedal.setWildcard(throttlePedalBuffer);
 }
 
 void Screen1View::tearDownScreen()

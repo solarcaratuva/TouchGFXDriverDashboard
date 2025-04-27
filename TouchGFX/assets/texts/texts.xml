@@ -6,23 +6,41 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_KGCS" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_SJTS" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Throttle Pedal: &lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_JON3" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_Y8XR" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Regen Breaking: &lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_19XW" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_O4X1" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Cruise Speed: &lt;value&gt;</Translation>
+      </Text>
       <Text Id="__SingleUse_7C5Q" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">0</Translation>
       </Text>
       <Text Id="__SingleUse_TWF3" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">Motor RPM: &lt;value&gt; mph</Translation>
+        <Translation Language="GB">Motor RPM: &lt;value&gt; rpm</Translation>
       </Text>
       <Text Id="__SingleUse_5XM3" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">0</Translation>
       </Text>
       <Text Id="__SingleUse_60TL" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">Total Dist: &lt;value&gt; miles</Translation>
+        <Translation Language="GB">Breaking: &lt;value&gt; </Translation>
       </Text>
       <Text Id="__SingleUse_SBY5" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">0</Translation>
       </Text>
       <Text Id="__SingleUse_GBLF" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">Session Dist: &lt;value&gt; miles</Translation>
+        <Translation Language="GB">Regen Drive: &lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_19ON" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">0</Translation>
@@ -58,25 +76,25 @@
         <Translation Language="GB">0</Translation>
       </Text>
       <Text Id="__SingleUse_YIF1" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">Solar Photo: &lt;value&gt;</Translation>
+        <Translation Language="GB">Throttle: &lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_3LDK" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">0</Translation>
       </Text>
       <Text Id="__SingleUse_C2TF" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">Solar Voltage: &lt;value&gt;</Translation>
+        <Translation Language="GB">Break Pedal: &lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_W31T" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">0</Translation>
       </Text>
       <Text Id="__SingleUse_F2LO" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">Solar Temp: &lt;value&gt; Unit</Translation>
+        <Translation Language="GB">Cruise Drive: &lt;value&gt; Unit</Translation>
       </Text>
       <Text Id="__SingleUse_CYEC" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">0</Translation>
       </Text>
       <Text Id="__SingleUse_RKCB" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">Solar Current: &lt;value&gt; Unit</Translation>
+        <Translation Language="GB">Manual Drive: &lt;value&gt; Unit</Translation>
       </Text>
     </TextGroup>
   </Texts>

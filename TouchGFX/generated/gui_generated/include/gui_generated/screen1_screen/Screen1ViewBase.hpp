@@ -54,6 +54,9 @@ protected:
     touchgfx::TextAreaWithOneWildcard cellTemp;
     touchgfx::TextAreaWithOneWildcard cellVolt;
     touchgfx::TextAreaWithOneWildcard solarPhoto;
+    touchgfx::TextAreaWithOneWildcard cruiseSpeed;
+    touchgfx::TextAreaWithOneWildcard regenBreaking;
+    touchgfx::TextAreaWithOneWildcard throttlePedal;
     touchgfx::TextAreaWithOneWildcard solarVolt;
     touchgfx::TextAreaWithOneWildcard solarTemp;
     touchgfx::TextAreaWithOneWildcard solarCurr;
@@ -87,6 +90,12 @@ protected:
     touchgfx::Unicode::UnicodeChar cellVoltBuffer[CELLVOLT_SIZE];
     static const uint16_t SOLARPHOTO_SIZE = 10;
     touchgfx::Unicode::UnicodeChar solarPhotoBuffer[SOLARPHOTO_SIZE];
+    static const uint16_t CRUISESPEED_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar cruiseSpeedBuffer[CRUISESPEED_SIZE];
+    static const uint16_t REGENBREAKING_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar regenBreakingBuffer[REGENBREAKING_SIZE];
+    static const uint16_t THROTTLEPEDAL_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar throttlePedalBuffer[THROTTLEPEDAL_SIZE];
     static const uint16_t SOLARVOLT_SIZE = 10;
     touchgfx::Unicode::UnicodeChar solarVoltBuffer[SOLARVOLT_SIZE];
     static const uint16_t SOLARTEMP_SIZE = 10;
