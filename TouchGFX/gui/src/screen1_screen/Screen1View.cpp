@@ -43,12 +43,7 @@ bool switchPressed = false;
 void Screen1View::function1()
 {
     if( xQueueReceive(canReceivedQueue, &receivedCanData, (TickType_t)0 ) == pdTRUE ) {
-        // got data, process it
-        count = receivedCanData.test;
-        // ++count;
-    } else {
-        // queue empty, do other work immediately
-        // count = 10000;
+        count = receivedCanData.motor_controller_power_status.battery_voltage;
     }
     // count += .01;
     bool isRight = presenter->getRightTurnSignal();

@@ -150,11 +150,10 @@ void receiveCanTask(void *argument) {
     uint32_t pendingSaved = pending;
     while(pending > 0) {
       if (HAL_FDCAN_GetRxMessage(&hfdcan1, FDCAN_RX_FIFO0, &RxHeader, RxData) == HAL_OK) {
-        
+        updateReceivedCanData(&receivedCanData, RxHeader.Identifier, RxData);
       }
       --pending;
     }
-    receivedCanData.test = pendingSaved;
     xQueueOverwrite(canReceivedQueue, &receivedCanData);
     vTaskDelayUntil(&xLastWakeTime, xPeriod);
   }
