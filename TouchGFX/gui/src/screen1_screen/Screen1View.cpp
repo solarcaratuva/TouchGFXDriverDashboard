@@ -123,8 +123,8 @@ void Screen1View::function1()
     Unicode::snprintfFloat(sessionBuffer, SESSION_SIZE, "%.2f", regenD);
     Unicode::snprintfFloat(cruiseSpeedBuffer, CRUISESPEED_SIZE, "%.2f", cruiseS);
     Unicode::snprintfFloat(regenBreakingBuffer, REGENBREAKING_SIZE, "%.2f", regen);
-    Unicode::snprintfFloat(throttlePedalBuffer, THROTTLEPEDAL_SIZE, "%.2f", braking);
-    Unicode::snprintfFloat(totalBuffer, TOTAL_SIZE, "%.2f", throttleP);
+    Unicode::snprintfFloat(throttlePedalBuffer, THROTTLEPEDAL_SIZE, "%.2f", throttleP);
+    Unicode::snprintfFloat(totalBuffer, TOTAL_SIZE, "%.2f", braking);
     solarCurr.invalidate();
     solarTemp.invalidate();
     solarVolt.invalidate();
