@@ -93,6 +93,20 @@ void Screen1View::function1()
         line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
         shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     }
+    if(getHazards == true)
+    {
+        line1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
+        shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
+        line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
+        shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
+    }
+    else
+    {
+        line1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+        shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+        line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+        shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    }
 
     Unicode::snprintfFloat(solarCurrBuffer, SOLARCURR_SIZE, "%.2f", manual);
     //Example of changing text color: solarCurr.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));

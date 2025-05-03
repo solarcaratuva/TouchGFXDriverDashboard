@@ -86,6 +86,9 @@ void Error_Handler(void);
 #define USR_BTN_3_Pin GPIO_PIN_10
 #define USR_BTN_3_GPIO_Port GPIOG
 
+#define USR_BTN_4_Pin GPIO_PIN_5
+#define USR_BTN_4_GPIO_Port GPIOG
+
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus
