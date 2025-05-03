@@ -17,6 +17,7 @@ public:
 
     bool isRightTurnSignal();
     bool isLeftTurnSignal();
+    bool isHazards();
 protected:
     ModelListener* modelListener;
 };

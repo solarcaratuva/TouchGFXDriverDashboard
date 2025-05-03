@@ -73,6 +73,7 @@ void Screen1View::function1()
     // count += .01;
     bool isRight = presenter->getRightTurnSignal(); 
     bool isLeft = presenter->getLeftTurnSignal();
+    bool isHaz = presenter->getHazards();
     if(isLeft == true)
     {
          line1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
@@ -93,7 +94,7 @@ void Screen1View::function1()
         line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
         shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     }
-    if(getHazards == true)
+    if(isHaz == true)
     {
         line1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
         shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
