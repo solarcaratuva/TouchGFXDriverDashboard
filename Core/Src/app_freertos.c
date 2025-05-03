@@ -56,6 +56,13 @@ const osThreadAttr_t sendHeartbeatTask_attributes = {
   .stack_size = 128 * 4
 };
 
+osThreadId_t sendTestDashBoardTaskHandle;
+const osThreadAttr_t sendTestDashBoardTask_attributes = {
+  .name = "sendTestDashBoardTask",
+  .priority = (osPriority_t) osPriorityHigh,
+  .stack_size = 128 * 4
+};
+
 osThreadId_t sendChargingModeTaskHandle;
 const osThreadAttr_t sendChargingModeTask_attributes = {
   .name = "sendChargingMode",
@@ -81,6 +88,7 @@ const osThreadAttr_t TouchGFXTask_attributes = {
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
 void sendHeartBeatTask(void *argument);
+void sendTestDashBoardTask(void *argument);
 void receiveCanTask(void *argument);
 /* USER CODE END FunctionPrototypes */
 
@@ -105,6 +113,36 @@ void sendHeartBeatTask(void *argument)
   {
       // Your periodic function call
       send_can_message(RIVANNA3_HEARTBEAT_FRAME_ID, RIVANNA3_HEARTBEAT_LENGTH, TxData);
+
+      // Wait for the next cycle
+      vTaskDelayUntil(&xLastWakeTime, xPeriod);
+  }
+}
+
+void sendTestDashBoardTask(void *argument) {
+  uint8_t TxData[8];
+
+  const TickType_t xPeriod = pdMS_TO_TICKS(100);
+
+  struct rivanna3_dashboard_commands_t dashboard_can;
+
+  dashboard_can.hazards = 1;
+  dashboard_can.left_turn_signal = 0;
+  dashboard_can.right_turn_signal = 0;
+  dashboard_can.regen_en = 1;
+  dashboard_can.cruise_inc = 0;
+  dashboard_can.cruise_en = 1;
+  dashboard_can.cruise_dec = 1;
+
+
+  rivanna3_dashboard_commands_pack(TxData, &dashboard_can, RIVANNA3_DASHBOARD_COMMANDS_LENGTH);// removed ->data from TxData
+
+  TickType_t xLastWakeTime = xTaskGetTickCount();
+
+  for (;;)
+  {
+      // Your periodic function call
+      send_can_message(RIVANNA3_DASHBOARD_COMMANDS_FRAME_ID, RIVANNA3_DASHBOARD_COMMANDS_LENGTH, TxData);
 
       // Wait for the next cycle
       vTaskDelayUntil(&xLastWakeTime, xPeriod);
@@ -225,6 +263,9 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE END RTOS_QUEUES */
   /* creation of heartBeatTask */
   sendHeartbeatTaskHandle = osThreadNew(sendHeartBeatTask, NULL, &sendHeartbeatTask_attributes);
+
+  /* creation of TestDashBoardCommands */
+  sendTestDashBoardTaskHandle = osThreadNew(sendTestDashBoardTask, NULL, &sendTestDashBoardTask_attributes);
 
   /* creation of ChargingModeTask */
   sendChargingModeTaskHandle = osThreadNew(sendChargingModeTask, NULL, &sendChargingModeTask_attributes);
