@@ -31,7 +31,7 @@ bool Model::isLeftTurnSignal() {
     return HAL_GPIO_ReadPin(USR_BTN_3_GPIO_Port, USR_BTN_3_Pin) == GPIO_PIN_SET;
 }
 
-bool Model::isHazards(){
+bool Model::isHazards() {
     return HAL_GPIO_ReadPin(USR_BTN_4_GPIO_Port, USR_BTN_4_Pin) == GPIO_PIN_SET;
 }
 #endif

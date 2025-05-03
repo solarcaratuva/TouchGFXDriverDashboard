@@ -31,6 +31,8 @@ public:
 
     bool getLeftTurnSignal();
 
+    bool getHazards();
+
     virtual ~Screen1Presenter() {}
 
 private:
