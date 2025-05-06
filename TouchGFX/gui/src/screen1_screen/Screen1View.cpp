@@ -74,26 +74,6 @@ void Screen1View::function1()
     bool isRight = presenter->getRightTurnSignal(); 
     bool isLeft = presenter->getLeftTurnSignal();
     bool isHaz = presenter->getHazards();
-    if(isLeft == true)
-    {
-         line1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
-         shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
-    }
-    else
-    {
-        line1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-        shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    }
-    if(isRight == true)
-    {
-         line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
-         shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
-    }
-    else
-    {
-        line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-        shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    }
     if(isHaz == true)
     {
         line1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
@@ -101,6 +81,27 @@ void Screen1View::function1()
         line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
         shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
     }
+    else if(isLeft == true)
+    {
+         line1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
+         shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
+    }
+    else if(isLeft == false)
+    {
+        line1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+        shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    }
+    else if(isRight == true)
+    {
+         line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
+         shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
+    }
+    else if(isRight == false)
+    {
+        line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+        shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    }
+    
     else
     {
         line1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
