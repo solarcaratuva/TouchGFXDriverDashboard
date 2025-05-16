@@ -86,48 +86,26 @@ void Screen1View::function1()
         line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
         shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
     }
-    else if(isLeft == true)
+    if(isLeft == true)
     {
-         line1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
-         shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
-    }
-    else if(isLeft == false)
-    {
-        line1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-        shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    }
-    else if(isRight == true)
-    {
-         line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
-         shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
-    }
-    else if(isRight == false)
-    {
+        line1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
+        shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
         line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
         shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     }
-    else if(isRegen == true)
+    if(isRight == true)
     {
-         line1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
-         shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
+        line1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+        shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+        line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
+        shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
     }
-    else if(isCruiseInc == true)
-    {
-         line1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
-         shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
-    }
-    else if(isCruiseDec == true)
-    {
-         line1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
-         shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
-    }
-    else if(isLowPower == true)
-    {
-         line1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
-         shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
-    }
-    
-        
+    else if (isRegen || isCruiseInc || isCruiseDec || isLowPower) {
+        line1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
+        shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
+        line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+        shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    } 
     else
     {
         line1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
