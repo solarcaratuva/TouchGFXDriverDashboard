@@ -18,6 +18,11 @@ public:
     bool isRightTurnSignal();
     bool isLeftTurnSignal();
     bool isHazards();
+    bool isRegenEn();
+    // bool isCruiseEn();
+    bool isCruiseInc();
+    bool isCruiseDec();
+    bool isLowPowerMode();
 protected:
     ModelListener* modelListener;
 };

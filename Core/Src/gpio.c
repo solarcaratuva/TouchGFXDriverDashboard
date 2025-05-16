@@ -190,10 +190,38 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;  // Change to GPIO_PULLUP for active-low buttons
   HAL_GPIO_Init(USR_BTN_3_GPIO_Port, &GPIO_InitStruct);
 
+  // Configure GPIO pin : PA5 (Hazard)
   GPIO_InitStruct.Pin = USR_BTN_4_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;  // Change to GPIO_PULLUP for active-low buttons
   HAL_GPIO_Init(USR_BTN_4_GPIO_Port, &GPIO_InitStruct);
+
+  // Configure GPIO pin :  (Cruise EN)
+
+
+  // Configure GPIO pin : PB1 (Regen EN)
+  GPIO_InitStruct.Pin = USR_BTN_6_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  HAL_GPIO_Init(USR_BTN_6_GPIO_Port, &GPIO_InitStruct);
+
+  // Configure GPIO pin : PB6 (Cruise UP)
+  GPIO_InitStruct.Pin = USR_BTN_7_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  HAL_GPIO_Init(USR_BTN_7_GPIO_Port, &GPIO_InitStruct);
+
+  // Configure GPIO pin : PB7 (Cruise DOWN)
+  GPIO_InitStruct.Pin = USR_BTN_8_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  HAL_GPIO_Init(USR_BTN_8_GPIO_Port, &GPIO_InitStruct);
+
+  // Configure GPIO pin : PB15 (Low Power)
+  GPIO_InitStruct.Pin = USR_BTN_9_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  HAL_GPIO_Init(USR_BTN_9_GPIO_Port, &GPIO_InitStruct);
 
 }
 

@@ -80,14 +80,29 @@ void Error_Handler(void);
 #define R_INT_GPIO_Port GPIOC
 
 /* USER CODE BEGIN Private defines */
-#define USR_BTN_2_Pin GPIO_PIN_9
+#define USR_BTN_2_Pin GPIO_PIN_9 // Right turn
 #define USR_BTN_2_GPIO_Port GPIOG
 
-#define USR_BTN_3_Pin GPIO_PIN_10
+#define USR_BTN_3_Pin GPIO_PIN_10 // Left turn
 #define USR_BTN_3_GPIO_Port GPIOG
 
-#define USR_BTN_4_Pin GPIO_PIN_5
+#define USR_BTN_4_Pin GPIO_PIN_5 // Hazard
 #define USR_BTN_4_GPIO_Port GPIOA
+
+// #define USR_BTN_5_Pin GPIO_PIN_15 // Cruise EN
+// #define USR_BTN_5_GPIO_Port       Pin is wrong
+
+#define USR_BTN_6_Pin GPIO_PIN_1 // Regen EN
+#define USR_BTN_6_GPIO_Port GPIOB
+
+#define USR_BTN_7_Pin GPIO_PIN_6 // Cruise UP
+#define USR_BTN_7_GPIO_Port GPIOB
+
+#define USR_BTN_8_Pin GPIO_PIN_7 // Cruise DOWN
+#define USR_BTN_8_GPIO_Port GPIOB
+
+#define USR_BTN_9_Pin GPIO_PIN_15 // Low power
+#define USR_BTN_9_GPIO_Port GPIOB
 
 /* USER CODE END Private defines */
 

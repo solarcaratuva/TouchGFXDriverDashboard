@@ -33,3 +33,23 @@ bool Screen1Presenter::getLeftTurnSignal() {
 bool Screen1Presenter::getHazards() {
     return model->isHazards();
 }
+
+bool Screen1Presenter::getRegenEn() {
+    return model->isRegenEn();
+}
+// bool Screen1Presenter::getCruiseEn() {
+    // return model->isCruiseEn();
+// }
+
+bool Screen1Presenter::getCruiseInc() {
+    return model->isCruiseInc();
+}
+
+bool Screen1Presenter::getCruiseDec() {
+    return model->isCruiseDec();
+}
+
+bool Screen1Presenter::getLowPowerMode() {
+    return model->isLowPowerMode();
+}
+

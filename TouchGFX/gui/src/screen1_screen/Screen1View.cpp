@@ -74,6 +74,11 @@ void Screen1View::function1()
     bool isRight = presenter->getRightTurnSignal(); 
     bool isLeft = presenter->getLeftTurnSignal();
     bool isHaz = presenter->getHazards();
+    bool isRegen = presenter->getRegenEn();
+    // bool isCruise = presenter->getCruiseEn();
+    bool isCruiseInc = presenter->getCruiseInc();
+    bool isCruiseDec = presenter->getCruiseDec();
+    bool isLowPower = presenter->getLowPowerMode();
     if(isHaz == true)
     {
         line1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
@@ -101,7 +106,28 @@ void Screen1View::function1()
         line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
         shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     }
+    else if(isRegen == true)
+    {
+         line1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
+         shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
+    }
+    else if(isCruiseInc == true)
+    {
+         line1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
+         shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
+    }
+    else if(isCruiseDec == true)
+    {
+         line1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
+         shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
+    }
+    else if(isLowPower == true)
+    {
+         line1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
+         shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
+    }
     
+        
     else
     {
         line1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));

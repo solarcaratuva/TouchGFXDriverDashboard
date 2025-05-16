@@ -33,6 +33,16 @@ public:
 
     bool getHazards();
 
+    bool getRegenEn();
+
+    // bool getCruiseEn();
+
+    bool getCruiseInc();
+
+    bool getCruiseDec();
+
+    bool getLowPowerMode();
+
     virtual ~Screen1Presenter() {}
 
 private:

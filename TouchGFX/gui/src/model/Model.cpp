@@ -34,4 +34,25 @@ bool Model::isLeftTurnSignal() {
 bool Model::isHazards() {
     return HAL_GPIO_ReadPin(USR_BTN_4_GPIO_Port, USR_BTN_4_Pin) == GPIO_PIN_SET;
 }
+
+bool Model::isRegenEn() {
+    return HAL_GPIO_ReadPin(USR_BTN_6_GPIO_Port, USR_BTN_6_Pin) == GPIO_PIN_SET;
+}
+
+// bool Model::isCruiseEn() {
+//     return HAL_GPIO_ReadPin(USR_BTN_5_GPIO_Port, USR_BTN_5_Pin) == GPIO_PIN_SET;
+// }
+
+bool Model::isCruiseInc() {
+    return HAL_GPIO_ReadPin(USR_BTN_7_GPIO_Port, USR_BTN_7_Pin) == GPIO_PIN_SET;
+}
+
+bool Model::isCruiseDec() {
+    return HAL_GPIO_ReadPin(USR_BTN_8_GPIO_Port, USR_BTN_8_Pin) == GPIO_PIN_SET;
+}
+
+bool Model::isLowPowerMode() {
+    return HAL_GPIO_ReadPin(USR_BTN_9_GPIO_Port, USR_BTN_9_Pin) == GPIO_PIN_SET;
+}
+
 #endif
