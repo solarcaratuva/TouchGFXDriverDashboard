@@ -19,7 +19,7 @@ public:
     bool isLeftTurnSignal();
     bool isHazards();
     bool isRegenEn();
-    // bool isCruiseEn();
+    bool isCruiseEn();
     bool isCruiseInc();
     bool isCruiseDec();
     bool isLowPowerMode();

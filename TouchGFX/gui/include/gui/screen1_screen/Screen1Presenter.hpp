@@ -35,7 +35,7 @@ public:
 
     bool getRegenEn();
 
-    // bool getCruiseEn();
+    bool getCruiseEn();
 
     bool getCruiseInc();
 

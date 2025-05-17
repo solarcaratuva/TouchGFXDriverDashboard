@@ -75,7 +75,7 @@ void Screen1View::function1()
     bool isLeft = presenter->getLeftTurnSignal();
     bool isHaz = presenter->getHazards();
     bool isRegen = presenter->getRegenEn();
-    // bool isCruise = presenter->getCruiseEn();
+    bool isCruise = presenter->getCruiseEn();
     bool isCruiseInc = presenter->getCruiseInc();
     bool isCruiseDec = presenter->getCruiseDec();
     bool isLowPower = presenter->getLowPowerMode();
@@ -100,7 +100,7 @@ void Screen1View::function1()
         line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
         shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
     }
-    else if (isRegen || isCruiseInc || isCruiseDec || isLowPower) {
+    else if (isCruise || isRegen || isCruiseInc || isCruiseDec || isLowPower) {
         line1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
         shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
         line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));

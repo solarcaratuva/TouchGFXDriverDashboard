@@ -37,9 +37,10 @@ bool Screen1Presenter::getHazards() {
 bool Screen1Presenter::getRegenEn() {
     return model->isRegenEn();
 }
-// bool Screen1Presenter::getCruiseEn() {
-    // return model->isCruiseEn();
-// }
+
+bool Screen1Presenter::getCruiseEn() {
+    return model->isCruiseEn();
+}
 
 bool Screen1Presenter::getCruiseInc() {
     return model->isCruiseInc();

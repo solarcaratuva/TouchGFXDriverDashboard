@@ -196,8 +196,11 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;  // Change to GPIO_PULLUP for active-low buttons
   HAL_GPIO_Init(USR_BTN_4_GPIO_Port, &GPIO_InitStruct);
 
-  // Configure GPIO pin :  (Cruise EN)
-
+  // Configure GPIO pin : I5 (Cruise EN)
+  GPIO_InitStruct.Pin = USR_BTN_5_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  HAL_GPIO_Init(USR_BTN_5_GPIO_Port, &GPIO_InitStruct);
 
   // Configure GPIO pin : PB1 (Regen EN)
   GPIO_InitStruct.Pin = USR_BTN_6_Pin;
