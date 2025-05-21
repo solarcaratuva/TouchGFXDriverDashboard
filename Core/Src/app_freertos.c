@@ -63,6 +63,13 @@ const osThreadAttr_t sendHeartbeatTask_attributes = {
 //   .stack_size = 128 * 4
 // };
 
+osThreadId_t sendDashBoardTaskHandle;
+const osThreadAttr_t sendDashBoardTask_attributes = {
+  .name = "sendDashBoardTask",
+  .priority = (osPriority_t) osPriorityHigh,
+  .stack_size = 128 * 4
+};
+
 osThreadId_t sendChargingModeTaskHandle;
 const osThreadAttr_t sendChargingModeTask_attributes = {
   .name = "sendChargingMode",
@@ -88,7 +95,7 @@ const osThreadAttr_t TouchGFXTask_attributes = {
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
 void sendHeartBeatTask(void *argument);
-// void sendTestDashBoardTask(void *argument);
+void sendDashBoardTask(void *argument);
 void receiveCanTask(void *argument);
 /* USER CODE END FunctionPrototypes */
 
@@ -119,35 +126,34 @@ void sendHeartBeatTask(void *argument)
   }
 }
 
-// void sendTestDashBoardTask(void *argument) {
-//   uint8_t TxData[8];
+void sendDashBoardTask(void *argument) {
+  uint8_t TxData[8];
 
-//   const TickType_t xPeriod = pdMS_TO_TICKS(100);
+  const TickType_t xPeriod = pdMS_TO_TICKS(100);
 
-//   struct rivanna3_dashboard_commands_t dashboard_can;
+  TickType_t xLastWakeTime = xTaskGetTickCount();
 
-//   dashboard_can.hazards = 1;
-//   dashboard_can.left_turn_signal = 0;
-//   dashboard_can.right_turn_signal = 0;
-//   dashboard_can.regen_en = 1;
-//   dashboard_can.cruise_inc = 0;
-//   dashboard_can.cruise_en = 1;
-//   dashboard_can.cruise_dec = 1;
+  struct rivanna3_dashboard_commands_t dashboard_can;
 
+  for (;;)
+  {
+      dashboard_can.left_turn_signal = HAL_GPIO_ReadPin(USR_BTN_3_GPIO_Port, USR_BTN_3_Pin) == GPIO_PIN_SET;
+      dashboard_can.right_turn_signal = HAL_GPIO_ReadPin(USR_BTN_2_GPIO_Port, USR_BTN_2_Pin) == GPIO_PIN_SET;
+      dashboard_can.hazards = HAL_GPIO_ReadPin(USR_BTN_4_GPIO_Port, USR_BTN_4_Pin) == GPIO_PIN_SET;
+      dashboard_can.cruise_en = HAL_GPIO_ReadPin(USR_BTN_5_GPIO_Port, USR_BTN_5_Pin) == GPIO_PIN_SET;
+      dashboard_can.regen_en = HAL_GPIO_ReadPin(USR_BTN_6_GPIO_Port, USR_BTN_6_Pin) == GPIO_PIN_SET;
+      dashboard_can.cruise_inc = HAL_GPIO_ReadPin(USR_BTN_7_GPIO_Port, USR_BTN_7_Pin) == GPIO_PIN_SET;
+      dashboard_can.cruise_dec = HAL_GPIO_ReadPin(USR_BTN_8_GPIO_Port, USR_BTN_8_Pin) == GPIO_PIN_SET;
 
-//   rivanna3_dashboard_commands_pack(TxData, &dashboard_can, RIVANNA3_DASHBOARD_COMMANDS_LENGTH);// removed ->data from TxData
+      rivanna3_dashboard_commands_pack(TxData, &dashboard_can, RIVANNA3_DASHBOARD_COMMANDS_LENGTH);// removed ->data from TxData
 
-//   TickType_t xLastWakeTime = xTaskGetTickCount();
+      // Your periodic function call
+      send_can_message(RIVANNA3_DASHBOARD_COMMANDS_FRAME_ID, RIVANNA3_DASHBOARD_COMMANDS_LENGTH, TxData);
 
-//   for (;;)
-//   {
-//       // Your periodic function call
-//       send_can_message(RIVANNA3_DASHBOARD_COMMANDS_FRAME_ID, RIVANNA3_DASHBOARD_COMMANDS_LENGTH, TxData);
-
-//       // Wait for the next cycle
-//       vTaskDelayUntil(&xLastWakeTime, xPeriod);
-//   }
-// }
+      // Wait for the next cycle
+      vTaskDelayUntil(&xLastWakeTime, xPeriod);
+  }
+}
 
 // THESE MUST BE REPLACED ONCE WE KNOW PIN (Button) FOR CHARGING MODE
 #define ChargingMode_Pin GPIO_PIN_12
@@ -264,8 +270,8 @@ void MX_FREERTOS_Init(void) {
   /* creation of heartBeatTask */
   sendHeartbeatTaskHandle = osThreadNew(sendHeartBeatTask, NULL, &sendHeartbeatTask_attributes);
 
-  /* creation of TestDashBoardCommands */
-  // sendTestDashBoardTaskHandle = osThreadNew(sendTestDashBoardTask, NULL, &sendTestDashBoardTask_attributes);
+  /* creation of DashBoardCommands */
+  sendDashBoardTaskHandle = osThreadNew(sendDashBoardTask, NULL, &sendDashBoardTask_attributes);
 
   /* creation of ChargingModeTask */
   sendChargingModeTaskHandle = osThreadNew(sendChargingModeTask, NULL, &sendChargingModeTask_attributes);

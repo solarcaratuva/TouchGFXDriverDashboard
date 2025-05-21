@@ -89,7 +89,7 @@ void Error_Handler(void);
 #define USR_BTN_4_Pin GPIO_PIN_5 // Hazard
 #define USR_BTN_4_GPIO_Port GPIOA
 
-#define USR_BTN_5_Pin GPIO_PIN_15 // Cruise EN
+#define USR_BTN_5_Pin GPIO_PIN_5 // Cruise EN
 #define USR_BTN_5_GPIO_Port GPIOI
 
 #define USR_BTN_6_Pin GPIO_PIN_1 // Regen EN
