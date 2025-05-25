@@ -45,6 +45,8 @@ protected:
     touchgfx::BoxWithBorder boxWithBorder2;
     touchgfx::BoxWithBorder boxWithBorder2_1;
     touchgfx::BoxWithBorder boxWithBorder2_1_1;
+    touchgfx::BoxWithBorder messageLog;
+    touchgfx::BoxWithBorder messageLog_1;
     touchgfx::TextAreaWithOneWildcard total;
     touchgfx::TextAreaWithOneWildcard session;
     touchgfx::TextAreaWithOneWildcard speed;

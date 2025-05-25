@@ -36,6 +36,18 @@ Screen1ViewBase::Screen1ViewBase()
     boxWithBorder2_1_1.setBorderSize(5);
     add(boxWithBorder2_1_1);
 
+    messageLog.setPosition(-9, 508, 249, 306);
+    messageLog.setColor(touchgfx::Color::getColorFromRGB(199, 195, 195));
+    messageLog.setBorderColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    messageLog.setBorderSize(5);
+    add(messageLog);
+
+    messageLog_1.setPosition(236, 508, 262, 306);
+    messageLog_1.setColor(touchgfx::Color::getColorFromRGB(199, 195, 195));
+    messageLog_1.setBorderColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    messageLog_1.setBorderSize(5);
+    add(messageLog_1);
+
     total.setPosition(4, 153, 129, 28);
     total.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     total.setLinespacing(0);
@@ -60,7 +72,7 @@ Screen1ViewBase::Screen1ViewBase()
     speed.setTypedText(touchgfx::TypedText(T___SINGLEUSE_TWF3));
     add(speed);
 
-    bpsError.setPosition(5, 473, 151, 26);
+    bpsError.setPosition(4, 473, 151, 26);
     bpsError.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     bpsError.setLinespacing(0);
     Unicode::snprintf(bpsErrorBuffer, BPSERROR_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_19ON).getText());
@@ -68,7 +80,7 @@ Screen1ViewBase::Screen1ViewBase()
     bpsError.setTypedText(touchgfx::TypedText(T___SINGLEUSE_K8F2));
     add(bpsError);
 
-    powerAux.setPosition(253, 473, 215, 29);
+    powerAux.setPosition(253, 472, 215, 29);
     powerAux.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     powerAux.setLinespacing(0);
     Unicode::snprintf(powerAuxBuffer, POWERAUX_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_N3FC).getText());
@@ -186,19 +198,19 @@ Screen1ViewBase::Screen1ViewBase()
     shape1_2_1.setShape(shape1_2_1Points);
     add(shape1_2_1);
 
-    MotorCommandsTitle.setXY(102, 110);
+    MotorCommandsTitle.setXY(97, 110);
     MotorCommandsTitle.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     MotorCommandsTitle.setLinespacing(0);
     MotorCommandsTitle.setTypedText(touchgfx::TypedText(T___SINGLEUSE_5Q9P));
     add(MotorCommandsTitle);
 
-    textArea1.setXY(207, 361);
+    textArea1.setXY(207, 354);
     textArea1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     textArea1.setLinespacing(0);
     textArea1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_CKSE));
     add(textArea1);
 
-    textArea1_1.setXY(197, 436);
+    textArea1_1.setXY(197, 426);
     textArea1_1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     textArea1_1.setLinespacing(0);
     textArea1_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_DOD1));

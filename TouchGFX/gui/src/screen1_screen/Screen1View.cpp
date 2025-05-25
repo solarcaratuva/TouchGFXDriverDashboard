@@ -22,7 +22,6 @@ void Screen1View::setupScreen()
     cellVolt.setWildcard(cellVoltBuffer);
     cellTemp.setWildcard(cellTempBuffer);
     powerAux.setWildcard(powerAuxBuffer);
-    motor.setWildcard(motorBuffer);
     bpsError.setWildcard(bpsErrorBuffer);
     speed.setWildcard(speedBuffer);
     session.setWildcard(sessionBuffer);
@@ -122,7 +121,6 @@ void Screen1View::function1()
     Unicode::snprintfFloat(cellVoltBuffer, CELLVOLT_SIZE, "%.2f", packVolt);
     Unicode::snprintfFloat(cellTempBuffer, CELLTEMP_SIZE, "%.2f", packCurr);
     Unicode::snprintfFloat(powerAuxBuffer, POWERAUX_SIZE, "%.2f", count);
-    Unicode::snprintfFloat(motorBuffer, MOTOR_SIZE, "%.2f", count);
     Unicode::snprintfFloat(bpsErrorBuffer, BPSERROR_SIZE, "%.2f", count);
     Unicode::snprintfFloat(speedBuffer, SPEED_SIZE, "%.2f", rpm);
     Unicode::snprintfFloat(sessionBuffer, SESSION_SIZE, "%.2f", regenD);
@@ -137,7 +135,6 @@ void Screen1View::function1()
     cellVolt.invalidate();
     cellTemp.invalidate();
     powerAux.invalidate();
-    motor.invalidate();
     bpsError.invalidate();
     speed.invalidate();
     session.invalidate();
