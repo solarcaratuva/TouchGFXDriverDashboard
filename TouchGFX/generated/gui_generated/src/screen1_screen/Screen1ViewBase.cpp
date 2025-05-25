@@ -18,31 +18,25 @@ Screen1ViewBase::Screen1ViewBase()
     box1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     add(box1);
 
-    boxWithBorder1.setPosition(0, 73, 480, 177);
-    boxWithBorder1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    boxWithBorder1.setBorderColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    boxWithBorder1.setBorderSize(5);
-    add(boxWithBorder1);
+    boxWithBorder2.setPosition(-12, 110, 498, 251);
+    boxWithBorder2.setColor(touchgfx::Color::getColorFromRGB(200, 203, 210));
+    boxWithBorder2.setBorderColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    boxWithBorder2.setBorderSize(5);
+    add(boxWithBorder2);
 
-    boxWithBorder1_1.setPosition(0, 240, 480, 274);
-    boxWithBorder1_1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    boxWithBorder1_1.setBorderColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    boxWithBorder1_1.setBorderSize(5);
-    add(boxWithBorder1_1);
+    boxWithBorder2_1.setPosition(-9, 354, 495, 83);
+    boxWithBorder2_1.setColor(touchgfx::Color::getColorFromRGB(249, 220, 191));
+    boxWithBorder2_1.setBorderColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    boxWithBorder2_1.setBorderSize(5);
+    add(boxWithBorder2_1);
 
-    boxWithBorder1_1_1.setPosition(0, 508, 480, 159);
-    boxWithBorder1_1_1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    boxWithBorder1_1_1.setBorderColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    boxWithBorder1_1_1.setBorderSize(5);
-    add(boxWithBorder1_1_1);
+    boxWithBorder2_1_1.setPosition(-10, 426, 496, 86);
+    boxWithBorder2_1_1.setColor(touchgfx::Color::getColorFromRGB(247, 190, 190));
+    boxWithBorder2_1_1.setBorderColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    boxWithBorder2_1_1.setBorderSize(5);
+    add(boxWithBorder2_1_1);
 
-    boxWithBorder1_1_1_1.setPosition(1, 659, 480, 141);
-    boxWithBorder1_1_1_1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    boxWithBorder1_1_1_1.setBorderColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    boxWithBorder1_1_1_1.setBorderSize(5);
-    add(boxWithBorder1_1_1_1);
-
-    total.setPosition(29, 144, 452, 47);
+    total.setPosition(4, 153, 129, 28);
     total.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     total.setLinespacing(0);
     Unicode::snprintf(totalBuffer, TOTAL_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_5XM3).getText());
@@ -50,7 +44,7 @@ Screen1ViewBase::Screen1ViewBase()
     total.setTypedText(touchgfx::TypedText(T___SINGLEUSE_60TL));
     add(total);
 
-    session.setPosition(28, 191, 452, 49);
+    session.setPosition(253, 155, 180, 26);
     session.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     session.setLinespacing(0);
     Unicode::snprintf(sessionBuffer, SESSION_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_SBY5).getText());
@@ -58,7 +52,7 @@ Screen1ViewBase::Screen1ViewBase()
     session.setTypedText(touchgfx::TypedText(T___SINGLEUSE_GBLF));
     add(session);
 
-    speed.setPosition(28, 98, 451, 46);
+    speed.setPosition(253, 319, 207, 25);
     speed.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     speed.setLinespacing(0);
     Unicode::snprintf(speedBuffer, SPEED_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_7C5Q).getText());
@@ -66,7 +60,7 @@ Screen1ViewBase::Screen1ViewBase()
     speed.setTypedText(touchgfx::TypedText(T___SINGLEUSE_TWF3));
     add(speed);
 
-    bpsError.setPosition(30, 614, 452, 45);
+    bpsError.setPosition(5, 473, 151, 26);
     bpsError.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     bpsError.setLinespacing(0);
     Unicode::snprintf(bpsErrorBuffer, BPSERROR_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_19ON).getText());
@@ -74,15 +68,7 @@ Screen1ViewBase::Screen1ViewBase()
     bpsError.setTypedText(touchgfx::TypedText(T___SINGLEUSE_K8F2));
     add(bpsError);
 
-    motor.setPosition(28, 729, 452, 44);
-    motor.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    motor.setLinespacing(0);
-    Unicode::snprintf(motorBuffer, MOTOR_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_SJL0).getText());
-    motor.setWildcard(motorBuffer);
-    motor.setTypedText(touchgfx::TypedText(T___SINGLEUSE_RHTA));
-    add(motor);
-
-    powerAux.setPosition(28, 685, 452, 44);
+    powerAux.setPosition(253, 473, 215, 29);
     powerAux.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     powerAux.setLinespacing(0);
     Unicode::snprintf(powerAuxBuffer, POWERAUX_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_N3FC).getText());
@@ -90,7 +76,7 @@ Screen1ViewBase::Screen1ViewBase()
     powerAux.setTypedText(touchgfx::TypedText(T___SINGLEUSE_2J9V));
     add(powerAux);
 
-    cellTemp.setPosition(30, 570, 451, 44);
+    cellTemp.setPosition(253, 401, 217, 25);
     cellTemp.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     cellTemp.setLinespacing(0);
     Unicode::snprintf(cellTempBuffer, CELLTEMP_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_QWO4).getText());
@@ -98,7 +84,7 @@ Screen1ViewBase::Screen1ViewBase()
     cellTemp.setTypedText(touchgfx::TypedText(T___SINGLEUSE_U3RT));
     add(cellTemp);
 
-    cellVolt.setPosition(30, 525, 451, 45);
+    cellVolt.setPosition(5, 400, 217, 26);
     cellVolt.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     cellVolt.setLinespacing(0);
     Unicode::snprintf(cellVoltBuffer, CELLVOLT_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_0XTX).getText());
@@ -106,7 +92,7 @@ Screen1ViewBase::Screen1ViewBase()
     cellVolt.setTypedText(touchgfx::TypedText(T___SINGLEUSE_K7ZJ));
     add(cellVolt);
 
-    solarPhoto.setPosition(30, 363, 451, 44);
+    solarPhoto.setPosition(253, 236, 132, 24);
     solarPhoto.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     solarPhoto.setLinespacing(0);
     Unicode::snprintf(solarPhotoBuffer, SOLARPHOTO_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_J8IU).getText());
@@ -114,7 +100,7 @@ Screen1ViewBase::Screen1ViewBase()
     solarPhoto.setTypedText(touchgfx::TypedText(T___SINGLEUSE_YIF1));
     add(solarPhoto);
 
-    cruiseSpeed.setPosition(31, 400, 451, 44);
+    cruiseSpeed.setPosition(3, 277, 191, 27);
     cruiseSpeed.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     cruiseSpeed.setLinespacing(0);
     Unicode::snprintf(cruiseSpeedBuffer, CRUISESPEED_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_19XW).getText());
@@ -122,7 +108,7 @@ Screen1ViewBase::Screen1ViewBase()
     cruiseSpeed.setTypedText(touchgfx::TypedText(T___SINGLEUSE_O4X1));
     add(cruiseSpeed);
 
-    regenBreaking.setPosition(29, 430, 451, 44);
+    regenBreaking.setPosition(253, 277, 213, 30);
     regenBreaking.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     regenBreaking.setLinespacing(0);
     Unicode::snprintf(regenBreakingBuffer, REGENBREAKING_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_JON3).getText());
@@ -130,7 +116,7 @@ Screen1ViewBase::Screen1ViewBase()
     regenBreaking.setTypedText(touchgfx::TypedText(T___SINGLEUSE_Y8XR));
     add(regenBreaking);
 
-    throttlePedal.setPosition(31, 464, 451, 44);
+    throttlePedal.setPosition(5, 319, 196, 25);
     throttlePedal.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     throttlePedal.setLinespacing(0);
     Unicode::snprintf(throttlePedalBuffer, THROTTLEPEDAL_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_KGCS).getText());
@@ -138,7 +124,7 @@ Screen1ViewBase::Screen1ViewBase()
     throttlePedal.setTypedText(touchgfx::TypedText(T___SINGLEUSE_SJTS));
     add(throttlePedal);
 
-    solarVolt.setPosition(28, 326, 452, 51);
+    solarVolt.setPosition(3, 235, 174, 27);
     solarVolt.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     solarVolt.setLinespacing(0);
     Unicode::snprintf(solarVoltBuffer, SOLARVOLT_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_3LDK).getText());
@@ -146,7 +132,7 @@ Screen1ViewBase::Screen1ViewBase()
     solarVolt.setTypedText(touchgfx::TypedText(T___SINGLEUSE_C2TF));
     add(solarVolt);
 
-    solarTemp.setPosition(30, 288, 453, 46);
+    solarTemp.setPosition(253, 192, 226, 26);
     solarTemp.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     solarTemp.setLinespacing(0);
     Unicode::snprintf(solarTempBuffer, SOLARTEMP_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_W31T).getText());
@@ -154,7 +140,7 @@ Screen1ViewBase::Screen1ViewBase()
     solarTemp.setTypedText(touchgfx::TypedText(T___SINGLEUSE_F2LO));
     add(solarTemp);
 
-    solarCurr.setPosition(30, 250, 452, 44);
+    solarCurr.setPosition(3, 192, 234, 30);
     solarCurr.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     solarCurr.setLinespacing(0);
     Unicode::snprintf(solarCurrBuffer, SOLARCURR_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_CYEC).getText());
@@ -162,7 +148,7 @@ Screen1ViewBase::Screen1ViewBase()
     solarCurr.setTypedText(touchgfx::TypedText(T___SINGLEUSE_RKCB));
     add(solarCurr);
 
-    line1.setPosition(35, 16, 140, 50);
+    line1.setPosition(46, 32, 140, 50);
     line1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     line1.setPainter(line1Painter);
     line1.setStart(0, 20);
@@ -171,7 +157,7 @@ Screen1ViewBase::Screen1ViewBase()
     line1.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
     add(line1);
 
-    line1_1.setPosition(331, 16, 122, 50);
+    line1_1.setPosition(324, 32, 122, 50);
     line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     line1_1.setPainter(line1_1Painter);
     line1_1.setStart(120, 20);
@@ -180,7 +166,7 @@ Screen1ViewBase::Screen1ViewBase()
     line1_1.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
     add(line1_1);
 
-    shape1_2.setPosition(399, 0, 88, 77);
+    shape1_2.setPosition(392, 16, 88, 77);
     shape1_2.setOrigin(0.0f, 0.0f);
     shape1_2.setScale(1.0f, 1.0f);
     shape1_2.setAngle(0.0f);
@@ -190,7 +176,7 @@ Screen1ViewBase::Screen1ViewBase()
     shape1_2.setShape(shape1_2Points);
     add(shape1_2);
 
-    shape1_2_1.setPosition(1, 0, 68, 112);
+    shape1_2_1.setPosition(12, 16, 68, 112);
     shape1_2_1.setOrigin(0.0f, 0.0f);
     shape1_2_1.setScale(1.0f, 1.0f);
     shape1_2_1.setAngle(0.0f);
@@ -199,6 +185,24 @@ Screen1ViewBase::Screen1ViewBase()
     const touchgfx::AbstractShape::ShapePoint<float> shape1_2_1Points[3] = { { 40.0f, 0.0f }, { 40.0f, 75.0f }, { 0.0f, 35.0f } };
     shape1_2_1.setShape(shape1_2_1Points);
     add(shape1_2_1);
+
+    MotorCommandsTitle.setXY(102, 110);
+    MotorCommandsTitle.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    MotorCommandsTitle.setLinespacing(0);
+    MotorCommandsTitle.setTypedText(touchgfx::TypedText(T___SINGLEUSE_5Q9P));
+    add(MotorCommandsTitle);
+
+    textArea1.setXY(207, 361);
+    textArea1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textArea1.setLinespacing(0);
+    textArea1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_CKSE));
+    add(textArea1);
+
+    textArea1_1.setXY(197, 436);
+    textArea1_1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textArea1_1.setLinespacing(0);
+    textArea1_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_DOD1));
+    add(textArea1_1);
 }
 
 Screen1ViewBase::~Screen1ViewBase()

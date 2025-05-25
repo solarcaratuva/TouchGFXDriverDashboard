@@ -13,6 +13,7 @@
 #include <touchgfx/widgets/canvas/Line.hpp>
 #include <touchgfx/widgets/canvas/PainterRGB888.hpp>
 #include <touchgfx/widgets/canvas/Shape.hpp>
+#include <touchgfx/widgets/TextArea.hpp>
 
 class Screen1ViewBase : public touchgfx::View<Screen1Presenter>
 {
@@ -41,15 +42,13 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::Box box1;
-    touchgfx::BoxWithBorder boxWithBorder1;
-    touchgfx::BoxWithBorder boxWithBorder1_1;
-    touchgfx::BoxWithBorder boxWithBorder1_1_1;
-    touchgfx::BoxWithBorder boxWithBorder1_1_1_1;
+    touchgfx::BoxWithBorder boxWithBorder2;
+    touchgfx::BoxWithBorder boxWithBorder2_1;
+    touchgfx::BoxWithBorder boxWithBorder2_1_1;
     touchgfx::TextAreaWithOneWildcard total;
     touchgfx::TextAreaWithOneWildcard session;
     touchgfx::TextAreaWithOneWildcard speed;
     touchgfx::TextAreaWithOneWildcard bpsError;
-    touchgfx::TextAreaWithOneWildcard motor;
     touchgfx::TextAreaWithOneWildcard powerAux;
     touchgfx::TextAreaWithOneWildcard cellTemp;
     touchgfx::TextAreaWithOneWildcard cellVolt;
@@ -68,6 +67,9 @@ protected:
     touchgfx::PainterRGB888 shape1_2Painter;
     touchgfx::Shape<3> shape1_2_1;
     touchgfx::PainterRGB888 shape1_2_1Painter;
+    touchgfx::TextArea MotorCommandsTitle;
+    touchgfx::TextArea textArea1;
+    touchgfx::TextArea textArea1_1;
 
     /*
      * Wildcard Buffers
@@ -80,8 +82,6 @@ protected:
     touchgfx::Unicode::UnicodeChar speedBuffer[SPEED_SIZE];
     static const uint16_t BPSERROR_SIZE = 10;
     touchgfx::Unicode::UnicodeChar bpsErrorBuffer[BPSERROR_SIZE];
-    static const uint16_t MOTOR_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar motorBuffer[MOTOR_SIZE];
     static const uint16_t POWERAUX_SIZE = 10;
     touchgfx::Unicode::UnicodeChar powerAuxBuffer[POWERAUX_SIZE];
     static const uint16_t CELLTEMP_SIZE = 10;
