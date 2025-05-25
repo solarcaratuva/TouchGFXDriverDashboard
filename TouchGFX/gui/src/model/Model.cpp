@@ -12,7 +12,6 @@ void Model::tick()
 }
 
 #ifdef SIMULATOR
-// Simulator stub — return dummy value
 bool Model::isRightTurnSignal() {
     return false; 
 }
@@ -20,6 +19,31 @@ bool Model::isRightTurnSignal() {
 bool Model::isLeftTurnSignal() {
     return false;
 }
+
+bool Model::isHazards() {
+    return false;
+}
+
+bool Model::isCruiseEn() {
+    return false;
+}
+
+bool Model::isRegenEn() {
+    return false;
+}
+
+bool Model::isCruiseInc() {
+    return false;
+}
+
+bool Model::isCruiseDec() {
+    return false;
+}
+
+bool Model::isLowPowerMode() {
+    return false;
+}
+
 #else
 #include "main.h"
 

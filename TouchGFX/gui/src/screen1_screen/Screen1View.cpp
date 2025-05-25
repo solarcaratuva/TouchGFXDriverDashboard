@@ -1,6 +1,9 @@
 #include <gui/screen1_screen/Screen1View.hpp>
 #include <touchgfx/Color.hpp>
+
+#ifndef SIMULATOR
 #include "data_queues.h"
+#endif
 
 Screen1View::Screen1View()
 {
@@ -8,8 +11,6 @@ Screen1View::Screen1View()
     line1_1.setPainter(line1_1Painter);
     shape1_2.setPainter(shape1_2Painter);
     shape1_2_1.setPainter(shape1_2_1Painter);
-    //R: 240, G:212, B: 0
- 
 }
 
 void Screen1View::setupScreen()
@@ -36,8 +37,7 @@ void Screen1View::tearDownScreen()
     Screen1ViewBase::tearDownScreen();
 }
 
-ReceivedCanData_t receivedCanData;
-bool switchPressed = false;
+// Variables used in both simulator and hardware
 int packVolt = 0;
 int packCurr = 0;
 int rpm = 0;
@@ -50,71 +50,84 @@ int throttle = 0;
 int cruiseS = 0;
 int regenD = 0;
 int throttleP = 0;
-int mController = 0;
+int count = 0;
 
 void Screen1View::function1()
 {
-    if( xQueueReceive(canReceivedQueue, &receivedCanData, (TickType_t)0 ) == pdTRUE ) {
-        count = receivedCanData.motor_controller_power_status.battery_voltage;
-        packVolt = receivedCanData.bps_pack_information.pack_voltage;
-        packCurr = receivedCanData.bps_pack_information.pack_current;
-        rpm = receivedCanData.motor_controller_power_status.motor_rpm;
-        braking = receivedCanData.motor_commands.braking;
-        regen = receivedCanData.motor_commands.regen_braking;
-        manual = receivedCanData.motor_commands.manual_drive;
-        cruise = receivedCanData.motor_commands.cruise_drive;
-        brakeP = receivedCanData.motor_commands.brake_pedal;
-        throttle = receivedCanData.motor_commands.throttle;
-        cruiseS = receivedCanData.motor_commands.cruise_speed;
-        regenD = receivedCanData.motor_commands.regen_drive;
+#ifndef SIMULATOR
+    ReceivedCanData_t receivedCanData;
+    if (xQueueReceive(canReceivedQueue, &receivedCanData, (TickType_t)0 ) == pdTRUE) {
+        count     = receivedCanData.motor_controller_power_status.battery_voltage;
+        packVolt  = receivedCanData.bps_pack_information.pack_voltage;
+        packCurr  = receivedCanData.bps_pack_information.pack_current;
+        rpm       = receivedCanData.motor_controller_power_status.motor_rpm;
+        braking   = receivedCanData.motor_commands.braking;
+        regen     = receivedCanData.motor_commands.regen_braking;
+        manual    = receivedCanData.motor_commands.manual_drive;
+        cruise    = receivedCanData.motor_commands.cruise_drive;
+        brakeP    = receivedCanData.motor_commands.brake_pedal;
+        throttle  = receivedCanData.motor_commands.throttle;
+        cruiseS   = receivedCanData.motor_commands.cruise_speed;
+        regenD    = receivedCanData.motor_commands.regen_drive;
         throttleP = receivedCanData.motor_commands.throttle_pedal;
     }
-    // count += .01;
-    bool isRight = presenter->getRightTurnSignal(); 
-    bool isLeft = presenter->getLeftTurnSignal();
-    bool isHaz = presenter->getHazards();
-    bool isRegen = presenter->getRegenEn();
-    bool isCruise = presenter->getCruiseEn();
+#else
+    // Dummy test values for simulator
+    count++;
+    packVolt  = 42;
+    packCurr  = 5;
+    rpm       = 1234;
+    braking   = 1;
+    regen     = 0;
+    manual    = 1;
+    cruise    = 1;
+    brakeP    = 50;
+    throttle  = 70;
+    cruiseS   = 30;
+    regenD    = 1;
+    throttleP = 60;
+#endif
+
+    // Get logic from presenter
+    bool isRight     = presenter->getRightTurnSignal(); 
+    bool isLeft      = presenter->getLeftTurnSignal();
+    bool isHaz       = presenter->getHazards();
+    bool isRegen     = presenter->getRegenEn();
+    bool isCruise    = presenter->getCruiseEn();
     bool isCruiseInc = presenter->getCruiseInc();
     bool isCruiseDec = presenter->getCruiseDec();
-    bool isLowPower = presenter->getLowPowerMode();
-    if(isHaz == true)
-    {
+    bool isLowPower  = presenter->getLowPowerMode();
+
+    // Set turn signal visuals
+    if (isHaz) {
         line1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
         shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
         line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
         shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
-    }
-    if(isLeft == true)
-    {
+    } else if (isLeft) {
         line1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
         shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
         line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
         shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    }
-    if(isRight == true)
-    {
+    } else if (isRight) {
         line1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
         shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
         line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
         shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
-    }
-    else if (isCruise || isRegen || isCruiseInc || isCruiseDec || isLowPower) {
+    } else if (isCruise || isRegen || isCruiseInc || isCruiseDec || isLowPower) {
         line1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
         shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
         line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
         shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    } 
-    else
-    {
+    } else {
         line1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
         shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
         line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
         shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     }
 
+    // Update displayed values
     Unicode::snprintfFloat(solarCurrBuffer, SOLARCURR_SIZE, "%.2f", manual);
-    //Example of changing text color: solarCurr.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
     Unicode::snprintfFloat(solarTempBuffer, SOLARTEMP_SIZE, "%.2f", cruise);
     Unicode::snprintfFloat(solarVoltBuffer, SOLARVOLT_SIZE, "%.2f", brakeP);
     Unicode::snprintfFloat(solarPhotoBuffer, SOLARPHOTO_SIZE, "%.2f", throttle);
@@ -128,6 +141,8 @@ void Screen1View::function1()
     Unicode::snprintfFloat(regenBreakingBuffer, REGENBREAKING_SIZE, "%.2f", regen);
     Unicode::snprintfFloat(throttlePedalBuffer, THROTTLEPEDAL_SIZE, "%.2f", throttleP);
     Unicode::snprintfFloat(totalBuffer, TOTAL_SIZE, "%.2f", braking);
+
+    // Refresh the display elements
     solarCurr.invalidate();
     solarTemp.invalidate();
     solarVolt.invalidate();
