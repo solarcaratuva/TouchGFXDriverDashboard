@@ -121,7 +121,7 @@
         <Translation Language="GB">0</Translation>
       </Text>
       <Text Id="__SingleUse_C2TF" Alignment="Left" TypographyId="Medium">
-        <Translation Language="GB">Break Pedal: &lt;value&gt;</Translation>
+        <Translation Language="GB">Brake Pedal: &lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_W31T" Alignment="Left" TypographyId="Medium">
         <Translation Language="GB">0</Translation>

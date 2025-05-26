@@ -13,8 +13,7 @@ Screen1View::Screen1View()
     shape1_2_1.setPainter(shape1_2_1Painter);
 }
 
-void Screen1View::setupScreen()
-{
+void Screen1View::setupScreen() {
     Screen1ViewBase::setupScreen();
     solarCurr.setWildcard(solarCurrBuffer);
     solarTemp.setWildcard(solarTempBuffer);
@@ -30,12 +29,54 @@ void Screen1View::setupScreen()
     cruiseSpeed.setWildcard(cruiseSpeedBuffer);
     regenBreaking.setWildcard(regenBreakingBuffer);
     throttlePedal.setWildcard(throttlePedalBuffer);
+
+    BPS_Warning.setAlpha(0);
+    BPS_Warning.setVisible(false);
+
+    triggerBpsWarning();
 }
 
 void Screen1View::tearDownScreen()
 {
     Screen1ViewBase::tearDownScreen();
 }
+
+void Screen1View::triggerBpsWarning() {
+    bpsWarningState = 1;
+    bpsWarningTickCounter = 0;
+    BPS_Warning.setVisible(true);
+}
+
+void Screen1View::function2() {
+    if (bpsWarningState == 1) {
+        BPS_Warning.startFadeAnimation(255, 15); // Fade in
+        bpsWarningState = 2;
+        bpsWarningTickCounter = 0;
+    }
+    else if (bpsWarningState == 2) {
+        bpsWarningTickCounter++;
+        if (bpsWarningTickCounter >= 30) { // Hold for ~500ms
+            bpsWarningState = 3;
+            bpsWarningTickCounter = 0;
+        }
+    }
+    else if (bpsWarningState == 3) {
+        BPS_Warning.startFadeAnimation(0, 15); // Fade out
+        bpsWarningState = 4;
+        bpsWarningTickCounter = 0;
+    }
+    else if (bpsWarningState == 4) {
+        bpsWarningTickCounter++;
+        if (bpsWarningTickCounter >= 30) { // Wait before next flash
+            bpsWarningState = 1; // Restart flashing loop
+            bpsWarningTickCounter = 0;
+        }
+    }
+}
+
+
+
+
 
 // Variables used in both simulator and hardware
 int packVolt = 0;

@@ -14,6 +14,8 @@
 #include <touchgfx/widgets/canvas/PainterRGB888.hpp>
 #include <touchgfx/widgets/canvas/Shape.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
+#include <touchgfx/EasingEquations.hpp>
+#include <touchgfx/mixins/FadeAnimator.hpp>
 
 class Screen1ViewBase : public touchgfx::View<Screen1Presenter>
 {
@@ -31,6 +33,10 @@ public:
     {
         // Override and implement this function in Screen1
     }
+    virtual void function2()
+    {
+        // Override and implement this function in Screen1
+    }
 
 protected:
     FrontendApplication& application() {
@@ -45,8 +51,6 @@ protected:
     touchgfx::BoxWithBorder boxWithBorder2;
     touchgfx::BoxWithBorder boxWithBorder2_1;
     touchgfx::BoxWithBorder boxWithBorder2_1_1;
-    touchgfx::BoxWithBorder messageLog;
-    touchgfx::BoxWithBorder messageLog_1;
     touchgfx::TextAreaWithOneWildcard total;
     touchgfx::TextAreaWithOneWildcard session;
     touchgfx::TextAreaWithOneWildcard speed;
@@ -72,6 +76,18 @@ protected:
     touchgfx::TextArea MotorCommandsTitle;
     touchgfx::TextArea textArea1;
     touchgfx::TextArea textArea1_1;
+    touchgfx::FadeAnimator< touchgfx::TextArea > BPS_Warning;
+    touchgfx::TextArea PowerAux_Blinker;
+    touchgfx::TextArea MtrComm_Blinker;
+    touchgfx::TextArea MtrComm_Blinker_1;
+    touchgfx::TextArea MtrComm_Blinker_1_2;
+    touchgfx::TextArea MtrComm_Blinker_1_2_2;
+    touchgfx::TextArea MtrComm_Blinker_1_2_2_1;
+    touchgfx::TextArea MtrComm_Blinker_1_2_1;
+    touchgfx::TextArea MtrComm_Blinker_1_2_1_1;
+    touchgfx::TextArea MtrComm_Blinker_1_2_1_1_1;
+    touchgfx::TextArea MtrComm_Blinker_1_1;
+    touchgfx::TextArea MtrComm_Blinker_1_1_1;
 
     /*
      * Wildcard Buffers
