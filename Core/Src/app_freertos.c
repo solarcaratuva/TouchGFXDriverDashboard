@@ -128,30 +128,38 @@ void sendHeartBeatTask(void *argument)
 
 void sendDashBoardTask(void *argument) {
   uint8_t TxData[8];
-
   const TickType_t xPeriod = pdMS_TO_TICKS(100);
-
   TickType_t xLastWakeTime = xTaskGetTickCount();
 
   struct rivanna3_dashboard_commands_t dashboard_can;
 
+  static bool prevInc = false;
+  static bool prevDec = false;
+
   for (;;)
   {
-      dashboard_can.left_turn_signal = HAL_GPIO_ReadPin(USR_BTN_3_GPIO_Port, USR_BTN_3_Pin) == GPIO_PIN_SET;
-      dashboard_can.right_turn_signal = HAL_GPIO_ReadPin(USR_BTN_2_GPIO_Port, USR_BTN_2_Pin) == GPIO_PIN_SET;
-      dashboard_can.hazards = HAL_GPIO_ReadPin(USR_BTN_4_GPIO_Port, USR_BTN_4_Pin) == GPIO_PIN_SET;
-      dashboard_can.cruise_en = HAL_GPIO_ReadPin(USR_BTN_5_GPIO_Port, USR_BTN_5_Pin) == GPIO_PIN_SET;
-      dashboard_can.regen_en = HAL_GPIO_ReadPin(USR_BTN_6_GPIO_Port, USR_BTN_6_Pin) == GPIO_PIN_SET;
-      dashboard_can.cruise_inc = HAL_GPIO_ReadPin(USR_BTN_7_GPIO_Port, USR_BTN_7_Pin) == GPIO_PIN_SET;
-      dashboard_can.cruise_dec = HAL_GPIO_ReadPin(USR_BTN_8_GPIO_Port, USR_BTN_8_Pin) == GPIO_PIN_SET;
+    dashboard_can.left_turn_signal = HAL_GPIO_ReadPin(USR_BTN_3_GPIO_Port, USR_BTN_3_Pin) == GPIO_PIN_RESET;
+    dashboard_can.right_turn_signal = HAL_GPIO_ReadPin(USR_BTN_2_GPIO_Port, USR_BTN_2_Pin) == GPIO_PIN_RESET;
+    dashboard_can.hazards = HAL_GPIO_ReadPin(USR_BTN_4_GPIO_Port, USR_BTN_4_Pin) == GPIO_PIN_RESET;
+    dashboard_can.cruise_en = HAL_GPIO_ReadPin(USR_BTN_5_GPIO_Port, USR_BTN_5_Pin) == GPIO_PIN_RESET;
+    dashboard_can.regen_en = HAL_GPIO_ReadPin(USR_BTN_6_GPIO_Port, USR_BTN_6_Pin) == GPIO_PIN_RESET;
 
-      rivanna3_dashboard_commands_pack(TxData, &dashboard_can, RIVANNA3_DASHBOARD_COMMANDS_LENGTH);// removed ->data from TxData
+    bool rawInc = HAL_GPIO_ReadPin(USR_BTN_7_GPIO_Port, USR_BTN_7_Pin) == GPIO_PIN_RESET;
+    bool rawDec = HAL_GPIO_ReadPin(USR_BTN_8_GPIO_Port, USR_BTN_8_Pin) == GPIO_PIN_RESET;
 
-      // Your periodic function call
-      send_can_message(RIVANNA3_DASHBOARD_COMMANDS_FRAME_ID, RIVANNA3_DASHBOARD_COMMANDS_LENGTH, TxData);
+    dashboard_can.cruise_inc = rawInc && !prevInc;
+    dashboard_can.cruise_dec = rawDec && !prevDec;
 
-      // Wait for the next cycle
-      vTaskDelayUntil(&xLastWakeTime, xPeriod);
+    prevInc = rawInc;
+    prevDec = rawDec;
+
+    rivanna3_dashboard_commands_pack(TxData, &dashboard_can, RIVANNA3_DASHBOARD_COMMANDS_LENGTH);// removed ->data from TxData
+
+    // Your periodic function call
+    send_can_message(RIVANNA3_DASHBOARD_COMMANDS_FRAME_ID, RIVANNA3_DASHBOARD_COMMANDS_LENGTH, TxData);
+
+    // Wait for the next cycle
+    vTaskDelayUntil(&xLastWakeTime, xPeriod);
   }
 }
 
