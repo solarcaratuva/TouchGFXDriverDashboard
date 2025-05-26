@@ -108,8 +108,8 @@ void sendHeartBeatTask(void *argument)
 
   struct rivanna3_heartbeat_t heartbeat_can;
 
-  heartbeat_can.from_telemetry_board = 1; 
-  heartbeat_can.from_wheel_board = 0;
+  heartbeat_can.from_telemetry_board = 0; 
+  heartbeat_can.from_wheel_board = 1;
   heartbeat_can.from_power_board = 0;
 
   rivanna3_heartbeat_pack(TxData, &heartbeat_can, RIVANNA3_HEARTBEAT_LENGTH);// removed ->data from TxData
