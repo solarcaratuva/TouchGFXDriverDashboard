@@ -422,83 +422,19 @@
           },
           {
             "Type": "TextArea",
-            "Name": "MtrComm_Blinker_1",
+            "Name": "RegenEN",
             "X": 50,
             "Y": 54,
             "Width": 70,
             "Height": 24,
             "TextId": "__SingleUse_HRRE",
             "TextRotation": "0",
-            "Color": {
-              "Red": 60,
-              "Green": 255
-            },
             "AutoSize": true
           },
           {
             "Type": "TextArea",
-            "Name": "MtrComm_Blinker_1_2",
-            "X": 65,
-            "Y": 83,
-            "Width": 31,
-            "Height": 24,
-            "TextId": "__SingleUse_P1M4",
-            "TextRotation": "0",
-            "Color": {
-              "Green": 255,
-              "Blue": 51
-            },
-            "AutoSize": true
-          },
-          {
-            "Type": "TextArea",
-            "Name": "MtrComm_Blinker_1_2_2",
-            "X": 101,
-            "Y": 83,
-            "Width": 45,
-            "Height": 24,
-            "TextId": "__SingleUse_QSOR",
-            "TextRotation": "0",
-            "Color": {
-              "Green": 255,
-              "Blue": 51
-            },
-            "AutoSize": true
-          },
-          {
-            "Type": "TextArea",
-            "Name": "MtrComm_Blinker_1_2_2_1",
-            "X": 17,
-            "Y": 83,
-            "Width": 42,
-            "Height": 24,
-            "TextId": "__SingleUse_TJGA",
-            "TextRotation": "0",
-            "Color": {
-              "Green": 255,
-              "Blue": 51
-            },
-            "AutoSize": true
-          },
-          {
-            "Type": "TextArea",
-            "Name": "MtrComm_Blinker_1_2_1",
-            "X": 375,
-            "Y": 83,
-            "Width": 31,
-            "Height": 24,
-            "TextId": "__SingleUse_P1PC",
-            "TextRotation": "0",
-            "Color": {
-              "Green": 255,
-              "Blue": 51
-            },
-            "AutoSize": true
-          },
-          {
-            "Type": "TextArea",
-            "Name": "MtrComm_Blinker_1_2_1_1",
-            "X": 411,
+            "Name": "CruiseDEC",
+            "X": 392,
             "Y": 83,
             "Width": 45,
             "Height": 24,
@@ -512,8 +448,8 @@
           },
           {
             "Type": "TextArea",
-            "Name": "MtrComm_Blinker_1_2_1_1_1",
-            "X": 326,
+            "Name": "CruiseINC",
+            "X": 340,
             "Y": 83,
             "Width": 42,
             "Height": 24,
@@ -527,32 +463,24 @@
           },
           {
             "Type": "TextArea",
-            "Name": "MtrComm_Blinker_1_1",
+            "Name": "CruiseText",
             "X": 355,
             "Y": 54,
             "Width": 70,
             "Height": 24,
             "TextId": "__SingleUse_ZJV5",
             "TextRotation": "0",
-            "Color": {
-              "Green": 255,
-              "Blue": 51
-            },
             "AutoSize": true
           },
           {
             "Type": "TextArea",
-            "Name": "MtrComm_Blinker_1_1_1",
+            "Name": "LowPowerEN",
             "X": 179,
             "Y": 54,
             "Width": 119,
             "Height": 24,
             "TextId": "__SingleUse_B7XZ",
             "TextRotation": "0",
-            "Color": {
-              "Green": 255,
-              "Blue": 51
-            },
             "AutoSize": true
           }
         ],

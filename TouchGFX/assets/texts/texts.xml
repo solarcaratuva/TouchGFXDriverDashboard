@@ -9,23 +9,11 @@
       <Text Id="__SingleUse_B7XZ" Alignment="Left" TypographyId="Medium">
         <Translation Language="GB">LowPower</Translation>
       </Text>
-      <Text Id="__SingleUse_TJGA" Alignment="Left" TypographyId="Medium">
-        <Translation Language="GB">INC</Translation>
-      </Text>
-      <Text Id="__SingleUse_QSOR" Alignment="Left" TypographyId="Medium">
-        <Translation Language="GB">DEC</Translation>
-      </Text>
       <Text Id="__SingleUse_2G26" Alignment="Left" TypographyId="Medium">
         <Translation Language="GB">INC</Translation>
       </Text>
       <Text Id="__SingleUse_NNKX" Alignment="Left" TypographyId="Medium">
         <Translation Language="GB">DEC</Translation>
-      </Text>
-      <Text Id="__SingleUse_P1PC" Alignment="Left" TypographyId="Medium">
-        <Translation Language="GB">EN</Translation>
-      </Text>
-      <Text Id="__SingleUse_P1M4" Alignment="Left" TypographyId="Medium">
-        <Translation Language="GB">EN</Translation>
       </Text>
       <Text Id="__SingleUse_OQG6" Alignment="Left" TypographyId="Medium">
         <Translation Language="GB">BPS</Translation>

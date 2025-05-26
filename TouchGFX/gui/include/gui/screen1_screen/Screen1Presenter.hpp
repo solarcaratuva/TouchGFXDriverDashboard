@@ -35,9 +35,13 @@ public:
 
     void toggleLeftTurnSignal();
 
+    void toggleLowPowerEn();
+
     bool getHazards();
 
     bool getRegenEn();
+
+    void toggleRegenEn();
 
     bool getCruiseEn();
 

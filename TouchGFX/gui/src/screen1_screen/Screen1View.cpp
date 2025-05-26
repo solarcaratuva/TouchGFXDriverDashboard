@@ -50,6 +50,10 @@ void Screen1View::handleKeyEvent(uint8_t key)
     else if (key == 'D' || key == 'd')
     {
         presenter->toggleRightTurnSignal();
+    } else if (key == 'R' || key == 'r') {
+        presenter->toggleRegenEn();
+    } else if (key == 'L' || key == 'l') {
+        presenter->toggleLowPowerEn();
     }
     // force a redraw of your indicators:
     invalidate();
@@ -255,7 +259,7 @@ void Screen1View::function1()
         shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
         line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
         shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
-    } else if (isCruise || isRegen || isCruiseInc || isCruiseDec || isLowPower) {
+    } else if (isCruise || isCruiseInc || isCruiseDec) {
         line1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
         shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
         line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
@@ -265,6 +269,18 @@ void Screen1View::function1()
         shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
         line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
         shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    }
+
+    if (isRegen) {
+        RegenEN.setColor(touchgfx::Color::getColorFromRGB(0, 255, 51));
+    } else {
+        RegenEN.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    }
+
+    if (isLowPower) {
+        LowPowerEN.setColor(touchgfx::Color::getColorFromRGB(0, 255, 51));
+    } else {
+        LowPowerEN.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     }
 
     
@@ -321,4 +337,6 @@ void Screen1View::function1()
     cruiseSpeed.invalidate();
     regenBreaking.invalidate();
     throttlePedal.invalidate();
+    RegenEN.invalidate();
+    LowPowerEN.invalidate();
 }

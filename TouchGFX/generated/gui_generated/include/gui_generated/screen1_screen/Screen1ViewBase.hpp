@@ -79,15 +79,11 @@ protected:
     touchgfx::FadeAnimator< touchgfx::TextArea > BPS_Warning;
     touchgfx::FadeAnimator< touchgfx::TextArea > PowerAux_Warning;
     touchgfx::FadeAnimator< touchgfx::TextArea > MtrComm_Warning;
-    touchgfx::TextArea MtrComm_Blinker_1;
-    touchgfx::TextArea MtrComm_Blinker_1_2;
-    touchgfx::TextArea MtrComm_Blinker_1_2_2;
-    touchgfx::TextArea MtrComm_Blinker_1_2_2_1;
-    touchgfx::TextArea MtrComm_Blinker_1_2_1;
-    touchgfx::TextArea MtrComm_Blinker_1_2_1_1;
-    touchgfx::TextArea MtrComm_Blinker_1_2_1_1_1;
-    touchgfx::TextArea MtrComm_Blinker_1_1;
-    touchgfx::TextArea MtrComm_Blinker_1_1_1;
+    touchgfx::TextArea RegenEN;
+    touchgfx::TextArea CruiseDEC;
+    touchgfx::TextArea CruiseINC;
+    touchgfx::TextArea CruiseText;
+    touchgfx::TextArea LowPowerEN;
 
     /*
      * Wildcard Buffers

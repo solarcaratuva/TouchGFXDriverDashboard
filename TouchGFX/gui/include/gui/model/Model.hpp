@@ -26,6 +26,8 @@ public:
 
     void setLeftTurnSignal(bool on);
     void setRightTurnSignal(bool on);
+    void setRegenEn(bool on);
+    void setLowPowerEn(bool on);
 
 protected:
     ModelListener* modelListener;
@@ -33,6 +35,8 @@ protected:
 private:
     bool leftTurnSignal = false;
     bool rightTurnSignal = false;
+    bool regen = false;
+    bool lowPower = false;
 };
 
 #endif // MODEL_HPP

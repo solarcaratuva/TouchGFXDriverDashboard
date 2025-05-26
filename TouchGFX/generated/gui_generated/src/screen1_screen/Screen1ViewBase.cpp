@@ -223,59 +223,35 @@ Screen1ViewBase::Screen1ViewBase() :
     MtrComm_Warning.setTypedText(touchgfx::TypedText(T___SINGLEUSE_I4O9));
     add(MtrComm_Warning);
 
-    MtrComm_Blinker_1.setXY(50, 54);
-    MtrComm_Blinker_1.setColor(touchgfx::Color::getColorFromRGB(60, 255, 0));
-    MtrComm_Blinker_1.setLinespacing(0);
-    MtrComm_Blinker_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_HRRE));
-    add(MtrComm_Blinker_1);
+    RegenEN.setXY(50, 54);
+    RegenEN.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    RegenEN.setLinespacing(0);
+    RegenEN.setTypedText(touchgfx::TypedText(T___SINGLEUSE_HRRE));
+    add(RegenEN);
 
-    MtrComm_Blinker_1_2.setXY(65, 83);
-    MtrComm_Blinker_1_2.setColor(touchgfx::Color::getColorFromRGB(0, 255, 51));
-    MtrComm_Blinker_1_2.setLinespacing(0);
-    MtrComm_Blinker_1_2.setTypedText(touchgfx::TypedText(T___SINGLEUSE_P1M4));
-    add(MtrComm_Blinker_1_2);
+    CruiseDEC.setXY(392, 83);
+    CruiseDEC.setColor(touchgfx::Color::getColorFromRGB(0, 255, 51));
+    CruiseDEC.setLinespacing(0);
+    CruiseDEC.setTypedText(touchgfx::TypedText(T___SINGLEUSE_NNKX));
+    add(CruiseDEC);
 
-    MtrComm_Blinker_1_2_2.setXY(101, 83);
-    MtrComm_Blinker_1_2_2.setColor(touchgfx::Color::getColorFromRGB(0, 255, 51));
-    MtrComm_Blinker_1_2_2.setLinespacing(0);
-    MtrComm_Blinker_1_2_2.setTypedText(touchgfx::TypedText(T___SINGLEUSE_QSOR));
-    add(MtrComm_Blinker_1_2_2);
+    CruiseINC.setXY(340, 83);
+    CruiseINC.setColor(touchgfx::Color::getColorFromRGB(0, 255, 51));
+    CruiseINC.setLinespacing(0);
+    CruiseINC.setTypedText(touchgfx::TypedText(T___SINGLEUSE_2G26));
+    add(CruiseINC);
 
-    MtrComm_Blinker_1_2_2_1.setXY(17, 83);
-    MtrComm_Blinker_1_2_2_1.setColor(touchgfx::Color::getColorFromRGB(0, 255, 51));
-    MtrComm_Blinker_1_2_2_1.setLinespacing(0);
-    MtrComm_Blinker_1_2_2_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_TJGA));
-    add(MtrComm_Blinker_1_2_2_1);
+    CruiseText.setXY(355, 54);
+    CruiseText.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    CruiseText.setLinespacing(0);
+    CruiseText.setTypedText(touchgfx::TypedText(T___SINGLEUSE_ZJV5));
+    add(CruiseText);
 
-    MtrComm_Blinker_1_2_1.setXY(375, 83);
-    MtrComm_Blinker_1_2_1.setColor(touchgfx::Color::getColorFromRGB(0, 255, 51));
-    MtrComm_Blinker_1_2_1.setLinespacing(0);
-    MtrComm_Blinker_1_2_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_P1PC));
-    add(MtrComm_Blinker_1_2_1);
-
-    MtrComm_Blinker_1_2_1_1.setXY(411, 83);
-    MtrComm_Blinker_1_2_1_1.setColor(touchgfx::Color::getColorFromRGB(0, 255, 51));
-    MtrComm_Blinker_1_2_1_1.setLinespacing(0);
-    MtrComm_Blinker_1_2_1_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_NNKX));
-    add(MtrComm_Blinker_1_2_1_1);
-
-    MtrComm_Blinker_1_2_1_1_1.setXY(326, 83);
-    MtrComm_Blinker_1_2_1_1_1.setColor(touchgfx::Color::getColorFromRGB(0, 255, 51));
-    MtrComm_Blinker_1_2_1_1_1.setLinespacing(0);
-    MtrComm_Blinker_1_2_1_1_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_2G26));
-    add(MtrComm_Blinker_1_2_1_1_1);
-
-    MtrComm_Blinker_1_1.setXY(355, 54);
-    MtrComm_Blinker_1_1.setColor(touchgfx::Color::getColorFromRGB(0, 255, 51));
-    MtrComm_Blinker_1_1.setLinespacing(0);
-    MtrComm_Blinker_1_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_ZJV5));
-    add(MtrComm_Blinker_1_1);
-
-    MtrComm_Blinker_1_1_1.setXY(179, 54);
-    MtrComm_Blinker_1_1_1.setColor(touchgfx::Color::getColorFromRGB(0, 255, 51));
-    MtrComm_Blinker_1_1_1.setLinespacing(0);
-    MtrComm_Blinker_1_1_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_B7XZ));
-    add(MtrComm_Blinker_1_1_1);
+    LowPowerEN.setXY(179, 54);
+    LowPowerEN.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    LowPowerEN.setLinespacing(0);
+    LowPowerEN.setTypedText(touchgfx::TypedText(T___SINGLEUSE_B7XZ));
+    add(LowPowerEN);
 }
 
 Screen1ViewBase::~Screen1ViewBase()

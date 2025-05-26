@@ -48,6 +48,14 @@ bool Screen1Presenter::getRegenEn() {
     return model->isRegenEn();
 }
 
+void Screen1Presenter::toggleRegenEn() {
+    return model->setRegenEn(!model->isRegenEn());
+}
+
+void Screen1Presenter::toggleLowPowerEn() {
+    return model->setLowPowerEn(!model->isLowPowerMode());
+}
+
 bool Screen1Presenter::getCruiseEn() {
     return model->isCruiseEn();
 }

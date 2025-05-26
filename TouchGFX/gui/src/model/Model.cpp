@@ -33,12 +33,30 @@ void Model::setRightTurnSignal(bool on)
     rightTurnSignal = on;
 }
 
+void Model::setRegenEn(bool on) {
+    regen = on;
+}
+
+bool Model::isRegenEn() const 
+{
+    return regen;
+}
+
+bool Model::isLowPowerMode() const 
+{ 
+    return lowPower; 
+}
+
+void Model::setLowPowerEn(bool on) {
+    lowPower = on;
+}
+
+
+
 bool Model::isHazards()         const { return false; }
 bool Model::isCruiseEn()        const { return false; }
-bool Model::isRegenEn()         const { return false; }
 bool Model::isCruiseInc()       const { return false; }
 bool Model::isCruiseDec()       const { return false; }
-bool Model::isLowPowerMode()    const { return false; }
 
 #else
 
@@ -50,21 +68,25 @@ void Model::tick() { }
 
 bool Model::isLeftTurnSignal() const
 {
-    return HAL_GPIO_ReadPin(USR_BTN_3_GPIO_Port, USR_BTN_3_Pin) == GPIO_PIN_SET;
+    return HAL_GPIO_ReadPin(USR_BTN_3_GPIO_Port, USR_BTN_3_Pin) == GPIO_PIN_RESET;
 }
 void Model::setLeftTurnSignal(bool) { }
 
 bool Model::isRightTurnSignal() const
 {
-    return HAL_GPIO_ReadPin(USR_BTN_2_GPIO_Port, USR_BTN_2_Pin) == GPIO_PIN_SET;
+    return HAL_GPIO_ReadPin(USR_BTN_2_GPIO_Port, USR_BTN_2_Pin) == GPIO_PIN_RESET;
 }
 void Model::setRightTurnSignal(bool) { }
 
-bool Model::isHazards()      const { return HAL_GPIO_ReadPin(USR_BTN_4_GPIO_Port, USR_BTN_4_Pin) == GPIO_PIN_SET; }
-bool Model::isCruiseEn()     const { return HAL_GPIO_ReadPin(USR_BTN_5_GPIO_Port, USR_BTN_5_Pin) == GPIO_PIN_SET; }
-bool Model::isRegenEn()      const { return HAL_GPIO_ReadPin(USR_BTN_6_GPIO_Port, USR_BTN_6_Pin) == GPIO_PIN_SET; }
-bool Model::isCruiseInc()    const { return HAL_GPIO_ReadPin(USR_BTN_7_GPIO_Port, USR_BTN_7_Pin) == GPIO_PIN_SET; }
-bool Model::isCruiseDec()    const { return HAL_GPIO_ReadPin(USR_BTN_8_GPIO_Port, USR_BTN_8_Pin) == GPIO_PIN_SET; }
-bool Model::isLowPowerMode() const { return HAL_GPIO_ReadPin(USR_BTN_9_GPIO_Port, USR_BTN_9_Pin) == GPIO_PIN_SET; }
+void Model::setRegenEn(bool) { }
+
+void Model::setLowPowerEn(bool on) { }
+
+bool Model::isHazards()      const { return HAL_GPIO_ReadPin(USR_BTN_4_GPIO_Port, USR_BTN_4_Pin) == GPIO_PIN_RESET; }
+bool Model::isCruiseEn()     const { return HAL_GPIO_ReadPin(USR_BTN_5_GPIO_Port, USR_BTN_5_Pin) == GPIO_PIN_RESET; }
+bool Model::isRegenEn()      const { return HAL_GPIO_ReadPin(USR_BTN_6_GPIO_Port, USR_BTN_6_Pin) == GPIO_PIN_RESET; }
+bool Model::isCruiseInc()    const { return HAL_GPIO_ReadPin(USR_BTN_7_GPIO_Port, USR_BTN_7_Pin) == GPIO_PIN_RESET; }
+bool Model::isCruiseDec()    const { return HAL_GPIO_ReadPin(USR_BTN_8_GPIO_Port, USR_BTN_8_Pin) == GPIO_PIN_RESET; }
+bool Model::isLowPowerMode() const { return HAL_GPIO_ReadPin(USR_BTN_9_GPIO_Port, USR_BTN_9_Pin) == GPIO_PIN_RESET; }
 
 #endif
