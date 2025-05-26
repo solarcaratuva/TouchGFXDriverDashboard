@@ -32,8 +32,6 @@ void Screen1View::setupScreen() {
 
     BPS_Warning.setAlpha(0);
     BPS_Warning.setVisible(false);
-
-    triggerBpsWarning();
 }
 
 void Screen1View::tearDownScreen()
@@ -93,6 +91,9 @@ int regenD = 0;
 int throttleP = 0;
 int count = 0;
 
+bool previousBpsErrorState = false;
+bool currentBpsErrorState = false;
+
 void Screen1View::function1()
 {
 #ifndef SIMULATOR
@@ -111,6 +112,14 @@ void Screen1View::function1()
         cruiseS   = receivedCanData.motor_commands.cruise_speed;
         regenD    = receivedCanData.motor_commands.regen_drive;
         throttleP = receivedCanData.motor_commands.throttle_pedal;
+        
+        currentBpsErrorState = (receivedCanData.bps_error.always_on_supply_fault || receivedCanData.bps_error.canbus_communications_fault ||
+            receivedCanData.bps_error.charge_limit_enforcement_fault || receivedCanData.bps_error.charger_safety_relay_fault || receivedCanData.bps_error.current_sensor_fault ||
+            receivedCanData.bps_error.discharge_limit_enforcement_fault || receivedCanData.bps_error.fan_monitor_fault || receivedCanData.bps_error.high_voltage_isolation_fault ||
+            receivedCanData.bps_error.internal_communications_fault || receivedCanData.bps_error.internal_conversion_fault || receivedCanData.bps_error.internal_logic_fault || 
+            receivedCanData.bps_error.internal_memory_fault || receivedCanData.bps_error.internal_thermistor_fault || receivedCanData.bps_error.low_cell_voltage_fault ||
+            receivedCanData.bps_error.open_wiring_fault || receivedCanData.bps_error.pack_voltage_sensor_fault || receivedCanData.bps_error.power_supply_12v_fault ||
+            receivedCanData.bps_error.thermistor_fault || receivedCanData.bps_error.voltage_redundancy_fault || receivedCanData.bps_error.weak_cell_fault || receivedCanData.bps_error.weak_pack_fault != 0);
     }
 #else
     // Dummy test values for simulator
@@ -127,6 +136,7 @@ void Screen1View::function1()
     cruiseS   = 30;
     regenD    = 1;
     throttleP = 60;
+    currentBpsErrorState = 1;
 #endif
 
     // Get logic from presenter
@@ -166,6 +176,13 @@ void Screen1View::function1()
         line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
         shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     }
+
+    
+    if (currentBpsErrorState && !previousBpsErrorState) {
+        triggerBpsWarning(); // Trigger only on rising edge
+    }
+
+    previousBpsErrorState = currentBpsErrorState; // Save for next tick
 
     // Update displayed values
     Unicode::snprintfFloat(solarCurrBuffer, SOLARCURR_SIZE, "%.2f", manual);

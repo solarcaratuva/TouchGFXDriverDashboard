@@ -205,16 +205,16 @@ Screen1ViewBase::Screen1ViewBase()
     add(textArea1_1);
 
     BPS_Warning.setXY(97, 24);
-    BPS_Warning.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    BPS_Warning.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
     BPS_Warning.setLinespacing(0);
     BPS_Warning.setTypedText(touchgfx::TypedText(T___SINGLEUSE_OQG6));
     add(BPS_Warning);
 
-    PowerAux_Blinker.setXY(150, 24);
-    PowerAux_Blinker.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    PowerAux_Blinker.setLinespacing(0);
-    PowerAux_Blinker.setTypedText(touchgfx::TypedText(T___SINGLEUSE_BMOB));
-    add(PowerAux_Blinker);
+    PowerAux_Warning.setXY(150, 24);
+    PowerAux_Warning.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    PowerAux_Warning.setLinespacing(0);
+    PowerAux_Warning.setTypedText(touchgfx::TypedText(T___SINGLEUSE_BMOB));
+    add(PowerAux_Warning);
 
     MtrComm_Blinker.setXY(271, 24);
     MtrComm_Blinker.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));

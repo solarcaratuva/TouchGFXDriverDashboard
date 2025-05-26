@@ -384,12 +384,15 @@
             "Height": 24,
             "TextId": "__SingleUse_OQG6",
             "TextRotation": "0",
+            "Color": {
+              "Red": 255
+            },
             "AutoSize": true,
             "Fadeable": true
           },
           {
             "Type": "TextArea",
-            "Name": "PowerAux_Blinker",
+            "Name": "PowerAux_Warning",
             "X": 150,
             "Y": 24,
             "Width": 115,

@@ -77,7 +77,7 @@ protected:
     touchgfx::TextArea textArea1;
     touchgfx::TextArea textArea1_1;
     touchgfx::FadeAnimator< touchgfx::TextArea > BPS_Warning;
-    touchgfx::TextArea PowerAux_Blinker;
+    touchgfx::TextArea PowerAux_Warning;
     touchgfx::TextArea MtrComm_Blinker;
     touchgfx::TextArea MtrComm_Blinker_1;
     touchgfx::TextArea MtrComm_Blinker_1_2;
