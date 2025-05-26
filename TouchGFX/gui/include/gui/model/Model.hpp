@@ -23,8 +23,15 @@ public:
     bool isCruiseInc();
     bool isCruiseDec();
     bool isLowPowerMode();
+    void setLeftTurnSignal(bool on);
+    void setRightTurnSignal(bool on);
+
 protected:
     ModelListener* modelListener;
+
+private:
+    bool leftTurnSignal  = false;
+    bool rightTurnSignal = false;
 };
 
 #endif // MODEL_HPP

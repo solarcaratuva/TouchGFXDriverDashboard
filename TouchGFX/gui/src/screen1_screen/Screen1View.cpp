@@ -34,6 +34,22 @@ void Screen1View::setupScreen() {
     BPS_Warning.setVisible(false);
 }
 
+void Screen1View::handleKeyEvent(uint8_t key)
+{
+    // Use simple ASCII keys in the simulator window:
+    if (key == 'A' || key == 'a')
+    {
+        presenter->toggleLeftTurnSignal();
+    }
+    else if (key == 'D' || key == 'd')
+    {
+        presenter->toggleRightTurnSignal();
+    }
+    // force a redraw of your indicators:
+    invalidate();
+}
+
+
 void Screen1View::tearDownScreen()
 {
     Screen1ViewBase::tearDownScreen();
@@ -71,8 +87,6 @@ void Screen1View::function2() {
         }
     }
 }
-
-
 
 
 

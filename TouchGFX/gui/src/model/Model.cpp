@@ -13,11 +13,11 @@ void Model::tick()
 
 #ifdef SIMULATOR
 bool Model::isRightTurnSignal() {
-    return false; 
+    return rightTurnSignal; 
 }
 
 bool Model::isLeftTurnSignal() {
-    return false;
+    return leftTurnSignal;
 }
 
 bool Model::isHazards() {
@@ -44,12 +44,31 @@ bool Model::isLowPowerMode() {
     return false;
 }
 
+void Model::setLeftTurnSignal(bool on)
+{
+    leftTurnSignal = on;
+}
+
+void Model::setRightTurnSignal(bool on)
+{
+    rightTurnSignal = on;
+}
+
+
 #else
 #include "main.h"
 
 bool Model::isRightTurnSignal() {
-    return HAL_GPIO_ReadPin(USR_BTN_2_GPIO_Port, USR_BTN_2_Pin) == GPIO_PIN_SET;
+    #ifdef SIMULATOR
+        return rightTurnSignal;
+    #else
+        return HAL_GPIO_ReadPin(USR_BTN_2_GPIO_Port, USR_BTN_2_Pin) == GPIO_PIN_SET;
+    #endif
 }
+
+// void Model::setRightTurnSignal() {
+    
+// }
 
 bool Model::isLeftTurnSignal() {
     return HAL_GPIO_ReadPin(USR_BTN_3_GPIO_Port, USR_BTN_3_Pin) == GPIO_PIN_SET;

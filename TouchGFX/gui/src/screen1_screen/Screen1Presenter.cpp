@@ -34,6 +34,16 @@ bool Screen1Presenter::getHazards() {
     return model->isHazards();
 }
 
+void Screen1Presenter::toggleLeftTurnSignal()
+{
+    model->setLeftTurnSignal(!model->isLeftTurnSignal());
+}
+
+void Screen1Presenter::toggleRightTurnSignal()
+{
+    model->setRightTurnSignal(!model->isRightTurnSignal());
+}
+
 bool Screen1Presenter::getRegenEn() {
     return model->isRegenEn();
 }

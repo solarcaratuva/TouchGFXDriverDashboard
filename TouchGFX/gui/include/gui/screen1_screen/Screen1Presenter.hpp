@@ -31,6 +31,10 @@ public:
 
     bool getLeftTurnSignal();
 
+    void toggleRightTurnSignal();
+
+    void toggleLeftTurnSignal();
+
     bool getHazards();
 
     bool getRegenEn();

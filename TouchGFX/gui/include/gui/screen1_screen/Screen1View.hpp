@@ -12,6 +12,7 @@ public:
     virtual ~Screen1View() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
+    virtual void handleKeyEvent(uint8_t key) override;
     virtual void function2() override;
     virtual void function1();
     void triggerBpsWarning();
