@@ -15,14 +15,15 @@ public:
 
     void tick();
 
-    bool isRightTurnSignal();
-    bool isLeftTurnSignal();
-    bool isHazards();
-    bool isRegenEn();
-    bool isCruiseEn();
-    bool isCruiseInc();
-    bool isCruiseDec();
-    bool isLowPowerMode();
+    bool isLeftTurnSignal() const;
+    bool isRightTurnSignal() const;
+    bool isHazards() const;
+    bool isRegenEn() const;
+    bool isCruiseEn() const;
+    bool isCruiseInc() const;
+    bool isCruiseDec() const;
+    bool isLowPowerMode() const;
+
     void setLeftTurnSignal(bool on);
     void setRightTurnSignal(bool on);
 
@@ -30,7 +31,7 @@ protected:
     ModelListener* modelListener;
 
 private:
-    bool leftTurnSignal  = false;
+    bool leftTurnSignal = false;
     bool rightTurnSignal = false;
 };
 

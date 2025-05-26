@@ -514,17 +514,6 @@
         ],
         "Interactions": [
           {
-            "InteractionName": "Interaction1",
-            "Trigger": {
-              "Type": "TriggerClicked"
-            },
-            "Action": {
-              "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionNone",
-              "ActionComponent": "Screen1"
-            }
-          },
-          {
             "InteractionName": "Interaction2",
             "Trigger": {
               "Type": "TriggerOnEveryTick",
