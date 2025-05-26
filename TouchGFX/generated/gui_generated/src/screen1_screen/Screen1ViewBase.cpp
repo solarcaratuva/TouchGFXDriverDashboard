@@ -6,7 +6,8 @@
 #include <touchgfx/Color.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
 
-Screen1ViewBase::Screen1ViewBase()
+Screen1ViewBase::Screen1ViewBase() :
+    frameCountInteraction4Interval(0)
 {
     touchgfx::CanvasWidgetRenderer::setupBuffer(canvasBuffer, CANVAS_BUFFER_SIZE);
 
@@ -211,67 +212,67 @@ Screen1ViewBase::Screen1ViewBase()
     add(BPS_Warning);
 
     PowerAux_Warning.setXY(150, 24);
-    PowerAux_Warning.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    PowerAux_Warning.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
     PowerAux_Warning.setLinespacing(0);
     PowerAux_Warning.setTypedText(touchgfx::TypedText(T___SINGLEUSE_BMOB));
     add(PowerAux_Warning);
 
-    MtrComm_Blinker.setXY(271, 24);
-    MtrComm_Blinker.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    MtrComm_Blinker.setLinespacing(0);
-    MtrComm_Blinker.setTypedText(touchgfx::TypedText(T___SINGLEUSE_I4O9));
-    add(MtrComm_Blinker);
+    MtrComm_Warning.setXY(271, 24);
+    MtrComm_Warning.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
+    MtrComm_Warning.setLinespacing(0);
+    MtrComm_Warning.setTypedText(touchgfx::TypedText(T___SINGLEUSE_I4O9));
+    add(MtrComm_Warning);
 
     MtrComm_Blinker_1.setXY(50, 54);
-    MtrComm_Blinker_1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    MtrComm_Blinker_1.setColor(touchgfx::Color::getColorFromRGB(60, 255, 0));
     MtrComm_Blinker_1.setLinespacing(0);
     MtrComm_Blinker_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_HRRE));
     add(MtrComm_Blinker_1);
 
     MtrComm_Blinker_1_2.setXY(65, 83);
-    MtrComm_Blinker_1_2.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    MtrComm_Blinker_1_2.setColor(touchgfx::Color::getColorFromRGB(0, 255, 51));
     MtrComm_Blinker_1_2.setLinespacing(0);
     MtrComm_Blinker_1_2.setTypedText(touchgfx::TypedText(T___SINGLEUSE_P1M4));
     add(MtrComm_Blinker_1_2);
 
     MtrComm_Blinker_1_2_2.setXY(101, 83);
-    MtrComm_Blinker_1_2_2.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    MtrComm_Blinker_1_2_2.setColor(touchgfx::Color::getColorFromRGB(0, 255, 51));
     MtrComm_Blinker_1_2_2.setLinespacing(0);
     MtrComm_Blinker_1_2_2.setTypedText(touchgfx::TypedText(T___SINGLEUSE_QSOR));
     add(MtrComm_Blinker_1_2_2);
 
     MtrComm_Blinker_1_2_2_1.setXY(17, 83);
-    MtrComm_Blinker_1_2_2_1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    MtrComm_Blinker_1_2_2_1.setColor(touchgfx::Color::getColorFromRGB(0, 255, 51));
     MtrComm_Blinker_1_2_2_1.setLinespacing(0);
     MtrComm_Blinker_1_2_2_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_TJGA));
     add(MtrComm_Blinker_1_2_2_1);
 
     MtrComm_Blinker_1_2_1.setXY(375, 83);
-    MtrComm_Blinker_1_2_1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    MtrComm_Blinker_1_2_1.setColor(touchgfx::Color::getColorFromRGB(0, 255, 51));
     MtrComm_Blinker_1_2_1.setLinespacing(0);
     MtrComm_Blinker_1_2_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_P1PC));
     add(MtrComm_Blinker_1_2_1);
 
     MtrComm_Blinker_1_2_1_1.setXY(411, 83);
-    MtrComm_Blinker_1_2_1_1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    MtrComm_Blinker_1_2_1_1.setColor(touchgfx::Color::getColorFromRGB(0, 255, 51));
     MtrComm_Blinker_1_2_1_1.setLinespacing(0);
     MtrComm_Blinker_1_2_1_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_NNKX));
     add(MtrComm_Blinker_1_2_1_1);
 
     MtrComm_Blinker_1_2_1_1_1.setXY(326, 83);
-    MtrComm_Blinker_1_2_1_1_1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    MtrComm_Blinker_1_2_1_1_1.setColor(touchgfx::Color::getColorFromRGB(0, 255, 51));
     MtrComm_Blinker_1_2_1_1_1.setLinespacing(0);
     MtrComm_Blinker_1_2_1_1_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_2G26));
     add(MtrComm_Blinker_1_2_1_1_1);
 
     MtrComm_Blinker_1_1.setXY(355, 54);
-    MtrComm_Blinker_1_1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    MtrComm_Blinker_1_1.setColor(touchgfx::Color::getColorFromRGB(0, 255, 51));
     MtrComm_Blinker_1_1.setLinespacing(0);
     MtrComm_Blinker_1_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_ZJV5));
     add(MtrComm_Blinker_1_1);
 
-    MtrComm_Blinker_1_1_1.setXY(179, 57);
-    MtrComm_Blinker_1_1_1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    MtrComm_Blinker_1_1_1.setXY(179, 54);
+    MtrComm_Blinker_1_1_1.setColor(touchgfx::Color::getColorFromRGB(0, 255, 51));
     MtrComm_Blinker_1_1_1.setLinespacing(0);
     MtrComm_Blinker_1_1_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_B7XZ));
     add(MtrComm_Blinker_1_1_1);
@@ -294,10 +295,15 @@ void Screen1ViewBase::handleTickEvent()
     //Call function1
     function1();
 
-    //Interaction4
-    //When every N tick call virtual function
-    //Call function2
-    function2();
+    frameCountInteraction4Interval++;
+    if(frameCountInteraction4Interval == TICK_INTERACTION4_INTERVAL)
+    {
+        //Interaction4
+        //When every N tick call virtual function
+        //Call function2
+        function2();
+        frameCountInteraction4Interval = 0;
+    }
 }
 
 void Screen1ViewBase::handleKeyEvent(uint8_t key)

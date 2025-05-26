@@ -4,7 +4,7 @@
 #ifdef SIMULATOR
 
 Model::Model()
-    : modelListener(nullptr),
+    : modelListener(0),
       leftTurnSignal(false),
       rightTurnSignal(false)
 {
@@ -44,7 +44,7 @@ bool Model::isLowPowerMode()    const { return false; }
 
 #include "main.h"
 
-Model::Model() : modelListener(nullptr) { }
+Model::Model() : modelListener(0) { }
 
 void Model::tick() { }
 

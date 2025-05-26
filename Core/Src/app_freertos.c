@@ -155,10 +155,6 @@ void sendDashBoardTask(void *argument) {
   }
 }
 
-// THESE MUST BE REPLACED ONCE WE KNOW PIN (Button) FOR CHARGING MODE
-#define ChargingMode_Pin GPIO_PIN_12
-#define ChargingMode_Port GPIOF
-
 void sendChargingModeTask(void *argument)
 {
   uint8_t TxData[8];
@@ -175,13 +171,11 @@ void sendChargingModeTask(void *argument)
 
   for (;;)
   {
-    if (HAL_GPIO_ReadPin(ChargingMode_Port,ChargingMode_Pin)) {
-      // Your periodic function call
+    if (HAL_GPIO_ReadPin(USR_BTN_9_GPIO_Port, USR_BTN_9_Pin) == GPIO_PIN_RESET) {
       send_can_message(RIVANNA3_CHARGING_MODE_FRAME_ID, RIVANNA3_CHARGING_MODE_LENGTH, TxData);
     }
 
-      // Wait for the next cycle
-      vTaskDelayUntil(&xLastWakeTime, xPeriod);
+    vTaskDelayUntil(&xLastWakeTime, xPeriod);
   }
 }
 

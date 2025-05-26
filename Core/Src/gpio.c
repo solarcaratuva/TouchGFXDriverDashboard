@@ -181,19 +181,19 @@ void MX_GPIO_Init(void)
   /* Configure GPIO pin : PG9 (Right Turn Signal) */
   GPIO_InitStruct.Pin = USR_BTN_2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;  // Change to GPIO_PULLUP for active-low buttons
+  GPIO_InitStruct.Pull = GPIO_PULLUP;  // GPIO_PULLUP for active-low buttons
   HAL_GPIO_Init(USR_BTN_2_GPIO_Port, &GPIO_InitStruct);
 
   /* Configure GPIO pin : PG10 (Left Turn Signal) */
   GPIO_InitStruct.Pin = USR_BTN_3_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;  // Change to GPIO_PULLUP for active-low buttons
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(USR_BTN_3_GPIO_Port, &GPIO_InitStruct);
 
   // Configure GPIO pin : PA5 (Hazard)
   GPIO_InitStruct.Pin = USR_BTN_4_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;  // Change to GPIO_PULLUP for active-low buttons
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(USR_BTN_4_GPIO_Port, &GPIO_InitStruct);
 
   // Configure GPIO pin : I5 (Cruise EN)

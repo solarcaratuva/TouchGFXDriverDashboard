@@ -27,7 +27,7 @@ bool Screen1Presenter::getRightTurnSignal() {
 }
 
 bool Screen1Presenter::getLeftTurnSignal() {
-    return model->isLeftTurnSignal();  // Or whatever model function you're using
+    return model->isLeftTurnSignal(); 
 }
 
 bool Screen1Presenter::getHazards() {

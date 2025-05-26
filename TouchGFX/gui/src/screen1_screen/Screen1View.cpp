@@ -32,6 +32,12 @@ void Screen1View::setupScreen() {
 
     BPS_Warning.setAlpha(0);
     BPS_Warning.setVisible(false);
+
+    PowerAux_Warning.setAlpha(0);
+    PowerAux_Warning.setVisible(false);
+
+    MtrComm_Warning.setAlpha(0);
+    MtrComm_Warning.setVisible(false);
 }
 
 void Screen1View::handleKeyEvent(uint8_t key)
@@ -61,29 +67,91 @@ void Screen1View::triggerBpsWarning() {
     BPS_Warning.setVisible(true);
 }
 
+void Screen1View::triggerPowerAuxWarning() { 
+    powerAuxWarningState = 1;
+    powerAuxWarningTickCounter = 0;
+    PowerAux_Warning.setVisible(true);
+}
+
+void Screen1View::triggerMtrCommWarning() {
+    mtrCommWarningState = 1;
+    mtrCommWarningTickCounter = 0;
+    MtrComm_Warning.setVisible(true);
+}
+
 void Screen1View::function2() {
     if (bpsWarningState == 1) {
-        BPS_Warning.startFadeAnimation(255, 15); // Fade in
+        BPS_Warning.startFadeAnimation(255, 30); // Fade in
         bpsWarningState = 2;
         bpsWarningTickCounter = 0;
     }
     else if (bpsWarningState == 2) {
         bpsWarningTickCounter++;
-        if (bpsWarningTickCounter >= 30) { // Hold for ~500ms
+        if (bpsWarningTickCounter >= 4) { // Hold for ~500ms
             bpsWarningState = 3;
             bpsWarningTickCounter = 0;
         }
     }
     else if (bpsWarningState == 3) {
-        BPS_Warning.startFadeAnimation(0, 15); // Fade out
+        BPS_Warning.startFadeAnimation(0, 30); // Fade out
         bpsWarningState = 4;
         bpsWarningTickCounter = 0;
     }
     else if (bpsWarningState == 4) {
         bpsWarningTickCounter++;
-        if (bpsWarningTickCounter >= 30) { // Wait before next flash
+        if (bpsWarningTickCounter >= 4) { // Wait before next flash
             bpsWarningState = 1; // Restart flashing loop
             bpsWarningTickCounter = 0;
+        }
+    }
+
+    if (powerAuxWarningState == 1) {
+        PowerAux_Warning.startFadeAnimation(255, 30); // Fade in
+        powerAuxWarningState = 2;
+        powerAuxWarningTickCounter = 0;
+    }
+    else if (powerAuxWarningState == 2) {
+        powerAuxWarningTickCounter++;
+        if (powerAuxWarningTickCounter >= 4) { // Hold for ~500ms
+            powerAuxWarningState = 3;
+            powerAuxWarningTickCounter = 0;
+        }
+    }
+    else if (powerAuxWarningState == 3) {
+        PowerAux_Warning.startFadeAnimation(0, 30); // Fade out
+        powerAuxWarningState = 4;
+        powerAuxWarningTickCounter = 0;
+    }
+    else if (powerAuxWarningState == 4) {
+        powerAuxWarningTickCounter++;
+        if (powerAuxWarningTickCounter >= 4) { // Wait before next flash
+            powerAuxWarningState = 1; // Restart flashing loop
+            powerAuxWarningTickCounter = 0;
+        }
+    }
+
+    if (mtrCommWarningState == 1) {
+        MtrComm_Warning.startFadeAnimation(255, 30); // Fade in
+        mtrCommWarningState = 2;
+        mtrCommWarningTickCounter = 0;
+    }
+    else if (mtrCommWarningState == 2) {
+        mtrCommWarningTickCounter++;
+        if (mtrCommWarningTickCounter >= 4) { // Hold for ~500ms
+            mtrCommWarningState = 3;
+            mtrCommWarningTickCounter = 0;
+        }
+    }
+    else if (mtrCommWarningState == 3) {
+        MtrComm_Warning.startFadeAnimation(0, 30); // Fade out
+        mtrCommWarningState = 4;
+        mtrCommWarningTickCounter = 0;
+    }
+    else if (mtrCommWarningState == 4) {
+        mtrCommWarningTickCounter++;
+        if (mtrCommWarningTickCounter >= 4) { // Wait before next flash
+            mtrCommWarningState = 1; // Restart flashing loop
+            mtrCommWarningTickCounter = 0;
         }
     }
 }
@@ -107,6 +175,12 @@ int count = 0;
 
 bool previousBpsErrorState = false;
 bool currentBpsErrorState = false;
+
+bool previousPowerAuxErrorState = false;
+bool currentPowerAuxErrorState = false;
+
+bool previousMtrCommErrorState = false;
+bool currentMtrCommErrorState = true;
 
 void Screen1View::function1()
 {
@@ -151,6 +225,8 @@ void Screen1View::function1()
     regenD    = 1;
     throttleP = 60;
     currentBpsErrorState = 1;
+    currentPowerAuxErrorState = 1;
+    currentMtrCommErrorState = 1;
 #endif
 
     // Get logic from presenter
@@ -197,6 +273,18 @@ void Screen1View::function1()
     }
 
     previousBpsErrorState = currentBpsErrorState; // Save for next tick
+
+    if (currentPowerAuxErrorState && !previousPowerAuxErrorState) {
+        triggerPowerAuxWarning();
+    }
+
+    previousPowerAuxErrorState = currentPowerAuxErrorState;
+
+    if (currentMtrCommErrorState && !previousMtrCommErrorState) {
+        triggerMtrCommWarning();
+    }
+
+    previousMtrCommErrorState = currentMtrCommErrorState;
 
     // Update displayed values
     Unicode::snprintfFloat(solarCurrBuffer, SOLARCURR_SIZE, "%.2f", manual);

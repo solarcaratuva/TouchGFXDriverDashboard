@@ -77,8 +77,8 @@ protected:
     touchgfx::TextArea textArea1;
     touchgfx::TextArea textArea1_1;
     touchgfx::FadeAnimator< touchgfx::TextArea > BPS_Warning;
-    touchgfx::TextArea PowerAux_Warning;
-    touchgfx::TextArea MtrComm_Blinker;
+    touchgfx::FadeAnimator< touchgfx::TextArea > PowerAux_Warning;
+    touchgfx::FadeAnimator< touchgfx::TextArea > MtrComm_Warning;
     touchgfx::TextArea MtrComm_Blinker_1;
     touchgfx::TextArea MtrComm_Blinker_1_2;
     touchgfx::TextArea MtrComm_Blinker_1_2_2;
@@ -128,6 +128,12 @@ private:
      */
     static const uint32_t CANVAS_BUFFER_SIZE = 7200;
     uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
+
+    /*
+     * Tick Counter Declarations
+     */
+    static const uint32_t TICK_INTERACTION4_INTERVAL = 15;
+    uint32_t frameCountInteraction4Interval;
 
 };
 

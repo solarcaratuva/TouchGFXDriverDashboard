@@ -399,18 +399,26 @@
             "Height": 24,
             "TextId": "__SingleUse_BMOB",
             "TextRotation": "0",
-            "AutoSize": true
+            "Color": {
+              "Red": 255
+            },
+            "AutoSize": true,
+            "Fadeable": true
           },
           {
             "Type": "TextArea",
-            "Name": "MtrComm_Blinker",
+            "Name": "MtrComm_Warning",
             "X": 271,
             "Y": 24,
             "Width": 108,
             "Height": 24,
             "TextId": "__SingleUse_I4O9",
             "TextRotation": "0",
-            "AutoSize": true
+            "Color": {
+              "Red": 255
+            },
+            "AutoSize": true,
+            "Fadeable": true
           },
           {
             "Type": "TextArea",
@@ -421,6 +429,10 @@
             "Height": 24,
             "TextId": "__SingleUse_HRRE",
             "TextRotation": "0",
+            "Color": {
+              "Red": 60,
+              "Green": 255
+            },
             "AutoSize": true
           },
           {
@@ -432,6 +444,10 @@
             "Height": 24,
             "TextId": "__SingleUse_P1M4",
             "TextRotation": "0",
+            "Color": {
+              "Green": 255,
+              "Blue": 51
+            },
             "AutoSize": true
           },
           {
@@ -443,6 +459,10 @@
             "Height": 24,
             "TextId": "__SingleUse_QSOR",
             "TextRotation": "0",
+            "Color": {
+              "Green": 255,
+              "Blue": 51
+            },
             "AutoSize": true
           },
           {
@@ -454,6 +474,10 @@
             "Height": 24,
             "TextId": "__SingleUse_TJGA",
             "TextRotation": "0",
+            "Color": {
+              "Green": 255,
+              "Blue": 51
+            },
             "AutoSize": true
           },
           {
@@ -465,6 +489,10 @@
             "Height": 24,
             "TextId": "__SingleUse_P1PC",
             "TextRotation": "0",
+            "Color": {
+              "Green": 255,
+              "Blue": 51
+            },
             "AutoSize": true
           },
           {
@@ -476,6 +504,10 @@
             "Height": 24,
             "TextId": "__SingleUse_NNKX",
             "TextRotation": "0",
+            "Color": {
+              "Green": 255,
+              "Blue": 51
+            },
             "AutoSize": true
           },
           {
@@ -487,6 +519,10 @@
             "Height": 24,
             "TextId": "__SingleUse_2G26",
             "TextRotation": "0",
+            "Color": {
+              "Green": 255,
+              "Blue": 51
+            },
             "AutoSize": true
           },
           {
@@ -498,17 +534,25 @@
             "Height": 24,
             "TextId": "__SingleUse_ZJV5",
             "TextRotation": "0",
+            "Color": {
+              "Green": 255,
+              "Blue": 51
+            },
             "AutoSize": true
           },
           {
             "Type": "TextArea",
             "Name": "MtrComm_Blinker_1_1_1",
             "X": 179,
-            "Y": 57,
+            "Y": 54,
             "Width": 119,
             "Height": 24,
             "TextId": "__SingleUse_B7XZ",
             "TextRotation": "0",
+            "Color": {
+              "Green": 255,
+              "Blue": 51
+            },
             "AutoSize": true
           }
         ],
@@ -544,7 +588,7 @@
             "InteractionName": "Interaction4",
             "Trigger": {
               "Type": "TriggerOnEveryTick",
-              "TickCount": 1
+              "TickCount": 15
             },
             "Action": {
               "Type": "ActionCustom",
