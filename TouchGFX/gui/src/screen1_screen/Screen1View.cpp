@@ -38,6 +38,12 @@ void Screen1View::setupScreen() {
 
     MtrComm_Warning.setAlpha(0);
     MtrComm_Warning.setVisible(false);
+
+    CruiseINC.setAlpha(0);
+    CruiseINC.setVisible(false);
+
+    CruiseDEC.setAlpha(0);
+    CruiseDEC.setVisible(false);
 }
 
 void Screen1View::handleKeyEvent(uint8_t key)
@@ -54,7 +60,22 @@ void Screen1View::handleKeyEvent(uint8_t key)
         presenter->toggleRegenEn();
     } else if (key == 'L' || key == 'l') {
         presenter->toggleLowPowerEn();
+    } else if (key == '+') {
+        CruiseINC.setAlpha(0);
+        CruiseINC.setVisible(true);
+        CruiseINC.startFadeAnimation(255, 15);  // fade in
+        cruiseIncState = 1;
+        cruiseIncTickCounter = 0;
+        CruiseINC.invalidate();
+    } else if (key == '-') {
+        CruiseDEC.setAlpha(0);
+        CruiseDEC.setVisible(true);
+        CruiseDEC.startFadeAnimation(255, 15);  // fade in
+        cruiseDecState = 1;
+        cruiseDecTickCounter = 0;
+        CruiseDEC.invalidate();
     }
+
     // force a redraw of your indicators:
     invalidate();
 }
@@ -156,6 +177,50 @@ void Screen1View::function2() {
         if (mtrCommWarningTickCounter >= 4) { // Wait before next flash
             mtrCommWarningState = 1; // Restart flashing loop
             mtrCommWarningTickCounter = 0;
+        }
+    }
+    if (cruiseIncState == 1) {
+    cruiseIncTickCounter++;
+    if (cruiseIncTickCounter >= 1) {
+        cruiseIncState = 2;
+        cruiseIncTickCounter = 0;
+        }
+    } else if (cruiseIncState == 2) {
+        cruiseIncTickCounter++;
+        if (cruiseIncTickCounter >= 4) {
+            CruiseINC.startFadeAnimation(0, 15); // fade out
+            cruiseIncState = 3;
+            cruiseIncTickCounter = 0;
+        }
+    } else if (cruiseIncState == 3) {
+        cruiseIncTickCounter++;
+        if (cruiseIncTickCounter >= 1) {
+            CruiseINC.setVisible(false);
+            cruiseIncState = 0;
+            cruiseIncTickCounter = 0;
+        }
+    }
+
+    // Cruise DEC animation logic
+    if (cruiseDecState == 1) {
+        cruiseDecTickCounter++;
+        if (cruiseDecTickCounter >= 1) {
+            cruiseDecState = 2;
+            cruiseDecTickCounter = 0;
+        }
+    } else if (cruiseDecState == 2) {
+        cruiseDecTickCounter++;
+        if (cruiseDecTickCounter >= 4) {
+            CruiseDEC.startFadeAnimation(0, 15); // fade out
+            cruiseDecState = 3;
+            cruiseDecTickCounter = 0;
+        }
+    } else if (cruiseDecState == 3) {
+        cruiseDecTickCounter++;
+        if (cruiseDecTickCounter >= 1) {
+            CruiseDEC.setVisible(false);
+            cruiseDecState = 0;
+            cruiseDecTickCounter = 0;
         }
     }
 }

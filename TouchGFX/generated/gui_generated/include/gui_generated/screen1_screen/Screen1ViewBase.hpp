@@ -80,8 +80,8 @@ protected:
     touchgfx::FadeAnimator< touchgfx::TextArea > PowerAux_Warning;
     touchgfx::FadeAnimator< touchgfx::TextArea > MtrComm_Warning;
     touchgfx::TextArea RegenEN;
-    touchgfx::TextArea CruiseDEC;
-    touchgfx::TextArea CruiseINC;
+    touchgfx::FadeAnimator< touchgfx::TextArea > CruiseDEC;
+    touchgfx::FadeAnimator< touchgfx::TextArea > CruiseINC;
     touchgfx::TextArea CruiseText;
     touchgfx::TextArea LowPowerEN;
 

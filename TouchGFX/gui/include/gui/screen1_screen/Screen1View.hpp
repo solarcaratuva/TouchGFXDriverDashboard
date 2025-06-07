@@ -28,6 +28,13 @@ private:
     uint16_t powerAuxWarningTickCounter = 0;
     uint8_t mtrCommWarningState = 0;
     uint16_t mtrCommWarningTickCounter = 0;
+    int cruiseIncState = 0; // 0 = idle, 1 = fade in, 2 = hold, 3 = fade out
+    int cruiseIncTickCounter = 0;
+
+    // For Cruise DEC text popup
+    int cruiseDecState = 0;
+    int cruiseDecTickCounter = 0;
+
 };
 
 #endif // SCREEN1VIEW_HPP

@@ -37,6 +37,16 @@ private:
     bool rightTurnSignal = false;
     bool regen = false;
     bool lowPower = false;
+    bool cruise = false;
+    bool hazard = false;
+
+    bool prevLeftButtonState = true;
+    bool prevRightButtonState = true;
+    bool prevLowPowerButtonState = true;
+    bool prevRegenButtonState = true;
+    bool prevCruiseButtonState = true;
+    bool prevHazardButtonState = true;
+
 };
 
 #endif // MODEL_HPP

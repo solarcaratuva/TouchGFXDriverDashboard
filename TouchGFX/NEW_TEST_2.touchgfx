@@ -444,7 +444,8 @@
               "Green": 255,
               "Blue": 51
             },
-            "AutoSize": true
+            "AutoSize": true,
+            "Fadeable": true
           },
           {
             "Type": "TextArea",
@@ -459,7 +460,8 @@
               "Green": 255,
               "Blue": 51
             },
-            "AutoSize": true
+            "AutoSize": true,
+            "Fadeable": true
           },
           {
             "Type": "TextArea",
