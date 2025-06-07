@@ -34,7 +34,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+#define DEBOUNCE_TICKS 3 // debounce = 3 * 100ms = 300ms
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -133,32 +133,81 @@ void sendDashBoardTask(void *argument) {
 
   struct rivanna3_dashboard_commands_t dashboard_can;
 
-  static bool prevInc = false;
-  static bool prevDec = false;
+    // Previous raw button states (for edge detection)
+    static bool prevLowPower = false;
+    static bool prevRegen = false;
+    static bool prevCruise = false;
+    static bool prevHazard = false;
+    static bool prevInc = false;
+    static bool prevDec = false;
+
+    // Latched states
+    static bool latchedLowPower = false;
+    static bool latchedRegen = false;
+    static bool latchedCruise = false;
+    static bool latchedHazard = false;
+
+    static int debounceLowPower = 0;
+    static int debounceRegen = 0;
+    static int debounceCruise = 0;
+    static int debounceHazard = 0;
+
 
   for (;;)
   {
-    dashboard_can.left_turn_signal = HAL_GPIO_ReadPin(USR_BTN_3_GPIO_Port, USR_BTN_3_Pin) == GPIO_PIN_RESET;
-    dashboard_can.right_turn_signal = HAL_GPIO_ReadPin(USR_BTN_2_GPIO_Port, USR_BTN_2_Pin) == GPIO_PIN_RESET;
-    dashboard_can.hazards = HAL_GPIO_ReadPin(USR_BTN_4_GPIO_Port, USR_BTN_4_Pin) == GPIO_PIN_RESET;
-    dashboard_can.cruise_en = HAL_GPIO_ReadPin(USR_BTN_5_GPIO_Port, USR_BTN_5_Pin) == GPIO_PIN_RESET;
-    dashboard_can.regen_en = HAL_GPIO_ReadPin(USR_BTN_6_GPIO_Port, USR_BTN_6_Pin) == GPIO_PIN_RESET;
+    bool rawLowPower = HAL_GPIO_ReadPin(USR_BTN_9_GPIO_Port, USR_BTN_9_Pin) == GPIO_PIN_RESET;
+    bool rawRegen    = HAL_GPIO_ReadPin(USR_BTN_6_GPIO_Port, USR_BTN_6_Pin) == GPIO_PIN_RESET;
+    bool rawCruise   = HAL_GPIO_ReadPin(USR_BTN_5_GPIO_Port, USR_BTN_5_Pin) == GPIO_PIN_RESET;
+    bool rawHazard   = HAL_GPIO_ReadPin(USR_BTN_4_GPIO_Port, USR_BTN_4_Pin) == GPIO_PIN_RESET;
+    bool rawInc      = HAL_GPIO_ReadPin(USR_BTN_7_GPIO_Port, USR_BTN_7_Pin) == GPIO_PIN_RESET;
+    bool rawDec      = HAL_GPIO_ReadPin(USR_BTN_8_GPIO_Port, USR_BTN_8_Pin) == GPIO_PIN_RESET;
 
-    bool rawInc = HAL_GPIO_ReadPin(USR_BTN_7_GPIO_Port, USR_BTN_7_Pin) == GPIO_PIN_RESET;
-    bool rawDec = HAL_GPIO_ReadPin(USR_BTN_8_GPIO_Port, USR_BTN_8_Pin) == GPIO_PIN_RESET;
+    // Toggle latching logic on rising edge
+    if (!prevLowPower && rawLowPower && debounceLowPower == 0) {
+    latchedLowPower = !latchedLowPower;
+    debounceLowPower = DEBOUNCE_TICKS;
+    }
+    if (!prevRegen && rawRegen && debounceRegen == 0) {
+        latchedRegen = !latchedRegen;
+        debounceRegen = DEBOUNCE_TICKS;
+    }
+    if (!prevCruise && rawCruise && debounceCruise == 0) {
+        latchedCruise = !latchedCruise;
+        debounceCruise = DEBOUNCE_TICKS;
+    }
+    if (!prevHazard && rawHazard && debounceHazard == 0) {
+        latchedHazard = !latchedHazard;
+        debounceHazard = DEBOUNCE_TICKS;
+    }
 
     dashboard_can.cruise_inc = rawInc && !prevInc;
     dashboard_can.cruise_dec = rawDec && !prevDec;
 
+    // Always send the current latched states
+    dashboard_can.left_turn_signal = HAL_GPIO_ReadPin(USR_BTN_3_GPIO_Port, USR_BTN_3_Pin) == GPIO_PIN_RESET;
+    dashboard_can.right_turn_signal = HAL_GPIO_ReadPin(USR_BTN_2_GPIO_Port, USR_BTN_2_Pin) == GPIO_PIN_RESET;
+    dashboard_can.low_power_en = latchedLowPower;
+    dashboard_can.regen_en = latchedRegen;
+    dashboard_can.cruise_en = latchedCruise;
+    dashboard_can.hazards = latchedHazard;
+
+    // Update previous states
+    prevLowPower = rawLowPower;
+    prevRegen = rawRegen;
+    prevCruise = rawCruise;
+    prevHazard = rawHazard;
     prevInc = rawInc;
     prevDec = rawDec;
 
-    rivanna3_dashboard_commands_pack(TxData, &dashboard_can, RIVANNA3_DASHBOARD_COMMANDS_LENGTH);// removed ->data from TxData
+    if (debounceLowPower > 0) debounceLowPower--;
+    if (debounceRegen > 0) debounceRegen--;
+    if (debounceCruise > 0) debounceCruise--;
+    if (debounceHazard > 0) debounceHazard--;
 
-    // Your periodic function call
+    // Pack and send
+    rivanna3_dashboard_commands_pack(TxData, &dashboard_can, RIVANNA3_DASHBOARD_COMMANDS_LENGTH);
     send_can_message(RIVANNA3_DASHBOARD_COMMANDS_FRAME_ID, RIVANNA3_DASHBOARD_COMMANDS_LENGTH, TxData);
 
-    // Wait for the next cycle
     vTaskDelayUntil(&xLastWakeTime, xPeriod);
   }
 }
