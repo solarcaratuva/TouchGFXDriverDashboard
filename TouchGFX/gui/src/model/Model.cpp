@@ -128,9 +128,6 @@ void Model::setRegenEn(bool) { }
 
 void Model::setLowPowerEn(bool on) { }
 
-void Model::setLeftTurnSignal(bool on) { leftTurnSignal = on; }
-void Model::setRightTurnSignal(bool on) { rightTurnSignal = on; }
-
 bool Model::isHazards()      const { return hazard; }
 bool Model::isCruiseEn()     const { return cruise; }
 bool Model::isRegenEn()      const { return regen; }

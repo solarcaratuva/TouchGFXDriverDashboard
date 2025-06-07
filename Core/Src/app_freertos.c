@@ -134,6 +134,8 @@ void sendDashBoardTask(void *argument) {
   struct rivanna3_dashboard_commands_t dashboard_can;
 
     // Previous raw button states (for edge detection)
+    static bool prevLeft = false;
+    static bool prevRight = false;
     static bool prevLowPower = false;
     static bool prevRegen = false;
     static bool prevCruise = false;
@@ -142,19 +144,24 @@ void sendDashBoardTask(void *argument) {
     static bool prevDec = false;
 
     // Latched states
+    static bool latchedLeft = false;
+    static bool latchedRight = false;
     static bool latchedLowPower = false;
     static bool latchedRegen = false;
     static bool latchedCruise = false;
     static bool latchedHazard = false;
 
+    static int debounceLeft = 0;
+    static int debounceRight = 0;
     static int debounceLowPower = 0;
     static int debounceRegen = 0;
     static int debounceCruise = 0;
     static int debounceHazard = 0;
 
-
   for (;;)
   {
+    bool rawLeft  = HAL_GPIO_ReadPin(USR_BTN_3_GPIO_Port, USR_BTN_3_Pin) == GPIO_PIN_RESET;
+    bool rawRight = HAL_GPIO_ReadPin(USR_BTN_2_GPIO_Port, USR_BTN_2_Pin) == GPIO_PIN_RESET;
     bool rawLowPower = HAL_GPIO_ReadPin(USR_BTN_9_GPIO_Port, USR_BTN_9_Pin) == GPIO_PIN_RESET;
     bool rawRegen    = HAL_GPIO_ReadPin(USR_BTN_6_GPIO_Port, USR_BTN_6_Pin) == GPIO_PIN_RESET;
     bool rawCruise   = HAL_GPIO_ReadPin(USR_BTN_5_GPIO_Port, USR_BTN_5_Pin) == GPIO_PIN_RESET;
@@ -163,6 +170,14 @@ void sendDashBoardTask(void *argument) {
     bool rawDec      = HAL_GPIO_ReadPin(USR_BTN_8_GPIO_Port, USR_BTN_8_Pin) == GPIO_PIN_RESET;
 
     // Toggle latching logic on rising edge
+    if (!prevLeft && rawLeft && debounceLeft == 0) {
+    latchedLeft = !latchedLeft;
+    debounceLeft = DEBOUNCE_TICKS;
+    }
+    if (!prevRight && rawRight && debounceRight == 0) {
+        latchedRight = !latchedRight;
+        debounceRight = DEBOUNCE_TICKS;
+    }
     if (!prevLowPower && rawLowPower && debounceLowPower == 0) {
     latchedLowPower = !latchedLowPower;
     debounceLowPower = DEBOUNCE_TICKS;
@@ -184,14 +199,15 @@ void sendDashBoardTask(void *argument) {
     dashboard_can.cruise_dec = rawDec && !prevDec;
 
     // Always send the current latched states
-    dashboard_can.left_turn_signal = HAL_GPIO_ReadPin(USR_BTN_3_GPIO_Port, USR_BTN_3_Pin) == GPIO_PIN_RESET;
-    dashboard_can.right_turn_signal = HAL_GPIO_ReadPin(USR_BTN_2_GPIO_Port, USR_BTN_2_Pin) == GPIO_PIN_RESET;
-    dashboard_can.low_power_en = latchedLowPower;
+    dashboard_can.left_turn_signal = latchedLeft;
+    dashboard_can.right_turn_signal = latchedRight;
     dashboard_can.regen_en = latchedRegen;
     dashboard_can.cruise_en = latchedCruise;
     dashboard_can.hazards = latchedHazard;
 
     // Update previous states
+    prevLeft = rawLeft;
+    prevRight = rawRight;
     prevLowPower = rawLowPower;
     prevRegen = rawRegen;
     prevCruise = rawCruise;
@@ -199,6 +215,8 @@ void sendDashBoardTask(void *argument) {
     prevInc = rawInc;
     prevDec = rawDec;
 
+    if (debounceLeft > 0) debounceLeft--;
+    if (debounceRight > 0) debounceRight--;
     if (debounceLowPower > 0) debounceLowPower--;
     if (debounceRegen > 0) debounceRegen--;
     if (debounceCruise > 0) debounceCruise--;
