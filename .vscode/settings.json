@@ -9,5 +9,6 @@
         "fdcan.h": "c",
         "main.h": "c",
         "data_queues.h": "c"
-    }
+    },
+    "ros.distro": "humble"
 }

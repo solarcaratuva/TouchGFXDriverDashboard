@@ -229,7 +229,7 @@ void Screen1View::function1()
     regenD    = 1;
     throttleP = 60;
     currentBpsErrorState = 1;
-    currentPowerAuxErrorState = 1;
+    currentPowerAuxErrorState = 0;
     currentMtrCommErrorState = 1;
 #endif
 

@@ -64,17 +64,31 @@ bool Model::isCruiseDec()       const { return false; }
 
 Model::Model() : modelListener(0) { }
 
-void Model::tick() { }
+void Model::tick() {
+    bool currentLeft = HAL_GPIO_ReadPin(USR_BTN_3_GPIO_Port, USR_BTN_3_Pin);
+    if (prevLeftButtonState == 1 && currentLeft == 0) { // pressed
+        leftTurnSignal = !leftTurnSignal;
+    }
+    prevLeftButtonState = currentLeft;
+
+    // Edge detect: Right Turn Button
+    bool currentRight = HAL_GPIO_ReadPin(USR_BTN_2_GPIO_Port, USR_BTN_2_Pin);
+    if (prevRightButtonState == 1 && currentRight == 0) { // pressed
+        rightTurnSignal = !rightTurnSignal;
+    }
+    prevRightButtonState = currentRight;
+
+ }
 
 bool Model::isLeftTurnSignal() const
 {
-    return HAL_GPIO_ReadPin(USR_BTN_3_GPIO_Port, USR_BTN_3_Pin) == GPIO_PIN_RESET;
+    return leftTurnSignal;
 }
 void Model::setLeftTurnSignal(bool) { }
 
 bool Model::isRightTurnSignal() const
 {
-    return HAL_GPIO_ReadPin(USR_BTN_2_GPIO_Port, USR_BTN_2_Pin) == GPIO_PIN_RESET;
+    return rightTurnSignal;
 }
 void Model::setRightTurnSignal(bool) { }
 
