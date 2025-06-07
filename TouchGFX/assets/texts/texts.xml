@@ -6,6 +6,90 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_1NXV" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_LX7P" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">bpsError: &lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_07ZR" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_WWYE" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">motorControllerError: &lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_2MI9" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Error</Translation>
+      </Text>
+      <Text Id="__SingleUse_1TFM" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_AQNJ" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">CruiseINC: &lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_CKIY" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_QABV" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">CruiseDEC: &lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_5R2B" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_JUHU" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">CruiseEN: &lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_8CZ0" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_5BT5" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">RegenEN: &lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_PRCN" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_EB6C" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">Hazards: &lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_XKWJ" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_5UY8" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">RightTurn: &lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_3I6X" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_42A2" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">LeftTurn: &lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_NJEQ" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">DashboardCommands</Translation>
+      </Text>
+      <Text Id="__SingleUse_HVTL" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_XM9Z" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">DischargeRelay: &lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_4Y00" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_P4JT" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">ChargeRelay: &lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_9AJP" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_0122" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">DTCStatus: &lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_GJB3" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_HUPJ" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">PackSOC: &lt;value&gt;</Translation>
+      </Text>
       <Text Id="__SingleUse_B7XZ" Alignment="Left" TypographyId="Medium">
         <Translation Language="GB">LowPower</Translation>
       </Text>
@@ -22,16 +106,13 @@
         <Translation Language="GB">PowerAux</Translation>
       </Text>
       <Text Id="__SingleUse_I4O9" Alignment="Left" TypographyId="Medium">
-        <Translation Language="GB">MtrComm</Translation>
+        <Translation Language="GB">MtrCont</Translation>
       </Text>
       <Text Id="__SingleUse_ZJV5" Alignment="Left" TypographyId="Medium">
         <Translation Language="GB">Cruise</Translation>
       </Text>
       <Text Id="__SingleUse_HRRE" Alignment="Left" TypographyId="Medium">
         <Translation Language="GB">Regen</Translation>
-      </Text>
-      <Text Id="__SingleUse_DOD1" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">Error</Translation>
       </Text>
       <Text Id="__SingleUse_CKSE" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">BPS</Translation>
@@ -49,7 +130,7 @@
         <Translation Language="GB">0</Translation>
       </Text>
       <Text Id="__SingleUse_Y8XR" Alignment="Left" TypographyId="Medium">
-        <Translation Language="GB">Regen Breaking: &lt;value&gt;</Translation>
+        <Translation Language="GB">Regen Braking: &lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_19XW" Alignment="Left" TypographyId="Medium">
         <Translation Language="GB">0</Translation>
@@ -75,29 +156,17 @@
       <Text Id="__SingleUse_GBLF" Alignment="Left" TypographyId="Medium">
         <Translation Language="GB">Regen Drive: &lt;value&gt;</Translation>
       </Text>
-      <Text Id="__SingleUse_19ON" Alignment="Left" TypographyId="Medium">
-        <Translation Language="GB">0</Translation>
-      </Text>
-      <Text Id="__SingleUse_K8F2" Alignment="Left" TypographyId="Medium">
-        <Translation Language="GB">BPS Error: &lt;value&gt;</Translation>
-      </Text>
-      <Text Id="__SingleUse_N3FC" Alignment="Left" TypographyId="Medium">
-        <Translation Language="GB">0</Translation>
-      </Text>
-      <Text Id="__SingleUse_2J9V" Alignment="Left" TypographyId="Medium">
-        <Translation Language="GB">PowerAuxError: &lt;value&gt;</Translation>
-      </Text>
       <Text Id="__SingleUse_QWO4" Alignment="Left" TypographyId="Medium">
         <Translation Language="GB">0</Translation>
       </Text>
       <Text Id="__SingleUse_U3RT" Alignment="Left" TypographyId="Medium">
-        <Translation Language="GB">BPSPackCurrent: &lt;value&gt;</Translation>
+        <Translation Language="GB">PackCurrent: &lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_0XTX" Alignment="Left" TypographyId="Medium">
         <Translation Language="GB">0</Translation>
       </Text>
       <Text Id="__SingleUse_K7ZJ" Alignment="Left" TypographyId="Medium">
-        <Translation Language="GB">BPSPackVoltage: &lt;value&gt;</Translation>
+        <Translation Language="GB">PackVoltage: &lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_J8IU" Alignment="Left" TypographyId="Medium">
         <Translation Language="GB">0</Translation>

@@ -24,7 +24,7 @@
             "X": -13,
             "Y": 117,
             "Width": 498,
-            "Height": 251,
+            "Height": 236,
             "Color": {
               "Red": 200,
               "Green": 203,
@@ -35,10 +35,10 @@
           {
             "Type": "BoxWithBorder",
             "Name": "boxWithBorder2_1",
-            "X": -10,
-            "Y": 361,
-            "Width": 495,
-            "Height": 83,
+            "X": -11,
+            "Y": 347,
+            "Width": 496,
+            "Height": 147,
             "Color": {
               "Red": 249,
               "Green": 220,
@@ -49,14 +49,28 @@
           {
             "Type": "BoxWithBorder",
             "Name": "boxWithBorder2_1_1",
-            "X": -11,
-            "Y": 433,
-            "Width": 496,
-            "Height": 86,
+            "X": -12,
+            "Y": 488,
+            "Width": 497,
+            "Height": 156,
             "Color": {
-              "Red": 247,
-              "Green": 190,
-              "Blue": 190
+              "Red": 190,
+              "Green": 247,
+              "Blue": 206
+            },
+            "BorderSize": 5
+          },
+          {
+            "Type": "BoxWithBorder",
+            "Name": "boxWithBorder2_1_1_1",
+            "X": -9,
+            "Y": 638,
+            "Width": 494,
+            "Height": 66,
+            "Color": {
+              "Red": 245,
+              "Green": 188,
+              "Blue": 188
             },
             "BorderSize": 5
           },
@@ -64,7 +78,7 @@
             "Type": "TextArea",
             "Name": "total",
             "X": 3,
-            "Y": 160,
+            "Y": 162,
             "Width": 232,
             "Height": 28,
             "TextId": "__SingleUse_60TL",
@@ -94,7 +108,7 @@
             "Type": "TextArea",
             "Name": "speed",
             "X": 252,
-            "Y": 326,
+            "Y": 322,
             "Width": 252,
             "Height": 25,
             "TextId": "__SingleUse_TWF3",
@@ -107,39 +121,9 @@
           },
           {
             "Type": "TextArea",
-            "Name": "bpsError",
-            "X": 3,
-            "Y": 480,
-            "Width": 213,
-            "Height": 26,
-            "TextId": "__SingleUse_K8F2",
-            "TextRotation": "0",
-            "Wildcard1": {
-              "TextId": "__SingleUse_19ON",
-              "UseBuffer": true,
-              "BufferSize": 10
-            }
-          },
-          {
-            "Type": "TextArea",
-            "Name": "powerAux",
-            "X": 252,
-            "Y": 479,
-            "Width": 259,
-            "Height": 27,
-            "TextId": "__SingleUse_2J9V",
-            "TextRotation": "0",
-            "Wildcard1": {
-              "TextId": "__SingleUse_N3FC",
-              "UseBuffer": true,
-              "BufferSize": 10
-            }
-          },
-          {
-            "Type": "TextArea",
             "Name": "cellTemp",
             "X": 252,
-            "Y": 408,
+            "Y": 382,
             "Width": 252,
             "Height": 25,
             "TextId": "__SingleUse_U3RT",
@@ -153,8 +137,8 @@
           {
             "Type": "TextArea",
             "Name": "cellVolt",
-            "X": 4,
-            "Y": 407,
+            "X": 3,
+            "Y": 382,
             "Width": 248,
             "Height": 26,
             "TextId": "__SingleUse_K7ZJ",
@@ -167,9 +151,204 @@
           },
           {
             "Type": "TextArea",
+            "Name": "cellVolt_1",
+            "X": 3,
+            "Y": 532,
+            "Width": 248,
+            "Height": 26,
+            "TextId": "__SingleUse_42A2",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_3I6X",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "cellVolt_1_2",
+            "X": 3,
+            "Y": 572,
+            "Width": 248,
+            "Height": 26,
+            "TextId": "__SingleUse_EB6C",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_PRCN",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "cellVolt_1_2_1",
+            "X": 252,
+            "Y": 572,
+            "Width": 248,
+            "Height": 26,
+            "TextId": "__SingleUse_5BT5",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_8CZ0",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "CruiseENText",
+            "X": 166,
+            "Y": 612,
+            "Width": 143,
+            "Height": 26,
+            "TextId": "__SingleUse_JUHU",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_5R2B",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "CruiseDECText",
+            "X": 3,
+            "Y": 612,
+            "Width": 157,
+            "Height": 26,
+            "TextId": "__SingleUse_QABV",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_CKIY",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "CruiseINCText",
+            "X": 323,
+            "Y": 612,
+            "Width": 248,
+            "Height": 26,
+            "TextId": "__SingleUse_AQNJ",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_1TFM",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "cellVolt_1_1",
+            "X": 252,
+            "Y": 532,
+            "Width": 248,
+            "Height": 26,
+            "TextId": "__SingleUse_5UY8",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_XKWJ",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "BPS_SOC",
+            "X": 3,
+            "Y": 422,
+            "Width": 248,
+            "Height": 26,
+            "TextId": "__SingleUse_HUPJ",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_GJB3",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "DTCStatus",
+            "X": 252,
+            "Y": 422,
+            "Width": 248,
+            "Height": 26,
+            "TextId": "__SingleUse_0122",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_9AJP",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "ChargeRelay",
+            "X": 252,
+            "Y": 462,
+            "Width": 248,
+            "Height": 26,
+            "TextId": "__SingleUse_P4JT",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_4Y00",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "DischargeRelayStatus",
+            "X": 3,
+            "Y": 462,
+            "Width": 248,
+            "Height": 26,
+            "TextId": "__SingleUse_XM9Z",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_HVTL",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "powerAux",
+            "X": 3,
+            "Y": 672,
+            "Width": 276,
+            "Height": 26,
+            "TextId": "__SingleUse_WWYE",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_07ZR",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "bpsError",
+            "X": 290,
+            "Y": 672,
+            "Width": 248,
+            "Height": 26,
+            "TextId": "__SingleUse_LX7P",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_1NXV",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
             "Name": "solarPhoto",
             "X": 252,
-            "Y": 243,
+            "Y": 242,
             "Width": 215,
             "Height": 24,
             "TextId": "__SingleUse_YIF1",
@@ -183,8 +362,8 @@
           {
             "Type": "TextArea",
             "Name": "cruiseSpeed",
-            "X": 2,
-            "Y": 284,
+            "X": 3,
+            "Y": 282,
             "Width": 250,
             "Height": 30,
             "TextId": "__SingleUse_O4X1",
@@ -199,7 +378,7 @@
             "Type": "TextArea",
             "Name": "regenBreaking",
             "X": 252,
-            "Y": 284,
+            "Y": 282,
             "Width": 259,
             "Height": 30,
             "TextId": "__SingleUse_Y8XR",
@@ -213,8 +392,8 @@
           {
             "Type": "TextArea",
             "Name": "throttlePedal",
-            "X": 4,
-            "Y": 326,
+            "X": 3,
+            "Y": 322,
             "Width": 248,
             "Height": 25,
             "TextId": "__SingleUse_SJTS",
@@ -228,7 +407,7 @@
           {
             "Type": "TextArea",
             "Name": "solarVolt",
-            "X": 2,
+            "X": 3,
             "Y": 242,
             "Width": 250,
             "Height": 25,
@@ -244,7 +423,7 @@
             "Type": "TextArea",
             "Name": "solarTemp",
             "X": 252,
-            "Y": 199,
+            "Y": 202,
             "Width": 276,
             "Height": 26,
             "TextId": "__SingleUse_F2LO",
@@ -258,8 +437,8 @@
           {
             "Type": "TextArea",
             "Name": "solarCurr",
-            "X": 2,
-            "Y": 199,
+            "X": 3,
+            "Y": 202,
             "Width": 258,
             "Height": 26,
             "TextId": "__SingleUse_RKCB",
@@ -355,9 +534,9 @@
           },
           {
             "Type": "TextArea",
-            "Name": "textArea1",
+            "Name": "BPSTitle",
             "X": 206,
-            "Y": 361,
+            "Y": 347,
             "Width": 66,
             "Height": 30,
             "TextId": "__SingleUse_CKSE",
@@ -366,12 +545,23 @@
           },
           {
             "Type": "TextArea",
-            "Name": "textArea1_1",
-            "X": 196,
-            "Y": 433,
+            "Name": "DashboardCommands",
+            "X": 56,
+            "Y": 494,
+            "Width": 369,
+            "Height": 30,
+            "TextId": "__SingleUse_NJEQ",
+            "TextRotation": "0",
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "Error",
+            "X": 192,
+            "Y": 638,
             "Width": 87,
             "Height": 30,
-            "TextId": "__SingleUse_DOD1",
+            "TextId": "__SingleUse_2MI9",
             "TextRotation": "0",
             "AutoSize": true
           },
@@ -393,7 +583,7 @@
           {
             "Type": "TextArea",
             "Name": "PowerAux_Warning",
-            "X": 150,
+            "X": 157,
             "Y": 24,
             "Width": 115,
             "Height": 24,
@@ -408,9 +598,9 @@
           {
             "Type": "TextArea",
             "Name": "MtrComm_Warning",
-            "X": 271,
+            "X": 287,
             "Y": 24,
-            "Width": 108,
+            "Width": 89,
             "Height": 24,
             "TextId": "__SingleUse_I4O9",
             "TextRotation": "0",
