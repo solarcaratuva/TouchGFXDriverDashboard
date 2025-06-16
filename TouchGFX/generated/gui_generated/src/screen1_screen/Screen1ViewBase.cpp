@@ -83,29 +83,37 @@ Screen1ViewBase::Screen1ViewBase() :
     cellVolt.setTypedText(touchgfx::TypedText(T___SINGLEUSE_K7ZJ));
     add(cellVolt);
 
-    cellVolt_1.setPosition(3, 532, 248, 26);
-    cellVolt_1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    cellVolt_1.setLinespacing(0);
-    Unicode::snprintf(cellVolt_1Buffer, CELLVOLT_1_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_3I6X).getText());
-    cellVolt_1.setWildcard(cellVolt_1Buffer);
-    cellVolt_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_42A2));
-    add(cellVolt_1);
+    leftTurnText.setPosition(3, 532, 248, 26);
+    leftTurnText.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    leftTurnText.setLinespacing(0);
+    Unicode::snprintf(leftTurnTextBuffer, LEFTTURNTEXT_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_3I6X).getText());
+    leftTurnText.setWildcard(leftTurnTextBuffer);
+    leftTurnText.setTypedText(touchgfx::TypedText(T___SINGLEUSE_42A2));
+    add(leftTurnText);
 
-    cellVolt_1_2.setPosition(3, 572, 248, 26);
-    cellVolt_1_2.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    cellVolt_1_2.setLinespacing(0);
-    Unicode::snprintf(cellVolt_1_2Buffer, CELLVOLT_1_2_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_PRCN).getText());
-    cellVolt_1_2.setWildcard(cellVolt_1_2Buffer);
-    cellVolt_1_2.setTypedText(touchgfx::TypedText(T___SINGLEUSE_EB6C));
-    add(cellVolt_1_2);
+    hazardsText.setPosition(166, 532, 248, 26);
+    hazardsText.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    hazardsText.setLinespacing(0);
+    Unicode::snprintf(hazardsTextBuffer, HAZARDSTEXT_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_PRCN).getText());
+    hazardsText.setWildcard(hazardsTextBuffer);
+    hazardsText.setTypedText(touchgfx::TypedText(T___SINGLEUSE_EB6C));
+    add(hazardsText);
 
-    cellVolt_1_2_1.setPosition(252, 572, 248, 26);
-    cellVolt_1_2_1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    cellVolt_1_2_1.setLinespacing(0);
-    Unicode::snprintf(cellVolt_1_2_1Buffer, CELLVOLT_1_2_1_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_8CZ0).getText());
-    cellVolt_1_2_1.setWildcard(cellVolt_1_2_1Buffer);
-    cellVolt_1_2_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_5BT5));
-    add(cellVolt_1_2_1);
+    regenENText.setPosition(61, 572, 248, 26);
+    regenENText.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    regenENText.setLinespacing(0);
+    Unicode::snprintf(regenENTextBuffer, REGENENTEXT_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_8CZ0).getText());
+    regenENText.setWildcard(regenENTextBuffer);
+    regenENText.setTypedText(touchgfx::TypedText(T___SINGLEUSE_5BT5));
+    add(regenENText);
+
+    lowPowerText.setPosition(240, 572, 248, 26);
+    lowPowerText.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    lowPowerText.setLinespacing(0);
+    Unicode::snprintf(lowPowerTextBuffer, LOWPOWERTEXT_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_4P1H).getText());
+    lowPowerText.setWildcard(lowPowerTextBuffer);
+    lowPowerText.setTypedText(touchgfx::TypedText(T___SINGLEUSE_7YYZ));
+    add(lowPowerText);
 
     CruiseENText.setPosition(166, 612, 143, 26);
     CruiseENText.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
@@ -131,13 +139,13 @@ Screen1ViewBase::Screen1ViewBase() :
     CruiseINCText.setTypedText(touchgfx::TypedText(T___SINGLEUSE_AQNJ));
     add(CruiseINCText);
 
-    cellVolt_1_1.setPosition(252, 532, 248, 26);
-    cellVolt_1_1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    cellVolt_1_1.setLinespacing(0);
-    Unicode::snprintf(cellVolt_1_1Buffer, CELLVOLT_1_1_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_XKWJ).getText());
-    cellVolt_1_1.setWildcard(cellVolt_1_1Buffer);
-    cellVolt_1_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_5UY8));
-    add(cellVolt_1_1);
+    rightTurnText.setPosition(323, 532, 248, 26);
+    rightTurnText.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    rightTurnText.setLinespacing(0);
+    Unicode::snprintf(rightTurnTextBuffer, RIGHTTURNTEXT_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_XKWJ).getText());
+    rightTurnText.setWildcard(rightTurnTextBuffer);
+    rightTurnText.setTypedText(touchgfx::TypedText(T___SINGLEUSE_5UY8));
+    add(rightTurnText);
 
     BPS_SOC.setPosition(3, 422, 248, 26);
     BPS_SOC.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));

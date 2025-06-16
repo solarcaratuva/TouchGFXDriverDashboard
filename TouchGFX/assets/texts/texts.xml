@@ -6,6 +6,12 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_4P1H" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_7YYZ" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">lowPowerEN: &lt;value&gt;</Translation>
+      </Text>
       <Text Id="__SingleUse_1NXV" Alignment="Left" TypographyId="Medium">
         <Translation Language="GB">0</Translation>
       </Text>

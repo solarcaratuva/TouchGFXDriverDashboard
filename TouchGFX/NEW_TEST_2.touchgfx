@@ -151,7 +151,7 @@
           },
           {
             "Type": "TextArea",
-            "Name": "cellVolt_1",
+            "Name": "leftTurnText",
             "X": 3,
             "Y": 532,
             "Width": 248,
@@ -166,9 +166,9 @@
           },
           {
             "Type": "TextArea",
-            "Name": "cellVolt_1_2",
-            "X": 3,
-            "Y": 572,
+            "Name": "hazardsText",
+            "X": 166,
+            "Y": 532,
             "Width": 248,
             "Height": 26,
             "TextId": "__SingleUse_EB6C",
@@ -181,8 +181,8 @@
           },
           {
             "Type": "TextArea",
-            "Name": "cellVolt_1_2_1",
-            "X": 252,
+            "Name": "regenENText",
+            "X": 61,
             "Y": 572,
             "Width": 248,
             "Height": 26,
@@ -190,6 +190,21 @@
             "TextRotation": "0",
             "Wildcard1": {
               "TextId": "__SingleUse_8CZ0",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "lowPowerText",
+            "X": 240,
+            "Y": 572,
+            "Width": 248,
+            "Height": 26,
+            "TextId": "__SingleUse_7YYZ",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_4P1H",
               "UseBuffer": true,
               "BufferSize": 10
             }
@@ -241,8 +256,8 @@
           },
           {
             "Type": "TextArea",
-            "Name": "cellVolt_1_1",
-            "X": 252,
+            "Name": "rightTurnText",
+            "X": 323,
             "Y": 532,
             "Width": 248,
             "Height": 26,

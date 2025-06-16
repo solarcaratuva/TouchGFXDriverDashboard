@@ -29,6 +29,11 @@ void Screen1View::setupScreen() {
     cruiseSpeed.setWildcard(cruiseSpeedBuffer);
     regenBreaking.setWildcard(regenBreakingBuffer);
     throttlePedal.setWildcard(throttlePedalBuffer);
+    BPS_SOC.setWildcard(BPS_SOCBuffer);
+    DTCStatus.setWildcard(DTCStatusBuffer);
+    DischargeRelayStatus.setWildcard(DischargeRelayStatusBuffer);
+    ChargeRelay.setWildcard(ChargeRelayBuffer);
+    leftTurnText.setWildcard(leftTurnTextBuffer);
 
     BPS_Warning.setAlpha(0);
     BPS_Warning.setVisible(false);
@@ -241,6 +246,10 @@ int cruiseS = 0;
 int regenD = 0;
 int throttleP = 0;
 int count = 0;
+int packSOC = 0;
+int packDTC = 0;
+int packDischargeRelay = 0;
+int packChargeRelay = 0;
 
 bool previousBpsErrorState = false;
 bool currentBpsErrorState = false;
@@ -259,6 +268,10 @@ void Screen1View::function1()
         count     = receivedCanData.motor_controller_power_status.battery_voltage;
         packVolt  = receivedCanData.bps_pack_information.pack_voltage;
         packCurr  = receivedCanData.bps_pack_information.pack_current;
+        packSOC   = receivedCanData.bps_pack_information.pack_soc;
+        packDTC   = receivedCanData.bps_pack_information.dtc_status;
+        packDischargeRelay = receivedCanData.bps_pack_information.discharge_relay_status;
+        packChargeRelay = receivedCanData.bps_pack_information
         rpm       = receivedCanData.motor_controller_power_status.motor_rpm;
         braking   = receivedCanData.motor_commands.braking;
         regen     = receivedCanData.motor_commands.regen_braking;
@@ -269,6 +282,13 @@ void Screen1View::function1()
         cruiseS   = receivedCanData.motor_commands.cruise_speed;
         regenD    = receivedCanData.motor_commands.regen_drive;
         throttleP = receivedCanData.motor_commands.throttle_pedal;
+        
+        currentMtrCommErrorState = (receivedCanData.motor_controller_error.analog_sensor_err || receivedCanData.motor_controller_error.motor_current_sensor_u_err || receivedCanData.motor_controller_error.motor_current_sensor_w_err ||
+        receivedCanData.motor_controller_error.fet_thermistor_err || receivedCanData.motor_controller_error.battery_voltage_sensor_err || receivedCanData.motor_controller_error.battery_current_sensor_adj_err ||
+        receivedCanData.motor_controller_error.motor_current_sensor_adj_err || receivedCanData.motor_controller_error.accelerator_position_error || receivedCanData.motor_controller_error.controller_voltage_sensor_err ||
+        receivedCanData.motor_controller_error.power_system_err || receivedCanData.motor_controller_error.overcurrent_err || receivedCanData.motor_controller_error.overvoltage_err ||
+        receivedCanData.motor_controller_error.overcurrent_limit || receivedCanData.motor_controller_error.motor_system_err || receivedCanData.motor_controller_error.motor_lock ||
+        receivedCanData.motor_controller_error.hall_sensor_short || receivedCanData.motor_controller_error.hall_sensor_open || receivedCanData.motor_controller_error.overheat_level)
         
         currentBpsErrorState = (receivedCanData.bps_error.always_on_supply_fault || receivedCanData.bps_error.canbus_communications_fault ||
             receivedCanData.bps_error.charge_limit_enforcement_fault || receivedCanData.bps_error.charger_safety_relay_fault || receivedCanData.bps_error.current_sensor_fault ||
@@ -374,15 +394,28 @@ void Screen1View::function1()
     Unicode::snprintfFloat(solarPhotoBuffer, SOLARPHOTO_SIZE, "%.2f", throttle);
     Unicode::snprintfFloat(cellVoltBuffer, CELLVOLT_SIZE, "%.2f", packVolt);
     Unicode::snprintfFloat(cellTempBuffer, CELLTEMP_SIZE, "%.2f", packCurr);
-    Unicode::snprintfFloat(powerAuxBuffer, POWERAUX_SIZE, "%.2f", count);
-    Unicode::snprintfFloat(bpsErrorBuffer, BPSERROR_SIZE, "%.2f", count);
+    Unicode::snprintfFloat(powerAuxBuffer, POWERAUX_SIZE, "%.2f", currentMtrCommErrorState);
+    Unicode::snprintfFloat(bpsErrorBuffer, BPSERROR_SIZE, "%.2f", currentBpsErrorState);
     Unicode::snprintfFloat(speedBuffer, SPEED_SIZE, "%.2f", rpm);
     Unicode::snprintfFloat(sessionBuffer, SESSION_SIZE, "%.2f", regenD);
     Unicode::snprintfFloat(cruiseSpeedBuffer, CRUISESPEED_SIZE, "%.2f", cruiseS);
     Unicode::snprintfFloat(regenBreakingBuffer, REGENBREAKING_SIZE, "%.2f", regen);
     Unicode::snprintfFloat(throttlePedalBuffer, THROTTLEPEDAL_SIZE, "%.2f", throttleP);
     Unicode::snprintfFloat(totalBuffer, TOTAL_SIZE, "%.2f", braking);
+    Unicode::snprintfFloat(BPS_SOCBuffer, BPS_SOC_SIZE,     "%.2f", (float)packSOC);
+    Unicode::snprintfFloat(DTCStatusBuffer, DTCSTATUS_SIZE            , "%.2f", (float)packDTC);
+    Unicode::snprintfFloat(DischargeRelayStatusBuffer, DISCHARGERELAYSTATUS_SIZE , "%.2f", (float)packDischargeRelay);
+    Unicode::snprintfFloat(ChargeRelayBuffer,       CHARGERELAY_SIZE ,      "%.2f", (float)packChargeRelay);
+    Unicode::snprintf(leftTurnTextBuffer, LEFTTURNTEXT_SIZE, "%d", isLeft ? 1 : 0);
+    Unicode::snprintf( rightTurnTextBuffer,   RIGHTTURNTEXT_SIZE,   "%d", isRight ? 1 : 0 );
+    Unicode::snprintf( hazardsTextBuffer,     HAZARDSTEXT_SIZE,       "%d", isHaz   ? 1 : 0 );
+    Unicode::snprintf( regenENTextBuffer,     REGENENTEXT_SIZE,      "%d", isRegen ? 1 : 0 );
+    Unicode::snprintf( CruiseDECTextBuffer,   CRUISEDECTEXT_SIZE,    "%d", isCruiseDec ? 1 : 0 );
+    Unicode::snprintf( CruiseENTextBuffer,    CRUISEENTEXT_SIZE,     "%d", isCruise   ? 1 : 0 );
+    Unicode::snprintf( CruiseINCTextBuffer,   CRUISEINCTEXT_SIZE        ,    "%d", isCruiseInc ? 1 : 0 );
+    Unicode::snprintf( lowPowerTextBuffer,    LOWPOWERTEXT_SIZE,     "%d", isLowPower  ? 1 : 0 );
 
+    
     // Refresh the display elements
     solarCurr.invalidate();
     solarTemp.invalidate();
@@ -404,4 +437,15 @@ void Screen1View::function1()
     throttlePedal.invalidate();
     RegenEN.invalidate();
     LowPowerEN.invalidate();
+    BPS_SOC.invalidate();
+    DTCStatus.invalidate();
+    DischargeRelayStatus.invalidate();
+    ChargeRelay.invalidate();
+    leftTurnText.invalidate();
+    rightTurnText.invalidate();
+    hazardsText.invalidate();
+    regenENText.invalidate();
+    CruiseDECText.invalidate();
+    CruiseINCText.invalidate();
+    lowPowerText.invalidate();
 }
