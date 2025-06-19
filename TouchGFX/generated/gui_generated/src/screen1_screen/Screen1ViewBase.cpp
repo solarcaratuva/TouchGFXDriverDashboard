@@ -4,7 +4,6 @@
 #include <gui_generated/screen1_screen/Screen1ViewBase.hpp>
 #include <touchgfx/canvas_widget_renderer/CanvasWidgetRenderer.hpp>
 #include <touchgfx/Color.hpp>
-#include <images/BitmapDatabase.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
 
 Screen1ViewBase::Screen1ViewBase() :
@@ -19,10 +18,6 @@ Screen1ViewBase::Screen1ViewBase() :
     box1.setPosition(0, 0, 480, 800);
     box1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     add(box1);
-
-    Image3.setXY(-255, 407);
-    Image3.setBitmap(touchgfx::Bitmap(BITMAP_CAR_DRIVING1_ID));
-    add(Image3);
 
     boxWithBorder2.setPosition(-13, 117, 498, 236);
     boxWithBorder2.setColor(touchgfx::Color::getColorFromRGB(200, 203, 210));

@@ -8,7 +8,6 @@
 #include <mvp/View.hpp>
 #include <gui/screen1_screen/Screen1Presenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
-#include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/widgets/BoxWithBorder.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/canvas/Line.hpp>
@@ -49,7 +48,6 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::Box box1;
-    touchgfx::Image Image3;
     touchgfx::BoxWithBorder boxWithBorder2;
     touchgfx::BoxWithBorder boxWithBorder2_1;
     touchgfx::BoxWithBorder boxWithBorder2_1_1;

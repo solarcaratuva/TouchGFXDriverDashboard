@@ -730,16 +730,6 @@
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_SolarCarTeamLogo1.cpp</locationURI>
 		</link>
 		<link>
-			<name>Application/User/generated/image_car_driving1.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_car_driving1.cpp</locationURI>
-		</link>
-		<link>
-			<name>Application/User/generated/image_full_team_photo.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_full_team_photo.cpp</locationURI>
-		</link>
-		<link>
 			<name>Application/User/generated/image_solarCarStartup.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_solarCarStartup.cpp</locationURI>

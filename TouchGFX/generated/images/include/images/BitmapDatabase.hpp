@@ -6,10 +6,8 @@
 #include <touchgfx/hal/Types.hpp>
 #include <touchgfx/Bitmap.hpp>
 
-const uint16_t BITMAP_CAR_DRIVING1_ID = 0;
-const uint16_t BITMAP_FULL_TEAM_PHOTO_ID = 1;
-const uint16_t BITMAP_SOLARCARSTARTUP_ID = 2;
-const uint16_t BITMAP_SOLARCARTEAMLOGO1_ID = 3;
+const uint16_t BITMAP_SOLARCARSTARTUP_ID = 0;
+const uint16_t BITMAP_SOLARCARTEAMLOGO1_ID = 1;
 
 namespace BitmapDatabase
 {
