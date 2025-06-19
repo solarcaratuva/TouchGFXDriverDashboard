@@ -195,12 +195,13 @@ void sendDashBoardTask(void *argument) {
         debounceHazard = DEBOUNCE_TICKS;
     }
 
+
     dashboard_can.cruise_inc = rawInc && !prevInc;
     dashboard_can.cruise_dec = rawDec && !prevDec;
 
     // Always send the current latched states
-    dashboard_can.left_turn_signal = latchedLeft;
-    dashboard_can.right_turn_signal = latchedRight;
+    dashboard_can.left_turn_signal = rawLeft;
+    dashboard_can.right_turn_signal = rawRight;
     dashboard_can.regen_en = latchedRegen;
     dashboard_can.cruise_en = latchedCruise;
     dashboard_can.hazards = latchedHazard;
