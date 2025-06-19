@@ -271,7 +271,7 @@ void Screen1View::function1()
         packSOC   = receivedCanData.bps_pack_information.pack_soc;
         packDTC   = receivedCanData.bps_pack_information.dtc_status;
         packDischargeRelay = receivedCanData.bps_pack_information.discharge_relay_status;
-        packChargeRelay = receivedCanData.bps_pack_information
+        packChargeRelay = receivedCanData.bps_pack_information.charge_relay_status;
         rpm       = receivedCanData.motor_controller_power_status.motor_rpm;
         braking   = receivedCanData.motor_commands.braking;
         regen     = receivedCanData.motor_commands.regen_braking;
@@ -285,10 +285,10 @@ void Screen1View::function1()
         
         currentMtrCommErrorState = (receivedCanData.motor_controller_error.analog_sensor_err || receivedCanData.motor_controller_error.motor_current_sensor_u_err || receivedCanData.motor_controller_error.motor_current_sensor_w_err ||
         receivedCanData.motor_controller_error.fet_thermistor_err || receivedCanData.motor_controller_error.battery_voltage_sensor_err || receivedCanData.motor_controller_error.battery_current_sensor_adj_err ||
-        receivedCanData.motor_controller_error.motor_current_sensor_adj_err || receivedCanData.motor_controller_error.accelerator_position_error || receivedCanData.motor_controller_error.controller_voltage_sensor_err ||
+        receivedCanData.motor_controller_error.motor_current_sensor_adj_err || receivedCanData.motor_controller_error.accelerator_position_err || receivedCanData.motor_controller_error.controller_voltage_sensor_err ||
         receivedCanData.motor_controller_error.power_system_err || receivedCanData.motor_controller_error.overcurrent_err || receivedCanData.motor_controller_error.overvoltage_err ||
         receivedCanData.motor_controller_error.overcurrent_limit || receivedCanData.motor_controller_error.motor_system_err || receivedCanData.motor_controller_error.motor_lock ||
-        receivedCanData.motor_controller_error.hall_sensor_short || receivedCanData.motor_controller_error.hall_sensor_open || receivedCanData.motor_controller_error.overheat_level)
+        receivedCanData.motor_controller_error.hall_sensor_short || receivedCanData.motor_controller_error.hall_sensor_open || receivedCanData.motor_controller_error.overheat_level);
         
         currentBpsErrorState = (receivedCanData.bps_error.always_on_supply_fault || receivedCanData.bps_error.canbus_communications_fault ||
             receivedCanData.bps_error.charge_limit_enforcement_fault || receivedCanData.bps_error.charger_safety_relay_fault || receivedCanData.bps_error.current_sensor_fault ||

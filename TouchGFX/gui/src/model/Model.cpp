@@ -66,50 +66,50 @@ Model::Model() : modelListener(0) { }
 
 void Model::tick() {
     // Left turn signal
-    bool currentLeft = HAL_GPIO_ReadPin(USR_BTN_3_GPIO_Port, USR_BTN_3_Pin);
-    if (prevLeftButtonState == 1 && currentLeft == 0) { // pressed
-        leftTurnSignal = !leftTurnSignal;
-    }
-    prevLeftButtonState = currentLeft;
+    leftTurnSignal = !HAL_GPIO_ReadPin(USR_BTN_3_GPIO_Port, USR_BTN_3_Pin);
+    // if (prevLeftButtonState == 1 && currentLeft == 0) { // pressed
+    //     leftTurnSignal = !leftTurnSignal;
+    // }
+    // prevLeftButtonState = currentLeft;
 
     // Right turn signal
-    bool currentRight = HAL_GPIO_ReadPin(USR_BTN_2_GPIO_Port, USR_BTN_2_Pin);
-    if (prevRightButtonState == 1 && currentRight == 0) { // pressed
-        rightTurnSignal = !rightTurnSignal;
-    }
-    prevRightButtonState = currentRight;
+    rightTurnSignal = !HAL_GPIO_ReadPin(USR_BTN_2_GPIO_Port, USR_BTN_2_Pin);
+    // if (prevRightButtonState == 1 && currentRight == 0) { // pressed
+    //     rightTurnSignal = !rightTurnSignal;
+    // }
+    // prevRightButtonState = currentRight;
 
     // low power
-    bool currentLowPower = HAL_GPIO_ReadPin(USR_BTN_9_GPIO_Port, USR_BTN_9_Pin);
-    if (prevLowPowerButtonState == 1 && currentLowPower == 0) {
-        lowPower = !lowPower;
-    }
-    prevLowPowerButtonState = currentLowPower;
+    lowPower = !HAL_GPIO_ReadPin(USR_BTN_9_GPIO_Port, USR_BTN_9_Pin);
+    // if (prevLowPowerButtonState == 1 && currentLowPower == 0) {
+    //     lowPower = !lowPower;
+    // }
+    // prevLowPowerButtonState = currentLowPower;
 
     // Regen Enable
-    bool currentRegen = HAL_GPIO_ReadPin(USR_BTN_6_GPIO_Port, USR_BTN_6_Pin);
-    if (prevRegenButtonState == 1 && currentRegen == 0) {
-        regen = !regen;
-    }
-    prevRegenButtonState = currentRegen;
+    regen = !HAL_GPIO_ReadPin(USR_BTN_6_GPIO_Port, USR_BTN_6_Pin);
+    // if (prevRegenButtonState == 1 && currentRegen == 0) {
+    //     regen = !regen;
+    // }
+    // prevRegenButtonState = currentRegen;
 
     // Cruise Enable
-    bool currentCruise = HAL_GPIO_ReadPin(USR_BTN_5_GPIO_Port, USR_BTN_5_Pin);
-    if (prevCruiseButtonState == 1 && currentCruise == 0) {
-        cruise = !cruise;
-    }
-    prevCruiseButtonState = currentCruise;
+    cruise = !HAL_GPIO_ReadPin(USR_BTN_5_GPIO_Port, USR_BTN_5_Pin);
+    // if (prevCruiseButtonState == 1 && currentCruise == 0) {
+    //     cruise = !cruise;
+    // }
+    // prevCruiseButtonState = currentCruise;
 
     // Hazards
-    bool currentHazard = HAL_GPIO_ReadPin(USR_BTN_4_GPIO_Port, USR_BTN_4_Pin);
-    if (prevHazardButtonState == 1 && currentHazard == 0) {
-        hazard = !hazard;
-        if (hazard) {
-            leftTurnSignal = false;
-            rightTurnSignal = false;
-        }
-    }
-    prevHazardButtonState = currentHazard;
+    hazard = !HAL_GPIO_ReadPin(USR_BTN_4_GPIO_Port, USR_BTN_4_Pin);
+    // if (prevHazardButtonState == 1 && currentHazard == 0) {
+    //     hazard = !hazard;
+    //     if (hazard) {
+    //         leftTurnSignal = false;
+    //         rightTurnSignal = false;
+    //     }
+    // }
+    // prevHazardButtonState = currentHazard;
 }
 
 bool Model::isLeftTurnSignal() const
