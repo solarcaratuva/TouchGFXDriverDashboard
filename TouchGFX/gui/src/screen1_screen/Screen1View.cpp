@@ -344,11 +344,6 @@ void Screen1View::function1()
         shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
         line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
         shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
-    } else if (isCruise || isCruiseInc || isCruiseDec) {
-        line1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
-        shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(71, 201, 4));
-        line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-        shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     } else {
         line1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
         shape1_2_1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
