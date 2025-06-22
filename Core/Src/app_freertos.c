@@ -196,8 +196,8 @@ void sendDashBoardTask(void *argument) {
     }
 
 
-    dashboard_can.cruise_inc = rawInc && !prevInc;
-    dashboard_can.cruise_dec = rawDec && !prevDec;
+    dashboard_can.cruise_inc = rawInc;
+    dashboard_can.cruise_dec = rawDec;
 
     // Always send the current latched states
     dashboard_can.left_turn_signal = rawLeft;
