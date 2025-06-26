@@ -16,6 +16,7 @@
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/EasingEquations.hpp>
 #include <touchgfx/mixins/FadeAnimator.hpp>
+#include <touchgfx/containers/progress_indicators/BoxProgress.hpp>
 
 class Screen1ViewBase : public touchgfx::View<Screen1Presenter>
 {
@@ -98,6 +99,8 @@ protected:
     touchgfx::FadeAnimator< touchgfx::TextArea > CruiseINC;
     touchgfx::TextArea CruiseText;
     touchgfx::TextArea LowPowerEN;
+    touchgfx::BoxProgress BatteryChargeFill;
+    touchgfx::TextArea BatteryChargeText;
 
     /*
      * Wildcard Buffers

@@ -49,6 +49,9 @@ void Screen1View::setupScreen() {
 
     CruiseDEC.setAlpha(0);
     CruiseDEC.setVisible(false);
+
+    BatteryChargeFill.setValue(0);
+    BatteryChargeFill.invalidate();
 }
 
 void Screen1View::handleKeyEvent(uint8_t key)
@@ -246,6 +249,7 @@ int cruiseS = 0;
 int regenD = 0;
 int throttleP = 0;
 int count = 0;
+int testCount = 0;
 int packSOC = 0;
 int packDTC = 0;
 int packDischargeRelay = 0;
@@ -300,9 +304,11 @@ void Screen1View::function1()
     }
 #else
     // Dummy test values for simulator
-    count++;
+    count = 0;
+    testCount++;
     packVolt  = 42;
     packCurr  = 5;
+    packSOC   = 0;
     rpm       = 1234;
     braking   = 1;
     regen     = 0;
@@ -382,6 +388,19 @@ void Screen1View::function1()
 
     previousMtrCommErrorState = currentMtrCommErrorState;
 
+    packSOC++;
+
+    // int fullW = batteryBarBg.getWidth();  
+    // int fillPx = (packSOC * fullW) / 100;
+
+    float soc_f = packSOC * 0.5f;
+
+    if (soc_f < 0.0f)   soc_f = 0.0f;
+    if (soc_f > 100.0f) soc_f = 100.0f;
+
+    BatteryChargeFill.setValue(static_cast<uint8_t>(soc_f + 0.5f)); 
+    BatteryChargeFill.invalidate();
+
     // Update displayed values
     Unicode::snprintfFloat(solarCurrBuffer, SOLARCURR_SIZE, "%.2f", manual);
     Unicode::snprintfFloat(solarTempBuffer, SOLARTEMP_SIZE, "%.2f", cruise);
@@ -397,7 +416,7 @@ void Screen1View::function1()
     Unicode::snprintfFloat(regenBreakingBuffer, REGENBREAKING_SIZE, "%.2f", regen);
     Unicode::snprintfFloat(throttlePedalBuffer, THROTTLEPEDAL_SIZE, "%.2f", throttleP);
     Unicode::snprintfFloat(totalBuffer, TOTAL_SIZE, "%.2f", braking);
-    Unicode::snprintfFloat(BPS_SOCBuffer, BPS_SOC_SIZE,     "%.2f", (float)packSOC);
+    Unicode::snprintfFloat(BPS_SOCBuffer, BPS_SOC_SIZE,     "%.2f", soc_f);
     Unicode::snprintfFloat(DTCStatusBuffer, DTCSTATUS_SIZE            , "%.2f", (float)packDTC);
     Unicode::snprintfFloat(DischargeRelayStatusBuffer, DISCHARGERELAYSTATUS_SIZE , "%.2f", (float)packDischargeRelay);
     Unicode::snprintfFloat(ChargeRelayBuffer,       CHARGERELAY_SIZE ,      "%.2f", (float)packChargeRelay);

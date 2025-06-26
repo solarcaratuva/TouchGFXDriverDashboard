@@ -6,6 +6,9 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_FTVO" Alignment="Left" TypographyId="Blinker">
+        <Translation Language="GB">PackSOC</Translation>
+      </Text>
       <Text Id="__SingleUse_4P1H" Alignment="Left" TypographyId="Medium">
         <Translation Language="GB">0</Translation>
       </Text>
@@ -94,7 +97,7 @@
         <Translation Language="GB">0</Translation>
       </Text>
       <Text Id="__SingleUse_HUPJ" Alignment="Left" TypographyId="Medium">
-        <Translation Language="GB">PackSOC: &lt;value&gt;</Translation>
+        <Translation Language="GB">PackSOC: &lt;value&gt; %</Translation>
       </Text>
       <Text Id="__SingleUse_B7XZ" Alignment="Left" TypographyId="Medium">
         <Translation Language="GB">LowPower</Translation>
@@ -196,7 +199,7 @@
         <Translation Language="GB">0</Translation>
       </Text>
       <Text Id="__SingleUse_RKCB" Alignment="Left" TypographyId="Medium">
-        <Translation Language="GB">Manual Drive: &lt;value&gt; Unit</Translation>
+        <Translation Language="GB">Manual Drive: &lt;value&gt;</Translation>
       </Text>
     </TextGroup>
   </Texts>
