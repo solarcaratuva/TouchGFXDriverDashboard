@@ -19,7 +19,7 @@
           {
             "Type": "BoxWithBorder",
             "Name": "boxWithBorder2",
-            "X": -11,
+            "X": -12,
             "Y": 128,
             "Width": 498,
             "Height": 236,
@@ -98,6 +98,21 @@
             "TextRotation": "0",
             "Wildcard1": {
               "TextId": "__SingleUse_SBY5",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "speedMph",
+            "X": 148,
+            "Y": 64,
+            "Width": 176,
+            "Height": 38,
+            "TextId": "__SingleUse_NEB3",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_4V8L",
               "UseBuffer": true,
               "BufferSize": 10
             }
@@ -540,7 +555,7 @@
             "X": 98,
             "Y": 128,
             "Width": 286,
-            "Height": 30,
+            "Height": 36,
             "TextId": "__SingleUse_5Q9P",
             "TextRotation": "0",
             "AutoSize": true
@@ -551,7 +566,7 @@
             "X": 208,
             "Y": 358,
             "Width": 66,
-            "Height": 30,
+            "Height": 36,
             "TextId": "__SingleUse_CKSE",
             "TextRotation": "0",
             "AutoSize": true
@@ -562,7 +577,7 @@
             "X": 58,
             "Y": 505,
             "Width": 369,
-            "Height": 30,
+            "Height": 36,
             "TextId": "__SingleUse_NJEQ",
             "TextRotation": "0",
             "AutoSize": true
@@ -573,7 +588,7 @@
             "X": 194,
             "Y": 649,
             "Width": 87,
-            "Height": 30,
+            "Height": 36,
             "TextId": "__SingleUse_2MI9",
             "TextRotation": "0",
             "AutoSize": true
@@ -581,8 +596,8 @@
           {
             "Type": "TextArea",
             "Name": "BPS_Warning",
-            "X": 97,
-            "Y": 24,
+            "X": 220,
+            "Y": 102,
             "Width": 44,
             "Height": 24,
             "TextId": "__SingleUse_OQG6",
@@ -596,8 +611,8 @@
           {
             "Type": "TextArea",
             "Name": "PowerAux_Warning",
-            "X": 157,
-            "Y": 24,
+            "X": 5,
+            "Y": 102,
             "Width": 115,
             "Height": 24,
             "TextId": "__SingleUse_BMOB",
@@ -611,8 +626,8 @@
           {
             "Type": "TextArea",
             "Name": "MtrComm_Warning",
-            "X": 287,
-            "Y": 24,
+            "X": 378,
+            "Y": 102,
             "Width": 89,
             "Height": 24,
             "TextId": "__SingleUse_I4O9",
@@ -626,8 +641,8 @@
           {
             "Type": "TextArea",
             "Name": "RegenEN",
-            "X": 50,
-            "Y": 54,
+            "X": 98,
+            "Y": 24,
             "Width": 70,
             "Height": 24,
             "TextId": "__SingleUse_HRRE",
@@ -637,8 +652,8 @@
           {
             "Type": "TextArea",
             "Name": "CruiseDEC",
-            "X": 392,
-            "Y": 83,
+            "X": 347,
+            "Y": 52,
             "Width": 45,
             "Height": 24,
             "TextId": "__SingleUse_NNKX",
@@ -653,8 +668,8 @@
           {
             "Type": "TextArea",
             "Name": "CruiseINC",
-            "X": 340,
-            "Y": 83,
+            "X": 296,
+            "Y": 52,
             "Width": 42,
             "Height": 24,
             "TextId": "__SingleUse_2G26",
@@ -669,8 +684,8 @@
           {
             "Type": "TextArea",
             "Name": "CruiseText",
-            "X": 355,
-            "Y": 54,
+            "X": 305,
+            "Y": 24,
             "Width": 70,
             "Height": 24,
             "TextId": "__SingleUse_ZJV5",
@@ -680,8 +695,8 @@
           {
             "Type": "TextArea",
             "Name": "LowPowerEN",
-            "X": 179,
-            "Y": 54,
+            "X": 177,
+            "Y": 24,
             "Width": 119,
             "Height": 24,
             "TextId": "__SingleUse_B7XZ",

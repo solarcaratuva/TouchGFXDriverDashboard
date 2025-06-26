@@ -55,6 +55,7 @@ protected:
     touchgfx::BoxWithBorder boxWithBorder2_1_1_1;
     touchgfx::TextAreaWithOneWildcard total;
     touchgfx::TextAreaWithOneWildcard session;
+    touchgfx::TextAreaWithOneWildcard speedMph;
     touchgfx::TextAreaWithOneWildcard speed;
     touchgfx::TextAreaWithOneWildcard cellTemp;
     touchgfx::TextAreaWithOneWildcard cellVolt;
@@ -109,6 +110,8 @@ protected:
     touchgfx::Unicode::UnicodeChar totalBuffer[TOTAL_SIZE];
     static const uint16_t SESSION_SIZE = 10;
     touchgfx::Unicode::UnicodeChar sessionBuffer[SESSION_SIZE];
+    static const uint16_t SPEEDMPH_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar speedMphBuffer[SPEEDMPH_SIZE];
     static const uint16_t SPEED_SIZE = 10;
     touchgfx::Unicode::UnicodeChar speedBuffer[SPEED_SIZE];
     static const uint16_t CELLTEMP_SIZE = 10;

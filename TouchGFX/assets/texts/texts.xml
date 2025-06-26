@@ -6,6 +6,27 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_OQG6" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">BPS</Translation>
+      </Text>
+      <Text Id="__SingleUse_I4O9" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">MtrCont</Translation>
+      </Text>
+      <Text Id="__SingleUse_BMOB" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">PowerAux</Translation>
+      </Text>
+      <Text Id="__SingleUse_2G26" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">INC</Translation>
+      </Text>
+      <Text Id="__SingleUse_NNKX" Alignment="Left" TypographyId="Medium">
+        <Translation Language="GB">DEC</Translation>
+      </Text>
+      <Text Id="__SingleUse_4V8L" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_NEB3" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt; mph</Translation>
+      </Text>
       <Text Id="__SingleUse_FTVO" Alignment="Left" TypographyId="Blinker">
         <Translation Language="GB">PackSOC</Translation>
       </Text>
@@ -97,25 +118,10 @@
         <Translation Language="GB">0</Translation>
       </Text>
       <Text Id="__SingleUse_HUPJ" Alignment="Left" TypographyId="Medium">
-        <Translation Language="GB">PackSOC: &lt;value&gt; %</Translation>
+        <Translation Language="GB">PackSOC: &lt;value&gt;%</Translation>
       </Text>
       <Text Id="__SingleUse_B7XZ" Alignment="Left" TypographyId="Medium">
         <Translation Language="GB">LowPower</Translation>
-      </Text>
-      <Text Id="__SingleUse_2G26" Alignment="Left" TypographyId="Medium">
-        <Translation Language="GB">INC</Translation>
-      </Text>
-      <Text Id="__SingleUse_NNKX" Alignment="Left" TypographyId="Medium">
-        <Translation Language="GB">DEC</Translation>
-      </Text>
-      <Text Id="__SingleUse_OQG6" Alignment="Left" TypographyId="Medium">
-        <Translation Language="GB">BPS</Translation>
-      </Text>
-      <Text Id="__SingleUse_BMOB" Alignment="Left" TypographyId="Medium">
-        <Translation Language="GB">PowerAux</Translation>
-      </Text>
-      <Text Id="__SingleUse_I4O9" Alignment="Left" TypographyId="Medium">
-        <Translation Language="GB">MtrCont</Translation>
       </Text>
       <Text Id="__SingleUse_ZJV5" Alignment="Left" TypographyId="Medium">
         <Translation Language="GB">Cruise</Translation>
@@ -193,7 +199,7 @@
         <Translation Language="GB">0</Translation>
       </Text>
       <Text Id="__SingleUse_F2LO" Alignment="Left" TypographyId="Medium">
-        <Translation Language="GB">Cruise Drive: &lt;value&gt; Unit</Translation>
+        <Translation Language="GB">Cruise Drive: &lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_CYEC" Alignment="Left" TypographyId="Medium">
         <Translation Language="GB">0</Translation>

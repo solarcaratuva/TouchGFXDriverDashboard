@@ -20,7 +20,7 @@ Screen1ViewBase::Screen1ViewBase() :
     box1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     add(box1);
 
-    boxWithBorder2.setPosition(-11, 128, 498, 236);
+    boxWithBorder2.setPosition(-12, 128, 498, 236);
     boxWithBorder2.setColor(touchgfx::Color::getColorFromRGB(200, 203, 210));
     boxWithBorder2.setBorderColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     boxWithBorder2.setBorderSize(5);
@@ -59,6 +59,14 @@ Screen1ViewBase::Screen1ViewBase() :
     session.setWildcard(sessionBuffer);
     session.setTypedText(touchgfx::TypedText(T___SINGLEUSE_GBLF));
     add(session);
+
+    speedMph.setPosition(148, 64, 176, 38);
+    speedMph.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    speedMph.setLinespacing(0);
+    Unicode::snprintf(speedMphBuffer, SPEEDMPH_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_4V8L).getText());
+    speedMph.setWildcard(speedMphBuffer);
+    speedMph.setTypedText(touchgfx::TypedText(T___SINGLEUSE_NEB3));
+    add(speedMph);
 
     speed.setPosition(254, 333, 252, 25);
     speed.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
@@ -314,49 +322,49 @@ Screen1ViewBase::Screen1ViewBase() :
     Error.setTypedText(touchgfx::TypedText(T___SINGLEUSE_2MI9));
     add(Error);
 
-    BPS_Warning.setXY(97, 24);
+    BPS_Warning.setXY(220, 102);
     BPS_Warning.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
     BPS_Warning.setLinespacing(0);
     BPS_Warning.setTypedText(touchgfx::TypedText(T___SINGLEUSE_OQG6));
     add(BPS_Warning);
 
-    PowerAux_Warning.setXY(157, 24);
+    PowerAux_Warning.setXY(5, 102);
     PowerAux_Warning.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
     PowerAux_Warning.setLinespacing(0);
     PowerAux_Warning.setTypedText(touchgfx::TypedText(T___SINGLEUSE_BMOB));
     add(PowerAux_Warning);
 
-    MtrComm_Warning.setXY(287, 24);
+    MtrComm_Warning.setXY(378, 102);
     MtrComm_Warning.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
     MtrComm_Warning.setLinespacing(0);
     MtrComm_Warning.setTypedText(touchgfx::TypedText(T___SINGLEUSE_I4O9));
     add(MtrComm_Warning);
 
-    RegenEN.setXY(50, 54);
+    RegenEN.setXY(98, 24);
     RegenEN.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     RegenEN.setLinespacing(0);
     RegenEN.setTypedText(touchgfx::TypedText(T___SINGLEUSE_HRRE));
     add(RegenEN);
 
-    CruiseDEC.setXY(392, 83);
+    CruiseDEC.setXY(347, 52);
     CruiseDEC.setColor(touchgfx::Color::getColorFromRGB(0, 255, 51));
     CruiseDEC.setLinespacing(0);
     CruiseDEC.setTypedText(touchgfx::TypedText(T___SINGLEUSE_NNKX));
     add(CruiseDEC);
 
-    CruiseINC.setXY(340, 83);
+    CruiseINC.setXY(296, 52);
     CruiseINC.setColor(touchgfx::Color::getColorFromRGB(0, 255, 51));
     CruiseINC.setLinespacing(0);
     CruiseINC.setTypedText(touchgfx::TypedText(T___SINGLEUSE_2G26));
     add(CruiseINC);
 
-    CruiseText.setXY(355, 54);
+    CruiseText.setXY(305, 24);
     CruiseText.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     CruiseText.setLinespacing(0);
     CruiseText.setTypedText(touchgfx::TypedText(T___SINGLEUSE_ZJV5));
     add(CruiseText);
 
-    LowPowerEN.setXY(179, 54);
+    LowPowerEN.setXY(177, 24);
     LowPowerEN.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     LowPowerEN.setLinespacing(0);
     LowPowerEN.setTypedText(touchgfx::TypedText(T___SINGLEUSE_B7XZ));
