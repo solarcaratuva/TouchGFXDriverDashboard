@@ -104,7 +104,7 @@ void sendHeartBeatTask(void *argument)
 {
   uint8_t TxData[8];
 
-  const TickType_t xPeriod = pdMS_TO_TICKS(100);
+  const TickType_t xPeriod = pdMS_TO_TICKS(10);
 
   struct rivanna3_heartbeat_t heartbeat_can;
 
@@ -128,7 +128,7 @@ void sendHeartBeatTask(void *argument)
 
 void sendDashBoardTask(void *argument) {
   uint8_t TxData[8];
-  const TickType_t xPeriod = pdMS_TO_TICKS(100);
+  const TickType_t xPeriod = pdMS_TO_TICKS(10);
   TickType_t xLastWakeTime = xTaskGetTickCount();
 
   struct rivanna3_dashboard_commands_t dashboard_can;
@@ -196,15 +196,15 @@ void sendDashBoardTask(void *argument) {
     }
 
 
-    dashboard_can.cruise_inc = rawInc && !prevInc;
-    dashboard_can.cruise_dec = rawDec && !prevDec;
+    dashboard_can.cruise_inc = rawInc;
+    dashboard_can.cruise_dec = rawDec;
 
     // Always send the current latched states
     dashboard_can.left_turn_signal = rawLeft;
     dashboard_can.right_turn_signal = rawRight;
-    dashboard_can.regen_en = latchedRegen;
-    dashboard_can.cruise_en = latchedCruise;
-    dashboard_can.hazards = latchedHazard;
+    dashboard_can.regen_en = rawRegen;
+    dashboard_can.cruise_en = rawCruise;
+    dashboard_can.hazards = rawHazard;
 
     // Update previous states
     prevLeft = rawLeft;
