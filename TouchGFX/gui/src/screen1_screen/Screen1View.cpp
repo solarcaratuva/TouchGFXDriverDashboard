@@ -401,15 +401,16 @@ void Screen1View::function1()
     BatteryChargeFill.setValue(static_cast<uint8_t>(soc_f + 0.5f)); 
     BatteryChargeFill.invalidate();
 
-    const float WHEEL_DIAMETER_M = 3.048f;
+    // 22 inches to meters
+    static constexpr float WHEEL_DIAMETER_M = 22.0f * 0.0254f;
     const float WHEEL_CIRCUM_M = 3.14159265f * WHEEL_DIAMETER_M;
 
     const float GEAR_RATIO = 1.0f;
     float rps = static_cast<float>(rpm) / 60.0f;  
     float wheelInRps = rps / GEAR_RATIO;
-    float speedInMps  = wheelInRps * WHEEL_CIRCUM_M;             
-    float speedInKph  = speedInMps * 3.6f;
-    float speedInMph = speedInKph / 1.609f;
+    float speedInMps = wheelInRps * WHEEL_CIRCUM_M;             
+    // 1 m/s = 2.23694 mph
+    float speedInMph = speedInMps * 2.236936292f;
 
     // Update displayed values
     Unicode::snprintfFloat(solarCurrBuffer, SOLARCURR_SIZE, "%.2f", manual);
