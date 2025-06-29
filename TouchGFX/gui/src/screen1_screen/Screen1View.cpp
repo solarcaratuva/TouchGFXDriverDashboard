@@ -269,22 +269,22 @@ void Screen1View::function1()
 #ifndef SIMULATOR
     ReceivedCanData_t receivedCanData;
     if (xQueueReceive(canReceivedQueue, &receivedCanData, (TickType_t)0 ) == pdTRUE) {
-        count     = receivedCanData.motor_controller_power_status.battery_voltage;
-        packVolt  = receivedCanData.bps_pack_information.pack_voltage;
-        packCurr  = receivedCanData.bps_pack_information.pack_current;
-        packSOC   = receivedCanData.bps_pack_information.pack_soc;
-        packDTC   = receivedCanData.bps_pack_information.dtc_status;
+        count = receivedCanData.motor_controller_power_status.battery_voltage;
+        packVolt = receivedCanData.bps_pack_information.pack_voltage;
+        packCurr = receivedCanData.bps_pack_information.pack_current;
+        packSOC = receivedCanData.bps_pack_information.pack_soc;
+        packDTC = receivedCanData.bps_pack_information.dtc_status;
         packDischargeRelay = receivedCanData.bps_pack_information.discharge_relay_status;
         packChargeRelay = receivedCanData.bps_pack_information.charge_relay_status;
-        rpm       = receivedCanData.motor_controller_power_status.motor_rpm;
-        braking   = receivedCanData.motor_commands.braking;
-        regen     = receivedCanData.motor_commands.regen_braking;
-        manual    = receivedCanData.motor_commands.manual_drive;
-        cruise    = receivedCanData.motor_commands.cruise_drive;
-        brakeP    = receivedCanData.motor_commands.brake_pedal;
-        throttle  = receivedCanData.motor_commands.throttle;
-        cruiseS   = receivedCanData.motor_commands.cruise_speed;
-        regenD    = receivedCanData.motor_commands.regen_drive;
+        rpm = receivedCanData.motor_controller_power_status.motor_rpm;
+        braking = receivedCanData.motor_commands.braking;
+        regen = receivedCanData.motor_commands.regen_braking;
+        manual = receivedCanData.motor_commands.manual_drive;
+        cruise = receivedCanData.motor_commands.cruise_drive;
+        brakeP = receivedCanData.motor_commands.brake_pedal;
+        throttle = receivedCanData.motor_commands.throttle;
+        cruiseS = receivedCanData.motor_commands.cruise_speed;
+        regenD = receivedCanData.motor_commands.regen_drive;
         throttleP = receivedCanData.motor_commands.throttle_pedal;
         
         currentMtrCommErrorState = (receivedCanData.motor_controller_error.analog_sensor_err || receivedCanData.motor_controller_error.motor_current_sensor_u_err || receivedCanData.motor_controller_error.motor_current_sensor_w_err ||
@@ -325,14 +325,14 @@ void Screen1View::function1()
 #endif
 
     // Get logic from presenter
-    bool isRight     = presenter->getRightTurnSignal(); 
-    bool isLeft      = presenter->getLeftTurnSignal();
-    bool isHaz       = presenter->getHazards();
-    bool isRegen     = presenter->getRegenEn();
-    bool isCruise    = presenter->getCruiseEn();
+    bool isRight = presenter->getRightTurnSignal(); 
+    bool isLeft = presenter->getLeftTurnSignal();
+    bool isHaz = presenter->getHazards();
+    bool isRegen = presenter->getRegenEn();
+    bool isCruise = presenter->getCruiseEn();
     bool isCruiseInc = presenter->getCruiseInc();
     bool isCruiseDec = presenter->getCruiseDec();
-    bool isLowPower  = presenter->getLowPowerMode();
+    bool isLowPower = presenter->getLowPowerMode();
 
     // Set turn signal visuals
     if (isHaz) {
@@ -388,11 +388,10 @@ void Screen1View::function1()
 
     previousMtrCommErrorState = currentMtrCommErrorState;
 
-    packSOC++;
+    // ADJUSTING CAN VALUES BY SCALE IN DOCS
 
-    // int fullW = batteryBarBg.getWidth();  
-    // int fillPx = (packSOC * fullW) / 100;
-
+    float packVolt_f = packVolt * 0.01f;
+    float packCurr_f = packCurr * 0.1f;
     float soc_f = packSOC * 0.5f;
 
     if (soc_f < 0.0f)   soc_f = 0.0f;
@@ -417,8 +416,8 @@ void Screen1View::function1()
     Unicode::snprintfFloat(solarTempBuffer, SOLARTEMP_SIZE, "%.2f", cruise);
     Unicode::snprintfFloat(solarVoltBuffer, SOLARVOLT_SIZE, "%.2f", brakeP);
     Unicode::snprintfFloat(solarPhotoBuffer, SOLARPHOTO_SIZE, "%.2f", throttle);
-    Unicode::snprintfFloat(cellVoltBuffer, CELLVOLT_SIZE, "%.2f", packVolt);
-    Unicode::snprintfFloat(cellTempBuffer, CELLTEMP_SIZE, "%.2f", packCurr);
+    Unicode::snprintfFloat(cellVoltBuffer, CELLVOLT_SIZE, "%.2f", packVolt_f);
+    Unicode::snprintfFloat(cellTempBuffer, CELLTEMP_SIZE, "%.2f", packCurr_f);
     Unicode::snprintfFloat(powerAuxBuffer, POWERAUX_SIZE, "%.2f", currentMtrCommErrorState);
     Unicode::snprintfFloat(bpsErrorBuffer, BPSERROR_SIZE, "%.2f", currentBpsErrorState);
     Unicode::snprintfFloat(speedBuffer, SPEED_SIZE, "%.2f", rpm);
@@ -427,18 +426,18 @@ void Screen1View::function1()
     Unicode::snprintfFloat(regenBreakingBuffer, REGENBREAKING_SIZE, "%.2f", regen);
     Unicode::snprintfFloat(throttlePedalBuffer, THROTTLEPEDAL_SIZE, "%.2f", throttleP);
     Unicode::snprintfFloat(totalBuffer, TOTAL_SIZE, "%.2f", braking);
-    Unicode::snprintfFloat(BPS_SOCBuffer, BPS_SOC_SIZE,     "%.2f", soc_f);
-    Unicode::snprintfFloat(DTCStatusBuffer, DTCSTATUS_SIZE            , "%.2f", (float)packDTC);
+    Unicode::snprintfFloat(BPS_SOCBuffer, BPS_SOC_SIZE, "%.2f", soc_f);
+    Unicode::snprintfFloat(DTCStatusBuffer, DTCSTATUS_SIZE, "%.2f", (float)packDTC);
     Unicode::snprintfFloat(DischargeRelayStatusBuffer, DISCHARGERELAYSTATUS_SIZE , "%.2f", (float)packDischargeRelay);
-    Unicode::snprintfFloat(ChargeRelayBuffer,       CHARGERELAY_SIZE ,      "%.2f", (float)packChargeRelay);
+    Unicode::snprintfFloat(ChargeRelayBuffer, CHARGERELAY_SIZE , "%.2f", (float)packChargeRelay);
     Unicode::snprintf(leftTurnTextBuffer, LEFTTURNTEXT_SIZE, "%d", isLeft ? 1 : 0);
-    Unicode::snprintf( rightTurnTextBuffer,   RIGHTTURNTEXT_SIZE,   "%d", isRight ? 1 : 0 );
-    Unicode::snprintf( hazardsTextBuffer,     HAZARDSTEXT_SIZE,       "%d", isHaz   ? 1 : 0 );
-    Unicode::snprintf( regenENTextBuffer,     REGENENTEXT_SIZE,      "%d", isRegen ? 1 : 0 );
-    Unicode::snprintf( CruiseDECTextBuffer,   CRUISEDECTEXT_SIZE,    "%d", isCruiseDec ? 1 : 0 );
-    Unicode::snprintf( CruiseENTextBuffer,    CRUISEENTEXT_SIZE,     "%d", isCruise   ? 1 : 0 );
-    Unicode::snprintf( CruiseINCTextBuffer,   CRUISEINCTEXT_SIZE        ,    "%d", isCruiseInc ? 1 : 0 );
-    Unicode::snprintf( lowPowerTextBuffer,    LOWPOWERTEXT_SIZE,     "%d", isLowPower  ? 1 : 0 );
+    Unicode::snprintf( rightTurnTextBuffer, RIGHTTURNTEXT_SIZE, "%d", isRight ? 1 : 0 );
+    Unicode::snprintf( hazardsTextBuffer, HAZARDSTEXT_SIZE, "%d", isHaz   ? 1 : 0 );
+    Unicode::snprintf( regenENTextBuffer, REGENENTEXT_SIZE, "%d", isRegen ? 1 : 0 );
+    Unicode::snprintf( CruiseDECTextBuffer, CRUISEDECTEXT_SIZE, "%d", isCruiseDec ? 1 : 0 );
+    Unicode::snprintf( CruiseENTextBuffer, CRUISEENTEXT_SIZE, "%d", isCruise   ? 1 : 0 );
+    Unicode::snprintf( CruiseINCTextBuffer, CRUISEINCTEXT_SIZE, "%d", isCruiseInc ? 1 : 0 );
+    Unicode::snprintf( lowPowerTextBuffer, LOWPOWERTEXT_SIZE, "%d", isLowPower  ? 1 : 0 );
     Unicode::snprintfFloat(speedMphBuffer, SPEEDMPH_SIZE, "%.1f", speedInMph);
 
     
