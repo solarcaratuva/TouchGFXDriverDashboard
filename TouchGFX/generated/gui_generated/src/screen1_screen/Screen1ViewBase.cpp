@@ -322,7 +322,7 @@ Screen1ViewBase::Screen1ViewBase() :
     Error.setTypedText(touchgfx::TypedText(T___SINGLEUSE_2MI9));
     add(Error);
 
-    BPS_Warning.setXY(220, 102);
+    BPS_Warning.setXY(219, 102);
     BPS_Warning.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
     BPS_Warning.setLinespacing(0);
     BPS_Warning.setTypedText(touchgfx::TypedText(T___SINGLEUSE_OQG6));
@@ -370,20 +370,59 @@ Screen1ViewBase::Screen1ViewBase() :
     LowPowerEN.setTypedText(touchgfx::TypedText(T___SINGLEUSE_B7XZ));
     add(LowPowerEN);
 
-    BatteryChargeFill.setXY(114, 781);
+    BatteryChargeFill.setXY(277, 724);
     BatteryChargeFill.setProgressIndicatorPosition(0, 0, 300, 10);
     BatteryChargeFill.setRange(0, 100);
     BatteryChargeFill.setDirection(touchgfx::AbstractDirectionProgress::RIGHT);
-    BatteryChargeFill.setBackground(touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BOXPROGRESS_NORMAL_MEDIUM_ID));
+    BatteryChargeFill.setBackground(touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BOXPROGRESS_NORMAL_SMALL_ID));
     BatteryChargeFill.setColor(touchgfx::Color::getColorFromRGB(99, 199, 46));
     BatteryChargeFill.setValue(60);
     add(BatteryChargeFill);
 
-    BatteryChargeText.setXY(21, 776);
+    BatteryChargeText.setXY(399, 742);
     BatteryChargeText.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     BatteryChargeText.setLinespacing(0);
     BatteryChargeText.setTypedText(touchgfx::TypedText(T___SINGLEUSE_FTVO));
     add(BatteryChargeText);
+
+    recentErrorText.setXY(5, 720);
+    recentErrorText.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    recentErrorText.setLinespacing(0);
+    recentErrorText.setTypedText(touchgfx::TypedText(T___SINGLEUSE_LTOC));
+    add(recentErrorText);
+
+    errorLine1.setXY(5, 740);
+    errorLine1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    errorLine1.setLinespacing(0);
+    Unicode::snprintf(errorLine1Buffer, ERRORLINE1_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_EX8M).getText());
+    errorLine1.setWildcard(errorLine1Buffer);
+    errorLine1.resizeToCurrentText();
+    errorLine1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_XZOA));
+    add(errorLine1);
+
+    errorLine2.setXY(5, 760);
+    errorLine2.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    errorLine2.setLinespacing(0);
+    Unicode::snprintf(errorLine2Buffer, ERRORLINE2_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_EXVC).getText());
+    errorLine2.setWildcard(errorLine2Buffer);
+    errorLine2.resizeToCurrentText();
+    errorLine2.setTypedText(touchgfx::TypedText(T___SINGLEUSE_4EX5));
+    add(errorLine2);
+
+    errorLine3.setXY(5, 780);
+    errorLine3.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    errorLine3.setLinespacing(0);
+    Unicode::snprintf(errorLine3Buffer, ERRORLINE3_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_7CTI).getText());
+    errorLine3.setWildcard(errorLine3Buffer);
+    errorLine3.resizeToCurrentText();
+    errorLine3.setTypedText(touchgfx::TypedText(T___SINGLEUSE_PCJI));
+    add(errorLine3);
+
+    textArea3.setXY(351, 786);
+    textArea3.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textArea3.setLinespacing(0);
+    textArea3.setTypedText(touchgfx::TypedText(T___SINGLEUSE_SY0X));
+    add(textArea3);
 }
 
 Screen1ViewBase::~Screen1ViewBase()

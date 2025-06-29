@@ -6,6 +6,30 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_SY0X" Alignment="Center" TypographyId="Small">
+        <Translation Language="GB">UVA Solar Car Telemetry</Translation>
+      </Text>
+      <Text Id="__SingleUse_7CTI" Alignment="Left" TypographyId="Blinker">
+        <Translation Language="GB">[]</Translation>
+      </Text>
+      <Text Id="__SingleUse_EXVC" Alignment="Left" TypographyId="Blinker">
+        <Translation Language="GB">[]</Translation>
+      </Text>
+      <Text Id="__SingleUse_EX8M" Alignment="Left" TypographyId="Blinker">
+        <Translation Language="GB">[]</Translation>
+      </Text>
+      <Text Id="__SingleUse_PCJI" Alignment="Left" TypographyId="Blinker">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_4EX5" Alignment="Left" TypographyId="Blinker">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_XZOA" Alignment="Center" TypographyId="Blinker">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_LTOC" Alignment="Left" TypographyId="Blinker">
+        <Translation Language="GB">ErrorLog:</Translation>
+      </Text>
       <Text Id="__SingleUse_OQG6" Alignment="Left" TypographyId="Medium">
         <Translation Language="GB">BPS</Translation>
       </Text>

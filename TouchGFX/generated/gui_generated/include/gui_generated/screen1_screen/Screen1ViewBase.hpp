@@ -102,6 +102,11 @@ protected:
     touchgfx::TextArea LowPowerEN;
     touchgfx::BoxProgress BatteryChargeFill;
     touchgfx::TextArea BatteryChargeText;
+    touchgfx::TextArea recentErrorText;
+    touchgfx::TextAreaWithOneWildcard errorLine1;
+    touchgfx::TextAreaWithOneWildcard errorLine2;
+    touchgfx::TextAreaWithOneWildcard errorLine3;
+    touchgfx::TextArea textArea3;
 
     /*
      * Wildcard Buffers
@@ -160,6 +165,12 @@ protected:
     touchgfx::Unicode::UnicodeChar solarTempBuffer[SOLARTEMP_SIZE];
     static const uint16_t SOLARCURR_SIZE = 10;
     touchgfx::Unicode::UnicodeChar solarCurrBuffer[SOLARCURR_SIZE];
+    static const uint16_t ERRORLINE1_SIZE = 20;
+    touchgfx::Unicode::UnicodeChar errorLine1Buffer[ERRORLINE1_SIZE];
+    static const uint16_t ERRORLINE2_SIZE = 20;
+    touchgfx::Unicode::UnicodeChar errorLine2Buffer[ERRORLINE2_SIZE];
+    static const uint16_t ERRORLINE3_SIZE = 20;
+    touchgfx::Unicode::UnicodeChar errorLine3Buffer[ERRORLINE3_SIZE];
 
 private:
 

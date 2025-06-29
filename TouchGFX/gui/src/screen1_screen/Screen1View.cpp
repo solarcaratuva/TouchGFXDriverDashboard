@@ -52,6 +52,21 @@ void Screen1View::setupScreen() {
 
     BatteryChargeFill.setValue(0);
     BatteryChargeFill.invalidate();
+
+    errorLine1.setWildcard(errorLine1Buffer);
+    errorLine2.setWildcard(errorLine2Buffer);
+    errorLine3.setWildcard(errorLine3Buffer);
+    // start blank:
+    Unicode::snprintf(errorLine1Buffer, ERRORLINE1_SIZE, "");
+    Unicode::snprintf(errorLine2Buffer, ERRORLINE2_SIZE, "");
+    Unicode::snprintf(errorLine3Buffer, ERRORLINE3_SIZE, "");
+    errorLine1.invalidate();
+    errorLine2.invalidate();
+    errorLine3.invalidate();
+
+    recentErrors.clear();
+    memset(prevBpsErrorStates, 0, sizeof(prevBpsErrorStates));
+    memset(prevMtrErrorStates, 0, sizeof(prevMtrErrorStates));
 }
 
 void Screen1View::handleKeyEvent(uint8_t key)
@@ -301,6 +316,117 @@ void Screen1View::function1()
             receivedCanData.bps_error.internal_memory_fault || receivedCanData.bps_error.internal_thermistor_fault || receivedCanData.bps_error.low_cell_voltage_fault ||
             receivedCanData.bps_error.open_wiring_fault || receivedCanData.bps_error.pack_voltage_sensor_fault || receivedCanData.bps_error.power_supply_12v_fault ||
             receivedCanData.bps_error.thermistor_fault || receivedCanData.bps_error.voltage_redundancy_fault || receivedCanData.bps_error.weak_cell_fault || receivedCanData.bps_error.weak_pack_fault != 0);
+            
+        bool curBps[NUM_BPS_ERRORS] = {
+            receivedCanData.bps_error.always_on_supply_fault,
+            receivedCanData.bps_error.canbus_communications_fault,
+            receivedCanData.bps_error.charge_limit_enforcement_fault,
+            receivedCanData.bps_error.charger_safety_relay_fault,
+            receivedCanData.bps_error.current_sensor_fault,
+            receivedCanData.bps_error.discharge_limit_enforcement_fault,
+            receivedCanData.bps_error.fan_monitor_fault,
+            receivedCanData.bps_error.high_voltage_isolation_fault,
+            receivedCanData.bps_error.internal_communications_fault,
+            receivedCanData.bps_error.internal_conversion_fault,
+            receivedCanData.bps_error.internal_logic_fault,
+            receivedCanData.bps_error.internal_memory_fault,
+            receivedCanData.bps_error.internal_thermistor_fault,
+            receivedCanData.bps_error.low_cell_voltage_fault,
+            receivedCanData.bps_error.open_wiring_fault,
+            receivedCanData.bps_error.pack_voltage_sensor_fault,
+            receivedCanData.bps_error.power_supply_12v_fault,
+            receivedCanData.bps_error.thermistor_fault,
+            receivedCanData.bps_error.voltage_redundancy_fault,
+            receivedCanData.bps_error.weak_cell_fault,
+            receivedCanData.bps_error.weak_pack_fault
+        };
+
+        static const char* bpsNames[NUM_BPS_ERRORS] = {
+            "Always-On Supply Fault",
+            "CANbus Communications Fault",
+            "Charge Limit Enforcement Fault",
+            "Charger Safety Relay Fault",
+            "Current Sensor Fault",
+            "Discharge Limit Enforcement Fault",
+            "Fan Monitor Fault",
+            "High Voltage Isolation Fault",
+            "Internal Communications Fault",
+            "Internal Conversion Fault",
+            "Internal Logic Fault",
+            "Internal Memory Fault",
+            "Internal Thermistor Fault",
+            "Low Cell Voltage Fault",
+            "Open Wiring Fault",
+            "Pack Voltage Sensor Fault",
+            "12V Power Supply Fault",
+            "Thermistor Fault",
+            "Voltage Redundancy Fault",
+            "Weak Cell Fault",
+            "Weak Pack Fault"
+        };
+
+        for (int i = 0; i < NUM_BPS_ERRORS; i++) {
+            if (curBps[i] && !prevBpsErrorStates[i]) {
+                recentErrors.push_back(bpsNames[i]);
+                if (recentErrors.size() > MAX_RECENT_ERRORS)
+                    recentErrors.pop_front();
+            }
+            prevBpsErrorStates[i] = curBps[i];
+        }
+
+        bool curMtrCmd[NUM_MTR_ERRORS] = {
+            receivedCanData.motor_controller_error.analog_sensor_err,
+            receivedCanData.motor_controller_error.motor_current_sensor_u_err,
+            receivedCanData.motor_controller_error.motor_current_sensor_w_err,
+            receivedCanData.motor_controller_error.fet_thermistor_err,
+            receivedCanData.motor_controller_error.battery_voltage_sensor_err,
+            receivedCanData.motor_controller_error.battery_current_sensor_adj_err,
+            receivedCanData.motor_controller_error.motor_current_sensor_adj_err,
+            receivedCanData.motor_controller_error.accelerator_position_err,
+            receivedCanData.motor_controller_error.controller_voltage_sensor_err,
+            receivedCanData.motor_controller_error.power_system_err,
+            receivedCanData.motor_controller_error.overcurrent_err,
+            receivedCanData.motor_controller_error.overvoltage_err,
+            receivedCanData.motor_controller_error.overcurrent_limit,
+            receivedCanData.motor_controller_error.motor_system_err,
+            receivedCanData.motor_controller_error.motor_lock,
+            receivedCanData.motor_controller_error.hall_sensor_short,
+            receivedCanData.motor_controller_error.hall_sensor_open,
+            receivedCanData.motor_controller_error.overheat_level
+        };
+
+        static const char* mtrCmdNames[NUM_MTR_ERRORS] = {
+            "Analog Sensor Err",
+            "Curr Sensor U Err",
+            "Curr Sensor W Err",
+            "FET Thermistor Err",
+            "Batt Volt Sensor Err",
+            "Batt Curr Adj Err",
+            "Motor Curr Adj Err",
+            "Accel Pos Err",
+            "Ctrl Volt Sensor Err",
+            "Power System Err",
+            "Overcurrent Err",
+            "Overvoltage Err",
+            "Overcurrent Limit",
+            "Motor System Err",
+            "Motor Lock",
+            "Hall Sensor Short",
+            "Hall Sensor Open",
+            "Overheat Level"
+        };
+
+        // Detect rising edges and log into the same recentErrors queue
+        for (int i = 0; i < NUM_MTR_ERRORS; i++) {
+            if (curMtrCmd[i] && !prevMtrErrorStates[i]) {
+                recentErrors.push_back(mtrCmdNames[i]);
+                if (recentErrors.size() > MAX_RECENT_ERRORS) {
+                    recentErrors.pop_front();
+                }
+            }
+            prevMtrErrorStates[i] = curMtrCmd[i];
+        }
+    
     }
 #else
     // Dummy test values for simulator
@@ -411,6 +537,12 @@ void Screen1View::function1()
     // 1 m/s = 2.23694 mph
     float speedInMph = speedInMps * 2.236936292f;
 
+    // errorLogging
+    const char* display[3] = {"", "", ""};
+    for (int i = 0; i < (int)recentErrors.size() && i < 3; i++) {
+        display[i] = recentErrors[i];
+    }
+
     // Update displayed values
     Unicode::snprintfFloat(solarCurrBuffer, SOLARCURR_SIZE, "%.2f", manual);
     Unicode::snprintfFloat(solarTempBuffer, SOLARTEMP_SIZE, "%.2f", cruise);
@@ -439,6 +571,9 @@ void Screen1View::function1()
     Unicode::snprintf( CruiseINCTextBuffer, CRUISEINCTEXT_SIZE, "%d", isCruiseInc ? 1 : 0 );
     Unicode::snprintf( lowPowerTextBuffer, LOWPOWERTEXT_SIZE, "%d", isLowPower  ? 1 : 0 );
     Unicode::snprintfFloat(speedMphBuffer, SPEEDMPH_SIZE, "%.1f", speedInMph);
+    Unicode::snprintf(errorLine1Buffer, ERRORLINE1_SIZE, "%s", display[0]);
+    Unicode::snprintf(errorLine2Buffer, ERRORLINE2_SIZE, "%s", display[1]);
+    Unicode::snprintf(errorLine3Buffer, ERRORLINE3_SIZE, "%s", display[2]);
 
     
     // Refresh the display elements
@@ -474,4 +609,7 @@ void Screen1View::function1()
     CruiseINCText.invalidate();
     lowPowerText.invalidate();
     speedMph.invalidate();
+    errorLine1.invalidate();
+    errorLine2.invalidate();
+    errorLine3.invalidate();
 }

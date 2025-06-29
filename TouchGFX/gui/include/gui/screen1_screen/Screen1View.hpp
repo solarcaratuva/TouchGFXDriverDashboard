@@ -5,6 +5,8 @@
 #include <gui/screen1_screen/Screen1Presenter.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 
+#include <deque>
+#include <string>
 class Screen1View : public Screen1ViewBase
 {
 public:
@@ -35,6 +37,17 @@ private:
     int cruiseDecState = 0;
     int cruiseDecTickCounter = 0;
 
+    // For improved CAN error logging
+    static constexpr int MAX_RECENT_ERRORS = 3;
+    // rolling buffer of the last‐N fault names:
+    std::deque<const char*> recentErrors;
+        
+    // previous‐state arrays for rising‐edge detection
+    static constexpr int NUM_BPS_ERRORS = 21;
+    bool prevBpsErrorStates[NUM_BPS_ERRORS];
+
+    static constexpr int NUM_MTR_ERRORS = 18;
+    bool prevMtrErrorStates[NUM_MTR_ERRORS];
 };
 
 #endif // SCREEN1VIEW_HPP
