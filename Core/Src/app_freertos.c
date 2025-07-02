@@ -235,21 +235,18 @@ void sendChargingModeTask(void *argument)
 {
   uint8_t TxData[8];
 
-  const TickType_t xPeriod = pdMS_TO_TICKS(100);
+  const TickType_t xPeriod = pdMS_TO_TICKS(10);
 
   struct rivanna3_charging_mode_t chargingmode_can;
-
-  chargingmode_can.charging_mode_enable = 1; 
-
-  rivanna3_charging_mode_pack(TxData, &chargingmode_can, RIVANNA3_CHARGING_MODE_LENGTH);// removed ->data from TxData
 
   TickType_t xLastWakeTime = xTaskGetTickCount();
 
   for (;;)
   {
-    if (HAL_GPIO_ReadPin(USR_BTN_9_GPIO_Port, USR_BTN_9_Pin) == GPIO_PIN_RESET) {
-      send_can_message(RIVANNA3_CHARGING_MODE_FRAME_ID, RIVANNA3_CHARGING_MODE_LENGTH, TxData);
-    }
+    bool state = HAL_GPIO_ReadPin(USR_BTN_9_GPIO_Port, USR_BTN_9_Pin) == GPIO_PIN_RESET;
+    chargingmode_can.charging_mode_enable = state;
+    rivanna3_charging_mode_pack(TxData, &chargingmode_can, RIVANNA3_CHARGING_MODE_LENGTH);// removed ->data from TxData
+    send_can_message(RIVANNA3_CHARGING_MODE_FRAME_ID, RIVANNA3_CHARGING_MODE_LENGTH, TxData);
 
     vTaskDelayUntil(&xLastWakeTime, xPeriod);
   }
