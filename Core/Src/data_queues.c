@@ -15,6 +15,9 @@ void updateReceivedCanData(ReceivedCanData_t *oldData, uint32_t Identifier, uint
     case RIVANNA3_MOTOR_COMMANDS_FRAME_ID:
       rivanna3_motor_commands_unpack(&oldData->motor_commands, RxData, RxDataSize);
       break;
+    case RIVANNA3_AUX_BATTERY_STATUS_FRAME_ID:
+      rivanna3_aux_battery_status_unpack(&oldData->aux_battery_status, RxData, RxDataSize);
+      break;
     case BPS_BPS_PACK_INFORMATION_FRAME_ID:
       bps_bps_pack_information_unpack(&oldData->bps_pack_information, RxData, RxDataSize);
       break;

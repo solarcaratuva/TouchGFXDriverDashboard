@@ -196,6 +196,14 @@ Screen1ViewBase::Screen1ViewBase() :
     powerAux.setTypedText(touchgfx::TypedText(T___SINGLEUSE_WWYE));
     add(powerAux);
 
+    auxBatteryVolt.setPosition(274, 740, 310, 26);
+    auxBatteryVolt.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    auxBatteryVolt.setLinespacing(0);
+    Unicode::snprintf(auxBatteryVoltBuffer, AUXBATTERYVOLT_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_GJAT).getText());
+    auxBatteryVolt.setWildcard(auxBatteryVoltBuffer);
+    auxBatteryVolt.setTypedText(touchgfx::TypedText(T___SINGLEUSE_4KDK));
+    add(auxBatteryVolt);
+
     bpsError.setPosition(315, 683, 248, 26);
     bpsError.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     bpsError.setLinespacing(0);
@@ -379,7 +387,7 @@ Screen1ViewBase::Screen1ViewBase() :
     BatteryChargeFill.setValue(60);
     add(BatteryChargeFill);
 
-    BatteryChargeText.setXY(399, 742);
+    BatteryChargeText.setXY(171, 722);
     BatteryChargeText.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     BatteryChargeText.setLinespacing(0);
     BatteryChargeText.setTypedText(touchgfx::TypedText(T___SINGLEUSE_FTVO));

@@ -35,6 +35,7 @@ typedef struct {
      struct motor_controller_motor_controller_power_status_t motor_controller_power_status;
      struct motor_controller_motor_controller_error_t motor_controller_error;
 
+     struct rivanna3_aux_battery_status_t  aux_battery_status;
     
 } ReceivedCanData_t;
 

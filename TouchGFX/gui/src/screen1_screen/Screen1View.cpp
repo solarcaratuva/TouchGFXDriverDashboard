@@ -67,6 +67,8 @@ void Screen1View::setupScreen() {
     recentErrors.clear();
     memset(prevBpsErrorStates, 0, sizeof(prevBpsErrorStates));
     memset(prevMtrErrorStates, 0, sizeof(prevMtrErrorStates));
+
+    auxBatteryVolt.setWildcard(auxBatteryVoltBuffer);
 }
 
 void Screen1View::handleKeyEvent(uint8_t key)
@@ -269,6 +271,8 @@ int packSOC = 0;
 int packDTC = 0;
 int packDischargeRelay = 0;
 int packChargeRelay = 0;
+int auxBatteryMVolt = 0;
+int auxBatteryChargePct = 0;
 
 bool previousBpsErrorState = false;
 bool currentBpsErrorState = false;
@@ -301,6 +305,8 @@ void Screen1View::function1()
         cruiseS = receivedCanData.motor_commands.cruise_speed;
         regenD = receivedCanData.motor_commands.regen_drive;
         throttleP = receivedCanData.motor_commands.throttle_pedal;
+        auxBatteryMVolt = receivedCanData.aux_battery_status.aux_voltage;
+        auxBatteryChargePct = receivedCanData.aux_battery_status.percent_full;
         
         currentMtrCommErrorState = (receivedCanData.motor_controller_error.analog_sensor_err || receivedCanData.motor_controller_error.motor_current_sensor_u_err || receivedCanData.motor_controller_error.motor_current_sensor_w_err ||
         receivedCanData.motor_controller_error.fet_thermistor_err || receivedCanData.motor_controller_error.battery_voltage_sensor_err || receivedCanData.motor_controller_error.battery_current_sensor_adj_err ||
@@ -448,6 +454,8 @@ void Screen1View::function1()
     currentBpsErrorState = 1;
     currentPowerAuxErrorState = 0;
     currentMtrCommErrorState = 1;
+    auxBatteryMVolt = 12569;
+    auxBatteryChargePct = 2;
 #endif
 
     // Get logic from presenter
@@ -520,10 +528,13 @@ void Screen1View::function1()
     float packCurr_f = packCurr * 0.1f;
     float soc_f = packSOC * 0.5f;
 
-    if (soc_f < 0.0f)   soc_f = 0.0f;
-    if (soc_f > 100.0f) soc_f = 100.0f;
+    // if (soc_f < 0.0f)   soc_f = 0.0f;
+    // if (soc_f > 100.0f) soc_f = 100.0f;
 
-    BatteryChargeFill.setValue(static_cast<uint8_t>(soc_f + 0.5f)); 
+    int pct100 = (auxBatteryChargePct * 100 + 127) / 255;  
+    if (pct100 > 100) pct100 = 100;  // just in case
+
+    BatteryChargeFill.setValue(pct100); 
     BatteryChargeFill.invalidate();
 
     // 22 inches to meters
@@ -542,6 +553,8 @@ void Screen1View::function1()
     for (int i = 0; i < (int)recentErrors.size() && i < 3; i++) {
         display[i] = recentErrors[i];
     }
+
+    float auxBatteryVoltConv = auxBatteryMVolt * 0.001f;
 
     // Update displayed values
     Unicode::snprintfFloat(solarCurrBuffer, SOLARCURR_SIZE, "%.2f", manual);
@@ -574,7 +587,7 @@ void Screen1View::function1()
     Unicode::snprintf(errorLine1Buffer, ERRORLINE1_SIZE, "%s", display[0]);
     Unicode::snprintf(errorLine2Buffer, ERRORLINE2_SIZE, "%s", display[1]);
     Unicode::snprintf(errorLine3Buffer, ERRORLINE3_SIZE, "%s", display[2]);
-
+    Unicode::snprintfFloat(auxBatteryVoltBuffer, AUXBATTERYVOLT_SIZE, "%.2f", auxBatteryVoltConv);
     
     // Refresh the display elements
     solarCurr.invalidate();
@@ -612,4 +625,5 @@ void Screen1View::function1()
     errorLine1.invalidate();
     errorLine2.invalidate();
     errorLine3.invalidate();
+    auxBatteryVolt.invalidate();
 }

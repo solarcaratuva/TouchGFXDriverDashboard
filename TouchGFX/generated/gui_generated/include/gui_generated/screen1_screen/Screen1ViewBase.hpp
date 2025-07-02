@@ -72,6 +72,7 @@ protected:
     touchgfx::TextAreaWithOneWildcard ChargeRelay;
     touchgfx::TextAreaWithOneWildcard DischargeRelayStatus;
     touchgfx::TextAreaWithOneWildcard powerAux;
+    touchgfx::TextAreaWithOneWildcard auxBatteryVolt;
     touchgfx::TextAreaWithOneWildcard bpsError;
     touchgfx::TextAreaWithOneWildcard solarPhoto;
     touchgfx::TextAreaWithOneWildcard cruiseSpeed;
@@ -149,6 +150,8 @@ protected:
     touchgfx::Unicode::UnicodeChar DischargeRelayStatusBuffer[DISCHARGERELAYSTATUS_SIZE];
     static const uint16_t POWERAUX_SIZE = 10;
     touchgfx::Unicode::UnicodeChar powerAuxBuffer[POWERAUX_SIZE];
+    static const uint16_t AUXBATTERYVOLT_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar auxBatteryVoltBuffer[AUXBATTERYVOLT_SIZE];
     static const uint16_t BPSERROR_SIZE = 10;
     touchgfx::Unicode::UnicodeChar bpsErrorBuffer[BPSERROR_SIZE];
     static const uint16_t SOLARPHOTO_SIZE = 10;

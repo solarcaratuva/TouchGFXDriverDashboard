@@ -359,6 +359,21 @@
           },
           {
             "Type": "TextArea",
+            "Name": "auxBatteryVolt",
+            "X": 274,
+            "Y": 740,
+            "Width": 310,
+            "Height": 26,
+            "TextId": "__SingleUse_4KDK",
+            "TextRotation": "0",
+            "Wildcard1": {
+              "TextId": "__SingleUse_GJAT",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
             "Name": "bpsError",
             "X": 315,
             "Y": 683,
@@ -725,10 +740,10 @@
           {
             "Type": "TextArea",
             "Name": "BatteryChargeText",
-            "X": 399,
-            "Y": 742,
-            "Width": 75,
-            "Height": 18,
+            "X": 171,
+            "Y": 722,
+            "Width": 97,
+            "Height": 12,
             "TextId": "__SingleUse_FTVO",
             "TextRotation": "0",
             "AutoSize": true
