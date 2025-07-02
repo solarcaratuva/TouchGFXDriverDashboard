@@ -43,7 +43,7 @@ private:
     std::deque<const char*> recentErrors;
         
     // previous‐state arrays for rising‐edge detection
-    static constexpr int NUM_BPS_ERRORS = 21;
+    static constexpr int NUM_BPS_ERRORS = 15;
     bool prevBpsErrorStates[NUM_BPS_ERRORS];
 
     static constexpr int NUM_MTR_ERRORS = 18;

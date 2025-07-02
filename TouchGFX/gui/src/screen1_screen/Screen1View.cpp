@@ -30,7 +30,6 @@ void Screen1View::setupScreen() {
     regenBreaking.setWildcard(regenBreakingBuffer);
     throttlePedal.setWildcard(throttlePedalBuffer);
     BPS_SOC.setWildcard(BPS_SOCBuffer);
-    DTCStatus.setWildcard(DTCStatusBuffer);
     DischargeRelayStatus.setWildcard(DischargeRelayStatusBuffer);
     ChargeRelay.setWildcard(ChargeRelayBuffer);
     leftTurnText.setWildcard(leftTurnTextBuffer);
@@ -268,7 +267,6 @@ int throttleP = 0;
 int count = 0;
 int testCount = 0;
 int packSOC = 0;
-int packDTC = 0;
 int packDischargeRelay = 0;
 int packChargeRelay = 0;
 int auxBatteryMVolt = 0;
@@ -292,7 +290,6 @@ void Screen1View::function1()
         packVolt = receivedCanData.bps_pack_information.pack_voltage;
         packCurr = receivedCanData.bps_pack_information.pack_current;
         packSOC = receivedCanData.bps_pack_information.pack_soc;
-        packDTC = receivedCanData.bps_pack_information.dtc_status;
         packDischargeRelay = receivedCanData.bps_pack_information.discharge_relay_status;
         packChargeRelay = receivedCanData.bps_pack_information.charge_relay_status;
         rpm = receivedCanData.motor_controller_power_status.motor_rpm;
@@ -315,60 +312,42 @@ void Screen1View::function1()
         receivedCanData.motor_controller_error.overcurrent_limit || receivedCanData.motor_controller_error.motor_system_err || receivedCanData.motor_controller_error.motor_lock ||
         receivedCanData.motor_controller_error.hall_sensor_short || receivedCanData.motor_controller_error.hall_sensor_open || receivedCanData.motor_controller_error.overheat_level);
         
-        currentBpsErrorState = (receivedCanData.bps_error.always_on_supply_fault || receivedCanData.bps_error.canbus_communications_fault ||
-            receivedCanData.bps_error.charge_limit_enforcement_fault || receivedCanData.bps_error.charger_safety_relay_fault || receivedCanData.bps_error.current_sensor_fault ||
-            receivedCanData.bps_error.discharge_limit_enforcement_fault || receivedCanData.bps_error.fan_monitor_fault || receivedCanData.bps_error.high_voltage_isolation_fault ||
-            receivedCanData.bps_error.internal_communications_fault || receivedCanData.bps_error.internal_conversion_fault || receivedCanData.bps_error.internal_logic_fault || 
-            receivedCanData.bps_error.internal_memory_fault || receivedCanData.bps_error.internal_thermistor_fault || receivedCanData.bps_error.low_cell_voltage_fault ||
-            receivedCanData.bps_error.open_wiring_fault || receivedCanData.bps_error.pack_voltage_sensor_fault || receivedCanData.bps_error.power_supply_12v_fault ||
-            receivedCanData.bps_error.thermistor_fault || receivedCanData.bps_error.voltage_redundancy_fault || receivedCanData.bps_error.weak_cell_fault || receivedCanData.bps_error.weak_pack_fault != 0);
+        currentBpsErrorState = receivedCanData.bps_error.dtc_p0_a1_f_internal_cell_communication_fault || receivedCanData.bps_error.current_sensor_fault || receivedCanData.bps_error.weak_pack_fault || receivedCanData.bps_error.thermistor_fault || receivedCanData.bps_error.can_communication_fault || receivedCanData.bps_error.redundant_power_supply_fault || receivedCanData.bps_error.high_voltage_isolation_fault || receivedCanData.bps_error.charge_enable_relay_fault || receivedCanData.bps_error.discharge_enable_relay_fault || receivedCanData.bps_error.internal_hardware_fault || receivedCanData.bps_error.dtc_p0_a0_a_internal_heatsink_thermistor_fault || receivedCanData.bps_error.internal_logic_fault || receivedCanData.bps_error.dtc_p0_a0_c_highest_cell_voltage_too_high_fault || receivedCanData.bps_error.dtc_p0_a0_e_lowest_cell_voltage_too_low_fault || receivedCanData.bps_error.pack_too_hot_fault;
             
         bool curBps[NUM_BPS_ERRORS] = {
-            receivedCanData.bps_error.always_on_supply_fault,
-            receivedCanData.bps_error.canbus_communications_fault,
-            receivedCanData.bps_error.charge_limit_enforcement_fault,
-            receivedCanData.bps_error.charger_safety_relay_fault,
+            receivedCanData.bps_error.dtc_p0_a1_f_internal_cell_communication_fault,
             receivedCanData.bps_error.current_sensor_fault,
-            receivedCanData.bps_error.discharge_limit_enforcement_fault,
-            receivedCanData.bps_error.fan_monitor_fault,
-            receivedCanData.bps_error.high_voltage_isolation_fault,
-            receivedCanData.bps_error.internal_communications_fault,
-            receivedCanData.bps_error.internal_conversion_fault,
-            receivedCanData.bps_error.internal_logic_fault,
-            receivedCanData.bps_error.internal_memory_fault,
-            receivedCanData.bps_error.internal_thermistor_fault,
-            receivedCanData.bps_error.low_cell_voltage_fault,
-            receivedCanData.bps_error.open_wiring_fault,
-            receivedCanData.bps_error.pack_voltage_sensor_fault,
-            receivedCanData.bps_error.power_supply_12v_fault,
+            receivedCanData.bps_error.weak_pack_fault,
             receivedCanData.bps_error.thermistor_fault,
-            receivedCanData.bps_error.voltage_redundancy_fault,
-            receivedCanData.bps_error.weak_cell_fault,
-            receivedCanData.bps_error.weak_pack_fault
+            receivedCanData.bps_error.can_communication_fault,
+            receivedCanData.bps_error.redundant_power_supply_fault,
+            receivedCanData.bps_error.high_voltage_isolation_fault,
+            receivedCanData.bps_error.charge_enable_relay_fault,
+            receivedCanData.bps_error.discharge_enable_relay_fault,
+            receivedCanData.bps_error.internal_hardware_fault,
+            receivedCanData.bps_error.dtc_p0_a0_a_internal_heatsink_thermistor_fault,
+            receivedCanData.bps_error.internal_logic_fault,
+            receivedCanData.bps_error.dtc_p0_a0_c_highest_cell_voltage_too_high_fault,
+            receivedCanData.bps_error.dtc_p0_a0_e_lowest_cell_voltage_too_low_fault,
+            receivedCanData.bps_error.pack_too_hot_fault
         };
 
         static const char* bpsNames[NUM_BPS_ERRORS] = {
-            "Always-On Supply Fault",
-            "CANbus Communications Fault",
-            "Charge Limit Enforcement Fault",
-            "Charger Safety Relay Fault",
-            "Current Sensor Fault",
-            "Discharge Limit Enforcement Fault",
-            "Fan Monitor Fault",
-            "High Voltage Isolation Fault",
-            "Internal Communications Fault",
-            "Internal Conversion Fault",
-            "Internal Logic Fault",
-            "Internal Memory Fault",
-            "Internal Thermistor Fault",
-            "Low Cell Voltage Fault",
-            "Open Wiring Fault",
-            "Pack Voltage Sensor Fault",
-            "12V Power Supply Fault",
+            "Internal Cell Communication Fault",
+            "Current sensor Fault",
+            "Weak Pack Fault",
             "Thermistor Fault",
-            "Voltage Redundancy Fault",
-            "Weak Cell Fault",
-            "Weak Pack Fault"
+            "CAN Communication Fault",
+            "Redundant Power Supply Fault",
+            "High Voltage Isolation Fault",
+            "Charge Enable Relay Fault",
+            "Discharge Enable Relay Fault",
+            "Internal Hardware Fault",
+            "Internal Heatsink Thermistor Fault",
+            "Internal Logic Fault",
+            "Highest Cell Voltage Too High Fault",
+            "Lowest Cell Voltage Too Low Fault",
+            "Pack Too Hot Fault"
         };
 
         for (int i = 0; i < NUM_BPS_ERRORS; i++) {
@@ -572,7 +551,6 @@ void Screen1View::function1()
     Unicode::snprintfFloat(throttlePedalBuffer, THROTTLEPEDAL_SIZE, "%.2f", throttleP);
     Unicode::snprintfFloat(totalBuffer, TOTAL_SIZE, "%.2f", braking);
     Unicode::snprintfFloat(BPS_SOCBuffer, BPS_SOC_SIZE, "%.2f", soc_f);
-    Unicode::snprintfFloat(DTCStatusBuffer, DTCSTATUS_SIZE, "%.2f", (float)packDTC);
     Unicode::snprintfFloat(DischargeRelayStatusBuffer, DISCHARGERELAYSTATUS_SIZE , "%.2f", (float)packDischargeRelay);
     Unicode::snprintfFloat(ChargeRelayBuffer, CHARGERELAY_SIZE , "%.2f", (float)packChargeRelay);
     Unicode::snprintf(leftTurnTextBuffer, LEFTTURNTEXT_SIZE, "%d", isLeft ? 1 : 0);
@@ -611,7 +589,6 @@ void Screen1View::function1()
     RegenEN.invalidate();
     LowPowerEN.invalidate();
     BPS_SOC.invalidate();
-    DTCStatus.invalidate();
     DischargeRelayStatus.invalidate();
     ChargeRelay.invalidate();
     leftTurnText.invalidate();

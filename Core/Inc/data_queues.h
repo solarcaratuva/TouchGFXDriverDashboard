@@ -26,8 +26,8 @@ typedef struct {
      /**
       * Definition found in bps.h
       */
-     struct bps_bps_pack_information_t bps_pack_information;
-     struct bps_bps_error_t bps_error;
+     struct bps_msgid_0_x406_t bps_pack_information;
+     struct bps_msgid_0_x106_t bps_error;
 
      /**
       * Definition found in motor_controller.h
