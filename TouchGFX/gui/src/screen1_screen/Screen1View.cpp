@@ -503,14 +503,14 @@ void Screen1View::function1()
 
     // ADJUSTING CAN VALUES BY SCALE IN DOCS
 
-    float packVolt_f = packVolt * 0.01f;
+    float packVolt_f = packVolt * 0.1f;
     float packCurr_f = packCurr * 0.1f;
     float soc_f = packSOC * 0.5f;
 
     // if (soc_f < 0.0f)   soc_f = 0.0f;
     // if (soc_f > 100.0f) soc_f = 100.0f;
 
-    int pct100 = (auxBatteryChargePct * 100 + 127) / 255;  
+    int pct100 = (int) (auxBatteryChargePct / 255.0f * 100);
     if (pct100 > 100) pct100 = 100;  // just in case
 
     BatteryChargeFill.setValue(pct100); 
@@ -534,6 +534,7 @@ void Screen1View::function1()
     }
 
     float auxBatteryVoltConv = auxBatteryMVolt * 0.001f;
+    // float auxBatteryVoltConv = debug_val_1;
 
     // Update displayed values
     Unicode::snprintfFloat(solarCurrBuffer, SOLARCURR_SIZE, "%.2f", manual);
