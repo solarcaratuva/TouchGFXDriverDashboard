@@ -256,7 +256,7 @@ void sendChargingModeTask(void *argument)
 }
 
 void receiveCanTask(void *argument) {
-  const TickType_t xPeriod = pdMS_TO_TICKS(100);
+  const TickType_t xPeriod = pdMS_TO_TICKS(10);
   TickType_t xLastWakeTime = xTaskGetTickCount();
 
   for(;;) {
