@@ -101,7 +101,6 @@ void Screen1View::function1()
         line1_1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
         shape1_2Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     }
-    
     else
     {
         line1Painter.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
